@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&family=Truculenta:wght@300;400;600&display=swap');
+
+/*---- Screen setup -----*/
+body {
+    height: 100vh;
+    /*background: url("") no-repeat center center fixed;
+    background-size: cover;*/
+    background-color: aqua;
+    font-family: 'Truculenta', sans-serif;
+    font-size: x-large;
+    font-weight: 400;
+}
+
+#left-column {
+    height: 100vh;
+    background-color: rgba(255,0,0,0.3);
+    text-align: center;
+}
+
+#right-column {
+    height: 100vh;
+    background-color: rgba(0,255,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#game-area {
+    height: 70%;
+    width: 70%;
+    position: absolute;
+    background-color: rgba(255,255,255,0.3);
+}
