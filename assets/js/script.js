@@ -9,7 +9,6 @@ function gridSizeSelection() {
     let optionButtons = `
     <button class="gameOptionsButton" id="3" onclick="colourNumberSelection(3)">3 x 3 grid</button>
     <button class="gameOptionsButton" id="4" onclick="colourNumberSelection(4)">4 x 4 grid</button>
-    <button class="gameOptionsButton" id="5" onclick="colourNumberSelection(5)">5 x 5 grid</button>
     `;
     document.getElementById('game-options').innerHTML = optionButtons;
 }
@@ -20,9 +19,9 @@ function colourNumberSelection(gridSelection) {
     console.log("connected2");
     gridSize = gridSelection;
     let optionButtons = `
-    <button class="gameOptionsButton" id="4" onclick="viewTimerSelection(4)">4 colours</button>
-    <button class="gameOptionsButton" id="5" onclick="viewTimerSelection(5)">5 colours</button>
-    <button class="gameOptionsButton" id="6" onclick="viewTimerSelection(6)">6 colours</button>
+    <button class="gameOptionsButton" id="4" onclick="viewTimerSelection(4)">Up to 4 colours</button>
+    <button class="gameOptionsButton" id="5" onclick="viewTimerSelection(5)">Up to 5 colours</button>
+    <button class="gameOptionsButton" id="6" onclick="viewTimerSelection(6)">Up to 6 colours</button>
     `;
     document.getElementById('game-options').innerHTML = optionButtons;
 }
@@ -56,7 +55,61 @@ function playGame(playerTimerSelection) {
     console.log(viewTimerSelected);
     console.log(playerTimerSelected);
     let optionButtons = `
-    <button class="gameOptionsButton" id="0" onclick="">Play Game!</button>
+    <button class="gameOptionsButton" id="0" onclick="generateComputerGrid()">Play Game!</button>
     `;
     document.getElementById('game-options').innerHTML = optionButtons;
 }
+
+function generateComputerGrid() {
+    console.log(gridSize);
+    let grid = `
+    <div class="container${gridSize}x${gridSize}">
+    `;
+    for (let i = 0; i < (gridSize*gridSize); i++) {
+        let rowGrid = `
+            <div class="board${gridSize} squares" id="${i}" onclick="addColour(${i})"></div>
+            `;
+            grid += rowGrid;  
+        }
+    grid += `
+        </div>
+    `;
+    document.getElementById('game-options').innerHTML = grid;
+    addPattern();
+}
+
+function addPattern() {
+    //create array of between 9 and 25 (depending on grid size) which consists of random numbers between 0 and the colourPalette variable (4, 5 or 6)
+    var newPattern = [];
+    for (let i = 0; i < (gridSize*gridSize); i++) {
+        let number = Math.floor(Math.random() *colourPalette);
+        newPattern.push(number);
+    }
+    console.log(newPattern);
+
+    //using newPattern array to assign colours to the grid
+    for (let i in newPattern) {
+        var setColor = document.getElementById(i);
+        if (newPattern[i] === 0) {
+        setColor.style.backgroundColor = "red";
+        }
+        else if (newPattern[i] === 1) {
+        setColor.style.backgroundColor = "green";
+        }
+        else if (newPattern[i] === 2) {
+        setColor.style.backgroundColor = "blue";
+        }
+        else if (newPattern[i] === 3) {
+        setColor.style.backgroundColor = "yellow";
+        }
+        else if (newPattern[i] === 4) {
+        setColor.style.backgroundColor = "purple";
+        }
+        else {
+        setColor.style.backgroundColor = "orange";
+        }
+    }
+}
+
+
+

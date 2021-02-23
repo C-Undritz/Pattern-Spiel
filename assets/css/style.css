@@ -32,3 +32,38 @@ body {
     position: absolute;
     background-color: rgba(255,255,255,0.3);
 }
+
+/* ---- styles for function generateGrid() ----*/
+.container3x3 {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+}
+
+.board3 {
+    height: 200px;
+    border: solid 1px black;
+}
+
+.container4x4 {
+    display: grid;
+    grid-template-columns: 150px 150px 150px 150px;
+}
+
+.board4 {
+    height: 150px;
+    border: solid 1px black;
+}
+
+.container5x5 {
+    display: grid;
+    grid-template-columns: 120px 120px 120px 120px 120px;
+}
+
+.board5 {
+    height: 120px;
+    border: solid 1px black;
+}
+
+#submitButton {
+    margin: 20px 0px;
+}
