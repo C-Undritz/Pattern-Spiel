@@ -76,6 +76,7 @@ function generateComputerGrid() {
     `;
     document.getElementById('game-options').innerHTML = grid;
     addPattern();
+    Timer();
 }
 
 function addPattern() {
@@ -109,6 +110,39 @@ function addPattern() {
         setColor.style.backgroundColor = "orange";
         }
     }
+}
+
+// timer code adapted from 'Code with Ania Kubów' Youtube channel video: "Build your own COUNTDOWN TIMER in 15 lines of JavaScript code" (https://www.youtube.com/watch?v=vSV_Ml2_A88&t=19s)
+function Timer() {
+    let timeLeftDisplay = document.getElementById("time-left");
+    let timeLeft = viewTimerSelected;
+    setInterval(function() {
+        if(timeLeft <= 0 ) {
+            generatePlayerGrid()
+            clearInterval(timeLeft = "");
+        }
+        timeLeftDisplay.innerHTML = timeLeft
+        timeLeft -=1
+    }, 1000)
+}
+
+function generatePlayerGrid() {
+    //console.log(gridSize); !!!?!!?!?!?!??!!!!?!??!!!?
+    //numberOfSquares = this.id;
+    //console.log(numberOfSquares);
+    let grid = `
+    <div class="container${gridSize}x${gridSize}">
+    `;
+    for (let i = 0; i < (gridSize*gridSize); i++) {
+    let rowGrid = `
+        <div class="board${gridSize}" id="square${i}" onclick="addColour(${i})"></div>
+        `;
+        grid += rowGrid;  
+    }
+    grid += `
+        </div>
+    `;
+    document.getElementById('game-options').innerHTML = grid;
 }
 
 
