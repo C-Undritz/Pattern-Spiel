@@ -114,22 +114,25 @@ function addPattern() {
 
 // timer code adapted from 'Code with Ania Kubów' Youtube channel video: "Build your own COUNTDOWN TIMER in 15 lines of JavaScript code" (https://www.youtube.com/watch?v=vSV_Ml2_A88&t=19s)
 function Timer() {
-    let timeLeftDisplay = document.getElementById("time-left");
-    let timeLeft = viewTimerSelected;
-    setInterval(function() {
-        if(timeLeft <= 0 ) {
-            generatePlayerGrid()
-            clearInterval(timeLeft = "");
-        }
-        timeLeftDisplay.innerHTML = timeLeft
-        timeLeft -=1
-    }, 1000)
+    //let timeLeftDisplay = document.getElementById("time-left");
+    //let timeLeft = viewTimerSelected;
+    //setInterval(function() {
+      //  if(timeLeft <= 0 ) {
+      //      clearInterval(timeLeft = "");
+      //  }
+      //  timeLeftDisplay.innerHTML = timeLeft
+      // timeLeft -=1
+    //}, 1000);
+    //let myVar = setTimeout(generatePlayerGrid, (viewTimerSelected*1000));
+    //clearTimeout(myVar);
+    let timerButton = `
+    <button onclick="generatePlayerGrid()">To be replaced with timer</button>`;
+    document.getElementById('time-left').innerHTML = timerButton;
+
 }
 
 function generatePlayerGrid() {
-    //console.log(gridSize); !!!?!!?!?!?!??!!!!?!??!!!?
-    //numberOfSquares = this.id;
-    //console.log(numberOfSquares);
+    console.log(gridSize); 
     let grid = `
     <div class="container${gridSize}x${gridSize}">
     `;
@@ -143,7 +146,29 @@ function generatePlayerGrid() {
         </div>
     `;
     document.getElementById('game-options').innerHTML = grid;
+    generatePalette()
 }
+
+function generatePalette() {
+    console.log(colourPalette)
+    let colourArray = ['red', 'green', 'blue', 'yellow', 'purple', 'orange']
+
+    let palette = `
+        <div id="palette-area">
+    `;
+    for (let i = 0; i < (colourPalette); i++) {
+    let insertColour = `
+        <div class="color-selector" id="${colourArray[i]}"></div>
+        `;
+        palette += insertColour;
+    }
+    palette += `
+        </div>
+    </div>
+    `;
+    document.getElementById('right-column').innerHTML = palette;
+}
+
 
 
 

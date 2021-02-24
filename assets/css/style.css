@@ -17,12 +17,23 @@ body {
     text-align: center;
 }
 
-#right-column {
+#middle-column {
     height: 100vh;
     background-color: rgba(0,255,0,0.3);
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+#right-column {
+    height: 100vh;
+    background-color: rgba(0,0,255,0.3);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*flex-flow: column;*/
     position: relative;
 }
 
@@ -66,4 +77,48 @@ body {
 
 #submitButton {
     margin: 20px 0px;
+}
+
+/* ---- styles for palette ----*/
+
+#palette-area {
+    height: 70%;
+    width: 70%;
+    position: absolute;
+    border: solid 1px black;
+    background-color: lightgrey;
+    display: flex;
+    flex-flow: column;
+    margin: 20px 0px;
+}
+
+.color-selector {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+#red {
+    background-color: red;
+}
+
+#green {
+    background-color: green;
+}
+
+#blue {
+    background-color: blue;
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+#purple {
+    background-color: purple;
+}
+
+#orange {
+    background-color: orange;
 }
