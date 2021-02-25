@@ -127,7 +127,6 @@ function Timer() {
     let timerButton = `
     <button onclick="generatePlayerGrid()">To be replaced with timer</button>`;
     document.getElementById('time-left').innerHTML = timerButton;
-
 }
 
 function generatePlayerGrid() {
@@ -137,7 +136,7 @@ function generatePlayerGrid() {
     `;
     for (let i = 0; i < (gridSize*gridSize); i++) {
     let rowGrid = `
-        <div class="board${gridSize}" id="square${i}" onclick="addColour(${i})"></div>
+        <div class="board${gridSize} squares" id="square${i}" onclick="addColour(${i})"></div>
         `;
         grid += rowGrid;  
     }
@@ -146,6 +145,7 @@ function generatePlayerGrid() {
     `;
     document.getElementById('game-options').innerHTML = grid;
     generatePalette()
+    generateSubmitButton()
 }
 
 function generatePalette() {
@@ -167,6 +167,12 @@ function generatePalette() {
     document.getElementById('right-column').innerHTML = palette;
 }
 
+function generateSubmitButton() {
+    let submitButton = `
+    <button onclick="userPatternArray()">Submit</button>`;
+    document.getElementById('time-left').innerHTML = submitButton;
+}
+
 function pickColour(colourChosen) {
     console.log(colourChosen);
     userColourSelected = colourChosen;
@@ -183,6 +189,35 @@ function addColour(identifier, colourChosen) {
     }  
 }
 
+function userPatternArray() {
+    console.log("I am attempting to submit");
+    var gridOfSquares = document.getElementsByClassName('squares');
+    squareCount = gridOfSquares.length;
+    console.log(squareCount);
+    let userPattern = [];
+    for (let i = 0; i < squareCount; i++) {
+        if (gridOfSquares[i].style.backgroundColor === "red") {
+        userPattern.push(0);
+        }
+        else if (gridOfSquares[i].style.backgroundColor === "green") {
+        userPattern.push(1);
+        }
+        else if (gridOfSquares[i].style.backgroundColor === "blue") {
+        userPattern.push(2);
+        }
+        else if (gridOfSquares[i].style.backgroundColor === "yellow") {
+        userPattern.push(3);
+        }
+        else if (gridOfSquares[i].style.backgroundColor === "purple") {
+        userPattern.push(4);
+        }
+        else {
+        userPattern.push(5);
+        }
+    }
+    console.log(userPattern);
+    //gameStatus(userPattern);
+}
 
 
 
