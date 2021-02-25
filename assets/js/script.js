@@ -4,6 +4,7 @@ let colourPalette;
 let viewTimerSelected;
 let playerTimerSelected;
 let userColourSelected;
+let computerPattern;
 
 function gridSizeSelection() {
     let optionButtons = `
@@ -86,6 +87,7 @@ function addPattern() {
         newPattern.push(number);
     }
     console.log(newPattern);
+    computerPattern = newPattern;
 
     //using newPattern array to assign colours to the grid
     for (let i in newPattern) {
@@ -190,7 +192,6 @@ function addColour(identifier, colourChosen) {
 }
 
 function userPatternArray() {
-    console.log("I am attempting to submit");
     var gridOfSquares = document.getElementsByClassName('squares');
     squareCount = gridOfSquares.length;
     console.log(squareCount);
@@ -215,9 +216,22 @@ function userPatternArray() {
         userPattern.push(5);
         }
     }
-    console.log(userPattern);
-    //gameStatus(userPattern);
+    gameStatus(userPattern)
 }
 
-
-
+function gameStatus(userPattern) {
+    console.log('the user pattern is: ' + userPattern);
+    console.log('the AI pattern is: ' + computerPattern);
+    let result = 0;
+    for (i = 0; i <computerPattern.length; i++) {
+        if (userPattern[i] === computerPattern[i]) {
+            result += 1;
+        }
+    }
+    console.log("the result is " + result);
+    if (result === userPattern.length) {
+        console.log("you win");
+    } else {
+        console.log("you loose");
+    }
+}
