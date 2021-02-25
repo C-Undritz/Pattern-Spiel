@@ -3,6 +3,7 @@ let gridSize;
 let colourPalette;
 let viewTimerSelected;
 let playerTimerSelected;
+let userColourSelected;
 
 function gridSizeSelection() {
     let optionButtons = `
@@ -164,14 +165,23 @@ function generatePalette() {
         </div>
     `;
     document.getElementById('right-column').innerHTML = palette;
-    
 }
 
 function pickColour(colourChosen) {
     console.log(colourChosen);
-    return colourChosen;
+    userColourSelected = colourChosen;
+    console.log(userColourSelected);
 }
 
+function addColour(identifier, colourChosen) {
+    console.log(userColourSelected);
+    let selectedSquare = document.getElementById('square'+identifier);
+    if (userColourSelected) {
+        selectedSquare.style.backgroundColor = userColourSelected;
+    } else {
+        alert("you need to select a colour");
+    }  
+}
 
 
 
