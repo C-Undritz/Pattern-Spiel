@@ -5,7 +5,6 @@ let viewTimerSelected;
 let playerTimerSelected;
 
 function gridSizeSelection() {
-    console.log("connected1");
     let optionButtons = `
     <button class="gameOptionsButton" id="3" onclick="colourNumberSelection(3)">3 x 3 grid</button>
     <button class="gameOptionsButton" id="4" onclick="colourNumberSelection(4)">4 x 4 grid</button>
@@ -16,7 +15,6 @@ function gridSizeSelection() {
 playButton.addEventListener('click', gridSizeSelection);
 
 function colourNumberSelection(gridSelection) {
-    console.log("connected2");
     gridSize = gridSelection;
     let optionButtons = `
     <button class="gameOptionsButton" id="4" onclick="viewTimerSelection(4)">Up to 4 colours</button>
@@ -67,7 +65,7 @@ function generateComputerGrid() {
     `;
     for (let i = 0; i < (gridSize*gridSize); i++) {
         let rowGrid = `
-            <div class="board${gridSize} squares" id="${i}" onclick="addColour(${i})"></div>
+            <div class="board${gridSize} squares" id="${i}"></div>
             `;
             grid += rowGrid;  
         }
@@ -158,16 +156,22 @@ function generatePalette() {
     `;
     for (let i = 0; i < (colourPalette); i++) {
     let insertColour = `
-        <div class="color-selector" id="${colourArray[i]}"></div>
+        <div class="color-selector" id="${colourArray[i]}" onclick="pickColour('${colourArray[i]}')"></div>
         `;
         palette += insertColour;
     }
     palette += `
         </div>
-    </div>
     `;
     document.getElementById('right-column').innerHTML = palette;
+    
 }
+
+function pickColour(colourChosen) {
+    console.log(colourChosen);
+    return colourChosen;
+}
+
 
 
 
