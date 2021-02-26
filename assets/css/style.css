@@ -44,6 +44,17 @@ body {
     background-color: rgba(255,255,255,0.3);
 }
 
+#messages-box {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 1;
+    height: 60%;
+    width: 50%;
+    background-color: rgba(255,255,255);
+    border: black;
+}
+
 /* ---- styles for function generateGrid() ----*/
 .container3x3 {
     display: grid;
