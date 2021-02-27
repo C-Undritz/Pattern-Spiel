@@ -307,3 +307,12 @@ Subsequent website performance checks:
 ---
 ># **PROBLEMS AND FIXES**
 >
+### View Timer function.
+* The timer function code was learnt from a youTube tutorial for a countdown timer.  However 
+this was for a timer that was not involved in executing any functions once complete.
+It was found that when implemented that once the timer hit zero and the clearinterval() was 
+invoked, that the timer actually carried on even though the display was not updating anymore and displayed '0'.
+This meant that the generatePlayerGrid() being triggered by the timer was repeated being invoked and therefore
+repeatedly generated.  This meant that the user was not able to add colours.
+* *Fix: Bim_Alumni informed me that the setInterval() method needed to be declared as a variable
+so that when there is a variable to declare with the clearInterval() method and stop the timer completely.
