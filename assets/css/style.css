@@ -3,57 +3,125 @@
 /*---- Screen setup -----*/
 body {
     height: 100vh;
-    /*background: url("") no-repeat center center fixed;
-    background-size: cover;*/
-    background-color: aqua;
-    font-family: 'Truculenta', sans-serif;
-    font-size: x-large;
-    font-weight: 400;
-}
-
-#left-column {
-    height: 100vh;
-    background-color: rgba(255,0,0,0.3);
-    text-align: center;
-}
-
-#middle-column {
-    height: 100vh;
-    background-color: rgba(0,255,0,0.3);
     display: flex;
-    align-items: center;
     justify-content: center;
-    position: relative;
+    align-items: center;
+    flex-direction: column;
 }
 
-#right-column {
+#score-column {
     height: 100vh;
-    background-color: rgba(0,0,255,0.3);
-    text-align: center;
+}
+
+/*These are the elements that the main menu and game components will be set within.  there are four positions in total*/
+#position-one {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    /*width: 100%;*/
+    border: 10px solid red;
+}
+
+#position-two {
+    display: flex;
+    flex-direction: column;
+    border: 8px solid red;
+}
+
+#position-three {
+    display: flex;
+    flex-direction: column;
+    border: 10px solid red;
+}
+
+#position-four {
+    display: flex;
     justify-content: center;
-    /*flex-flow: column;*/
-    position: relative;
+    flex-direction: column;
+    /*border: 10px solid red;*/
 }
 
-#game-area {
-    height: 70%;
-    width: 70%;
-    position: absolute;
-    background-color: rgba(255,255,255,0.3);
+/*These are the settings for the four main menu and game component elements during the main menu and game difficulty selection*/
+
+/*Houses the Game title only*/
+.position-one-menu {
+    height: 48vh;
+    margin-top: 0;
+    display: flex;
+    justify-content: flex-end;
 }
 
-#messages-box {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    z-index: 1;
-    height: 60%;
-    width: 50%;
-    background-color: rgba(255,255,255);
-    border: black;
+/*Houses the guiding text for each difficulty option*/
+.position-two-menu {
+    height: 4vh;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
 }
+
+/*Houses all of the game options selection buttons*/
+.position-three-menu {
+    height: 48vh;
+    margin-top: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.position-four-menu {
+    height: 0vh;
+}
+
+/*These are the settings for the four main menu and game component elements during the game*/
+
+/*Contains the timer countdown display*/
+.position-one-game {
+    height: 13vh;
+    margin-top: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/*Contains the pattern grid*/
+.position-two-game {
+    height: 65vh;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/*Contains the Palette*/ 
+.position-three-game {
+    height: 15vh;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/*Contains the submit button*/
+.position-four-game {
+    height: 7vh;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#score-column {
+    background-color: grey;
+}
+
+#game-column {
+    background-color: yellow;
+}
+
+/*------------------- buttons ------------------------*/
+button {
+    margin: 0px 2px 10px 2px;
+    width: 140px;
+}
+
+.start-htp-btns { /*styles the 'start' and 'how to play' buttons as a block*/
+    /*display: block;*/
+}
+
 
 /* ---- styles for function generateGrid() ----*/
 .container3x3 {
@@ -93,13 +161,9 @@ body {
 /* ---- styles for palette ----*/
 
 #palette-area {
-    height: 70%;
-    width: 70%;
-    position: absolute;
     border: solid 1px black;
     background-color: lightgrey;
     display: flex;
-    flex-flow: column;
     margin: 20px 0px;
 }
 
@@ -132,4 +196,10 @@ body {
 
 #orange {
     background-color: orange;
+}
+
+/*------------------ timer -------------------------*/
+
+#current-timer {
+    font-size: 3em;
 }
