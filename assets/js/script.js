@@ -1,44 +1,44 @@
-document.addEventListener("DOMContentLoaded", function() {
-  let container = document.getElementById("container");
+document.addEventListener("DOMContentLoaded", function () {
+    let container = document.getElementById("container");
 
-  let mainRow = document.createElement("div");
-  mainRow.setAttribute('class', 'row d-flex align-items-center');
-  mainRow.setAttribute('id', 'game-score-row');
-  container.appendChild(mainRow);
+    let mainRow = document.createElement("div");
+    mainRow.setAttribute('class', 'row d-flex align-items-center');
+    mainRow.setAttribute('id', 'game-score-row');
+    container.appendChild(mainRow);
 
-  let gameColumn = document.createElement("div");
-  gameColumn.setAttribute('class', 'col-12 order-2 d-flex align-items-center flex-column');
-  gameColumn.setAttribute('id', 'game-column');
-  mainRow.appendChild(gameColumn);
-  
-  let newRowOne = document.createElement("div");
-  newRowOne.setAttribute('class', 'row title-row position-one-menu');
-  newRowOne.setAttribute('id', 'position-one');
-  let newRowTwo = document.createElement("div");
-  newRowTwo.setAttribute('class', 'row position-two-menu');
-  newRowTwo.setAttribute('id', 'position-two');
-  let newRowThree = document.createElement("div");
-  newRowThree.setAttribute('class', 'row position-three-menu');
-  newRowThree.setAttribute('id', 'position-three');
-  let newRowFour = document.createElement("div");
-  newRowFour.setAttribute('class', 'row position-four-menu');
-  newRowFour.setAttribute('id', 'position-four');
+    let gameColumn = document.createElement("div");
+    gameColumn.setAttribute('class', 'col-12 order-2 d-flex align-items-center flex-column');
+    gameColumn.setAttribute('id', 'game-column');
+    mainRow.appendChild(gameColumn);
 
-  gameColumn.appendChild(newRowOne);
-  gameColumn.appendChild(newRowTwo);
-  gameColumn.appendChild(newRowThree);
-  gameColumn.appendChild(newRowFour);
-  
-  let gameTitle =`
+    let newRowOne = document.createElement("div");
+    newRowOne.setAttribute('class', 'row title-row position-one-menu');
+    newRowOne.setAttribute('id', 'position-one');
+    let newRowTwo = document.createElement("div");
+    newRowTwo.setAttribute('class', 'row position-two-menu');
+    newRowTwo.setAttribute('id', 'position-two');
+    let newRowThree = document.createElement("div");
+    newRowThree.setAttribute('class', 'row position-three-menu');
+    newRowThree.setAttribute('id', 'position-three');
+    let newRowFour = document.createElement("div");
+    newRowFour.setAttribute('class', 'row position-four-menu');
+    newRowFour.setAttribute('id', 'position-four');
+
+    gameColumn.appendChild(newRowOne);
+    gameColumn.appendChild(newRowTwo);
+    gameColumn.appendChild(newRowThree);
+    gameColumn.appendChild(newRowFour);
+
+    let gameTitle = `
     <h1>Pattern Spiel!</h2>
   `
 
-  let mainMenuButtons =`
+    let mainMenuButtons = `
   <button onclick="selectDifficulty()">Start</button>
   <button>How to Play</button>
   `
-  document.getElementById('position-one').innerHTML = gameTitle;
-  document.getElementById('position-three').innerHTML = mainMenuButtons;
+    document.getElementById('position-one').innerHTML = gameTitle;
+    document.getElementById('position-three').innerHTML = mainMenuButtons;
 })
 
 let gridSize;
@@ -48,63 +48,62 @@ let userColourSelected;
 let computerPattern;
 let gameRound = 1;
 let startedGame = false;
-<<<<<<< HEAD
-var timer; 
-var milliseconds = 0; 
-var seconds = 0; 
+var timer;
+var milliseconds = 0;
+var seconds = 0;
 var minutes = 0;
 let totalScore;
 let patternDisplayTimer;
 
 function mainMenu(gameStarted) {
-  console.log(gameStarted);
-  document.getElementById('position-one').innerHTML = "";
-  document.getElementById('position-two').innerHTML = "";
-  document.getElementById('position-three').innerHTML = "";
-  document.getElementById('position-four').innerHTML = "";
+    console.log(gameStarted);
+    document.getElementById('position-one').innerHTML = "";
+    document.getElementById('position-two').innerHTML = "";
+    document.getElementById('position-three').innerHTML = "";
+    document.getElementById('position-four').innerHTML = "";
 
-  if (gameStarted) {
-    let scoreColumn = document.getElementById("score-column");
-    scoreColumn.remove();
-  }
+    if (gameStarted) {
+        let scoreColumn = document.getElementById("score-column");
+        scoreColumn.remove();
+    }
 
-  let gameColumn = document.getElementById("game-column");
-  gameColumn.removeAttribute('class');
-  gameColumn.setAttribute('class', 'col-12 order-2 d-flex align-items-center flex-column');
+    let gameColumn = document.getElementById("game-column");
+    gameColumn.removeAttribute('class');
+    gameColumn.setAttribute('class', 'col-12 order-2 d-flex align-items-center flex-column');
 
-  let rowOne = document.getElementById("position-one");
-  rowOne.removeAttribute('class');
-  rowOne.setAttribute('class', 'row position-one-menu');
-  
-  let rowTwo = document.getElementById("position-two");
-  rowTwo.removeAttribute('class');
-  rowTwo.setAttribute('class', 'row position-two-menu');
+    let rowOne = document.getElementById("position-one");
+    rowOne.removeAttribute('class');
+    rowOne.setAttribute('class', 'row position-one-menu');
 
-  let rowThree = document.getElementById("position-three");
-  rowThree.removeAttribute('class');
-  rowThree.setAttribute('class', 'row position-three-menu');
+    let rowTwo = document.getElementById("position-two");
+    rowTwo.removeAttribute('class');
+    rowTwo.setAttribute('class', 'row position-two-menu');
 
-  let rowFour = document.getElementById("position-four");
-  rowFour.removeAttribute('class');
-  rowFour.setAttribute('class', 'row position-four-menu');
+    let rowThree = document.getElementById("position-three");
+    rowThree.removeAttribute('class');
+    rowThree.setAttribute('class', 'row position-three-menu');
 
-  let gameTitle =`
+    let rowFour = document.getElementById("position-four");
+    rowFour.removeAttribute('class');
+    rowFour.setAttribute('class', 'row position-four-menu');
+
+    let gameTitle = `
     <h1>Pattern Spiel!</h2>
   `;
 
-  let mainMenuButtons =`
+    let mainMenuButtons = `
   <button onclick="selectDifficulty()">Start</button>
   <button>How to Play</button>
   `;
-  document.getElementById('position-one').innerHTML = gameTitle;
-  document.getElementById('position-three').innerHTML = mainMenuButtons;
+    document.getElementById('position-one').innerHTML = gameTitle;
+    document.getElementById('position-three').innerHTML = mainMenuButtons;
 }
 
 function selectDifficulty() {
-  let selectDifficultyText =`
+    let selectDifficultyText = `
   <h2>Select Difficulty</h2>
   `;
-  let difficultySelectionButtons =`
+    let difficultySelectionButtons = `
   <button class="" id="" onclick="setDifficultyVariables(1)">Very easy</button>
   <button class="" id="" onclick="setDifficultyVariables(2)">Easy</button>
   <button class="" id="" onclick="setDifficultyVariables(3)">Medium</button>
@@ -113,52 +112,46 @@ function selectDifficulty() {
   <button class="" id="" onclick="gridSizeSelection()">Custom game</button>
   <button class="" id="" onclick="mainMenu(false)">return</button>
   `;
-  document.getElementById('position-two').innerHTML = selectDifficultyText;
-  document.getElementById('position-three').innerHTML = difficultySelectionButtons
+    document.getElementById('position-two').innerHTML = selectDifficultyText;
+    document.getElementById('position-three').innerHTML = difficultySelectionButtons
 }
 
 function setDifficultyVariables(difficulty) {
-  switch (difficulty) {
-    case 1:
-      gridSize = 3;
-      colourPalette = 4;
-      viewTimerSelected = 15;
-      break;
-    case 2:
-      gridSize = 3;
-      colourPalette = 4;
-      viewTimerSelected = 10;
-      break;
-    case 3:
-      gridSize = 3;
-      colourPalette = 4;
-      viewTimerSelected = 5;
-      break;
-    case 4:
-      gridSize = 3;
-      colourPalette = 5;
-      viewTimerSelected = 10;
-      break;
-    case 5:
-      gridSize = 3;
-      colourPalette = 5;
-      viewTimerSelected = 5;
-      break;
-  }
-  console.log("Grid size is " + gridSize);
-  console.log("Colour selection is " + colourPalette);
-  console.log("Timer selected is " + viewTimerSelected);
-  playGame(viewTimerSelected, true);
+    switch (difficulty) {
+        case 1:
+            gridSize = 3;
+            colourPalette = 4;
+            viewTimerSelected = 15;
+            break;
+        case 2:
+            gridSize = 3;
+            colourPalette = 4;
+            viewTimerSelected = 10;
+            break;
+        case 3:
+            gridSize = 3;
+            colourPalette = 4;
+            viewTimerSelected = 5;
+            break;
+        case 4:
+            gridSize = 3;
+            colourPalette = 5;
+            viewTimerSelected = 10;
+            break;
+        case 5:
+            gridSize = 3;
+            colourPalette = 5;
+            viewTimerSelected = 5;
+            break;
+    }
+    console.log("Grid size is " + gridSize);
+    console.log("Colour selection is " + colourPalette);
+    console.log("Timer selected is " + viewTimerSelected);
+    playGame(viewTimerSelected, true);
 }
-=======
-var timer; //----------------------------------------------------------------------------------------------------------------------------------------------
-var ms = 0; //----------------------------------------------------------------------------------------------------------------------------------------------
-var s = 0; //----------------------------------------------------------------------------------------------------------------------------------------------
-var m = 0; //----------------------------------------------------------------------------------------------------------------------------------------------
->>>>>>> b104df47bd255977c0741ca3e3382624c6ad8eb2
 
 function gridSizeSelection() {
-    let selectOptionsText =`
+    let selectOptionsText = `
       <h2>Select grid size</h2>
     `;
     let optionButtons = `
@@ -172,7 +165,7 @@ function gridSizeSelection() {
 
 function colourNumberSelection(gridSelection) {
     gridSize = gridSelection;
-    let selectOptionsText =`
+    let selectOptionsText = `
       <h2>Select number of possible colours</h2>
     `;
     let optionButtons = `
@@ -187,7 +180,7 @@ function colourNumberSelection(gridSelection) {
 
 function viewTimerSelection(colourSelection) {
     colourPalette = colourSelection;
-    let selectOptionsText =`
+    let selectOptionsText = `
       <h2>Select how long you will be able to view the pattern</h2>
     `;
     let optionButtons = `
@@ -203,53 +196,47 @@ function viewTimerSelection(colourSelection) {
 
 function playGame(viewTimerSelection, gameChoice) {
     viewTimerSelected = viewTimerSelection;
-    
+
     console.log(gridSize);
     console.log(colourPalette);
     console.log(viewTimerSelected);
     console.log(gameChoice);
-    
-    let selectOptionsText =`
+
+    let selectOptionsText = `
       <h2>Ready?</h2>
     `;
-    
+
     if (gameChoice) {
-      let optionButtons = `
+        let optionButtons = `
       <button class="gameOptionsButton" id="0" onclick="generateComputerGrid()">Play Game!</button>
       <button class="" id="" onclick="selectDifficulty()">return</button>
       <button class="" id="" onclick="mainMenu(false)">Main menu</button>
       `;
-      document.getElementById('position-two').innerHTML = selectOptionsText;
-      document.getElementById('position-three').innerHTML = optionButtons;
+        document.getElementById('position-two').innerHTML = selectOptionsText;
+        document.getElementById('position-three').innerHTML = optionButtons;
     } else {
-      let optionButtons = `
+        let optionButtons = `
       <button class="gameOptionsButton" id="0" onclick="generateComputerGrid()">Play Game!</button>
       <button class="" id="" onclick="viewTimerSelection(colourPalette)">return</button>
       <button class="" id="" onclick="mainMenu(false)">Main menu</button>
       `;
-      document.getElementById('position-two').innerHTML = selectOptionsText;
-      document.getElementById('position-three').innerHTML = optionButtons;
+        document.getElementById('position-two').innerHTML = selectOptionsText;
+        document.getElementById('position-three').innerHTML = optionButtons;
     }
     totalScore = 0;
 }
 
 function generateComputerGrid() {
     if (startedGame) {
-        let palette = document.getElementById('palette-area'); 
-        let message = document.getElementById('messages-box'); 
+        let palette = document.getElementById('palette-area');
+        let message = document.getElementById('messages-box');
         palette.remove(); // removes palette when viewing computer generated pattern between rounds.      
         message.remove(); // removes end of round message generated by function gameStatus().
-<<<<<<< HEAD
-        var milliseconds = 0; 
-        var seconds = 0; 
+        var milliseconds = 0;
+        var seconds = 0;
         var minutes = 0;;
-=======
-        m = 0;
-        s = 0;
-        ms = 0;
->>>>>>> b104df47bd255977c0741ca3e3382624c6ad8eb2
     }
-    
+
     document.getElementById('position-one').innerHTML = "";
     document.getElementById('position-two').innerHTML = "";
     document.getElementById('position-three').innerHTML = "";
@@ -269,7 +256,7 @@ function generateComputerGrid() {
     let rowOne = document.getElementById("position-one");
     rowOne.removeAttribute('class');
     rowOne.setAttribute('class', 'row position-one-game');
-    
+
     let rowTwo = document.getElementById("position-two");
     rowTwo.removeAttribute('class');
     rowTwo.setAttribute('class', 'row position-two-game');
@@ -281,8 +268,8 @@ function generateComputerGrid() {
     let rowFour = document.getElementById("position-four");
     rowFour.removeAttribute('class')
     rowFour.setAttribute('class', 'row position-four-game');
-    
-    let scoreColumnTitle =`
+
+    let scoreColumnTitle = `
     <button onclick="mainMenu(true)">Main menu</button>
     <h1>Score</h2>
     `;
@@ -290,16 +277,16 @@ function generateComputerGrid() {
     document.getElementById('score-column').innerHTML = scoreColumnTitle;
 
     console.log(gridSize);
-    
+
     let grid = `
     <div class="container${gridSize}x${gridSize}">
     `;
-    for (let i = 0; i < (gridSize*gridSize); i++) {
+    for (let i = 0; i < (gridSize * gridSize); i++) {
         let rowGrid = `
             <div class="board${gridSize} squares" id="${i}"></div>
             `;
-            grid += rowGrid;  
-        }
+        grid += rowGrid;
+    }
     grid += `
         </div>
     `;
@@ -311,8 +298,8 @@ function generateComputerGrid() {
 function addPattern() {
     //create array of between 9 and 25 (depending on grid size) which consists of random numbers between 0 and the colourPalette variable (4, 5 or 6)
     var newPattern = [];
-    for (let i = 0; i < (gridSize*gridSize); i++) {
-        let number = Math.floor(Math.random() *colourPalette);
+    for (let i = 0; i < (gridSize * gridSize); i++) {
+        let number = Math.floor(Math.random() * colourPalette);
         newPattern.push(number);
     }
     console.log(newPattern);
@@ -322,22 +309,17 @@ function addPattern() {
     for (let i in newPattern) {
         var setColor = document.getElementById(i);
         if (newPattern[i] === 0) {
-        setColor.style.backgroundColor = "red";
-        }
-        else if (newPattern[i] === 1) {
-        setColor.style.backgroundColor = "green";
-        }
-        else if (newPattern[i] === 2) {
-        setColor.style.backgroundColor = "blue";
-        }
-        else if (newPattern[i] === 3) {
-        setColor.style.backgroundColor = "yellow";
-        }
-        else if (newPattern[i] === 4) {
-        setColor.style.backgroundColor = "purple";
-        }
-        else {
-        setColor.style.backgroundColor = "orange";
+            setColor.style.backgroundColor = "red";
+        } else if (newPattern[i] === 1) {
+            setColor.style.backgroundColor = "green";
+        } else if (newPattern[i] === 2) {
+            setColor.style.backgroundColor = "blue";
+        } else if (newPattern[i] === 3) {
+            setColor.style.backgroundColor = "yellow";
+        } else if (newPattern[i] === 4) {
+            setColor.style.backgroundColor = "purple";
+        } else {
+            setColor.style.backgroundColor = "orange";
         }
     }
 }
@@ -351,31 +333,31 @@ function viewTimer() {
     timerDisplay.appendChild(currentTimer);
 
     let timeLeft = viewTimerSelected;
-    let patternDisplayTimer = setInterval(function() {
-        if(timeLeft <= 0 ) {
+    let patternDisplayTimer = setInterval(function () {
+        if (timeLeft <= 0) {
             clearInterval(patternDisplayTimer);
             console.log("timer complete");
             generatePlayerGrid()
         }
         currentTimer.innerHTML = timeLeft;
-        timeLeft -=1;
+        timeLeft -= 1;
         console.log(timeLeft);
     }, 1000);
 }
 
 function generatePlayerGrid() {
-    console.log(gridSize); 
-    
+    console.log(gridSize);
+
     document.getElementById('position-one').innerHTML = "";
-    
+
     let grid = `
     <div class="container${gridSize}x${gridSize}">
     `;
-    for (let i = 0; i < (gridSize*gridSize); i++) {
-    let rowGrid = `
+    for (let i = 0; i < (gridSize * gridSize); i++) {
+        let rowGrid = `
         <div class="board${gridSize} squares" id="square${i}" onclick="addColour(${i})"></div>
         `;
-        grid += rowGrid;  
+        grid += rowGrid;
     }
     grid += `
         </div>
@@ -383,21 +365,21 @@ function generatePlayerGrid() {
     document.getElementById('position-two').innerHTML = grid;
 
     generatePalette();
-    playerTimer() 
+    playerTimer()
 }
 
 //https://www.youtube.com/watch?v=oY8V6GuZrkM 
 function playerTimer() {
-  playerTimer = setInterval(run, 10); // 10 so that the function is called 100 times a second.
+    playerTimer = setInterval(run, 10); // 10 so that the function is called 100 times a second.
 }
 
-function run() { 
+function run() {
     milliseconds++;
-    if(milliseconds == 100) {
+    if (milliseconds == 100) {
         milliseconds = 0;
         seconds++;
     }
-    if(seconds == 60) {
+    if (seconds == 60) {
         seconds = 0;
         minutes++;
     }
@@ -411,7 +393,7 @@ function generatePalette() {
         <div id="palette-area">
     `;
     for (let i = 0; i < (colourPalette); i++) {
-    let insertColour = `
+        let insertColour = `
         <div class="color-selector" id="${colourArray[i]}" onclick="pickColour('${colourArray[i]}')"></div>
         `;
         palette += insertColour;
@@ -438,12 +420,12 @@ function pickColour(colourChosen) {
 
 function addColour(identifier, colourChosen) {
     console.log(userColourSelected);
-    let selectedSquare = document.getElementById('square'+identifier);
+    let selectedSquare = document.getElementById('square' + identifier);
     if (userColourSelected) {
         selectedSquare.style.backgroundColor = userColourSelected;
     } else {
         alert("you need to select a colour");
-    }  
+    }
 }
 
 function userPatternArray() {
@@ -453,22 +435,17 @@ function userPatternArray() {
     let userPattern = [];
     for (let i = 0; i < squareCount; i++) {
         if (gridOfSquares[i].style.backgroundColor === "red") {
-        userPattern.push(0);
-        }
-        else if (gridOfSquares[i].style.backgroundColor === "green") {
-        userPattern.push(1);
-        }
-        else if (gridOfSquares[i].style.backgroundColor === "blue") {
-        userPattern.push(2);
-        }
-        else if (gridOfSquares[i].style.backgroundColor === "yellow") {
-        userPattern.push(3);
-        }
-        else if (gridOfSquares[i].style.backgroundColor === "purple") {
-        userPattern.push(4);
-        }
-        else {
-        userPattern.push(5);
+            userPattern.push(0);
+        } else if (gridOfSquares[i].style.backgroundColor === "green") {
+            userPattern.push(1);
+        } else if (gridOfSquares[i].style.backgroundColor === "blue") {
+            userPattern.push(2);
+        } else if (gridOfSquares[i].style.backgroundColor === "yellow") {
+            userPattern.push(3);
+        } else if (gridOfSquares[i].style.backgroundColor === "purple") {
+            userPattern.push(4);
+        } else {
+            userPattern.push(5);
         }
     }
     gameStatus(userPattern)
@@ -487,19 +464,12 @@ function gameStatus(userPattern) {
     submitButton.remove();
     debugger;
 
-    clearInterval(timer)//-----------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
+    clearInterval(timer) //-----------------------------------------------------------------------------------------------------
     console.log("You took " + minutes + " minutes");
     console.log("You took " + seconds + " seconds");
     console.log("You took " + milliseconds + " miliseconds");
     debugger;
-=======
-    console.log("You took " + m + "minutes");
-    console.log("You took " + s + "seconds");
-    console.log("You took " + ms + "miliseconds");
-
->>>>>>> b104df47bd255977c0741ca3e3382624c6ad8eb2
-    for (i = 0; i <computerPattern.length; i++) {
+    for (i = 0; i < computerPattern.length; i++) {
         if (userPattern[i] === computerPattern[i]) {
             score += 1;
         }
@@ -516,7 +486,7 @@ function gameStatus(userPattern) {
     } else {
         result = "Loss";
         console.log("you loose");
-        console.log("You got " + ((score/userPattern.length)*100) +"% right");
+        console.log("You got " + ((score / userPattern.length) * 100) + "% right");
         console.log("your total score is " + totalScore);
     }
     debugger;
@@ -532,7 +502,7 @@ function gameStatus(userPattern) {
     displayResults.appendChild(newScore);
     displayResults.appendChild(playerTime);
 
-	//Opens up the end of round message box for player to trigger next round or to notify end of current game.
+    //Opens up the end of round message box for player to trigger next round or to notify end of current game.
     if (gameRound < 6) {
         let message = `
         <div id="messages-box">
@@ -543,7 +513,7 @@ function gameStatus(userPattern) {
         </div>
         `;
         document.getElementById('messages').innerHTML = message;
-        } else {
+    } else {
         console.log("end of game");
         if (totalScore === 5) {
             let message = `
@@ -571,8 +541,8 @@ function gameStatus(userPattern) {
 function playAgain() {
     startedGame = false;
     let message = document.getElementById('messages-box');
-    let palette = document.getElementById('palette-area'); 
-    palette.remove(); 
+    let palette = document.getElementById('palette-area');
+    palette.remove();
     message.remove();
     for (let i = 0; i < 5; i++) {
         let heading = document.getElementsByClassName('result-entry')[0];
@@ -583,4 +553,3 @@ function playAgain() {
     ms = 0;
     generateComputerGrid();
 }
-
