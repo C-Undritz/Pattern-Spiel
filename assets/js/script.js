@@ -47,7 +47,7 @@ let viewTimerSelected;
 let userColourSelected;
 let computerPattern;
 let userPattern;
-let gameRound = 1;
+let gameRound;
 let startedGame = false;
 var timer;
 var milliseconds = 0;
@@ -196,6 +196,9 @@ function viewTimerSelection(colourSelection) {
 
 function playGame(viewTimerSelection, gameChoice) {
   viewTimerSelected = viewTimerSelection;
+
+  gameRound = 1;
+  console.log("game round is: " + gameRound);
 
   console.log(gridSize);
   console.log(colourPalette);
@@ -622,7 +625,7 @@ function gameStatus() {
             <div id="messages-box">
                 <h2>You scored ${totalScore}</h2>
                 <button onclick="playAgain()">Play again?</button>
-                <button onclick="mainMenu(false)">Main menu"</button>
+                <button onclick="mainMenu(true)">Main menu</button>
             </div>
             `;
       let rowThree = document.getElementById("position-three");
@@ -641,6 +644,8 @@ function playAgain() {
   minutes = 0;
   seconds = 0;
   milliseconds = 0;
+
+  gameRound = 1;
 
   generateComputerGrid(1);
 }
