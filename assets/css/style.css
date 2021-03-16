@@ -13,7 +13,14 @@ body {
     height: 100vh;
 }
 
-/*These are the elements that the main menu and game components will be set within.  there are four positions in total*/
+/*These are the elements that the main menu and game components will be set within.  there are five positions in total*/
+#position-zero {
+    display: flex;
+    flex-direction: column;
+    /*width: 100%;*/
+    /*border: 10px solid red;*/
+}
+
 #position-one {
     display: flex;
     flex-direction: column;
@@ -44,6 +51,10 @@ body {
 /*These are the settings for the four main menu and game component elements during the main menu and game difficulty selection*/
 
 /*Houses the Game title only*/
+.position-zero-menu {
+    height: 0vh;
+}
+
 .position-one-menu {
     height: 48vh;
     margin-top: 0;
@@ -73,6 +84,13 @@ body {
 
 /*These are the settings for the four main menu and game component elements during the game*/
 
+.position-zero-game {
+    height: 5vh;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+}
+
 /*Contains the timer countdown display*/
 .position-one-game {
     height: 13vh;
@@ -83,7 +101,7 @@ body {
 
 /*Contains the pattern grid*/
 .position-two-game {
-    height: 65vh;
+    height: 60vh;
     margin-top: 0;
     display: flex;
     justify-content: center;
@@ -117,6 +135,10 @@ body {
     background-color: grey;
 }
 
+#score-column-header {
+    text-align: center;
+}
+
 #game-column {
     background-color: lightblue;
 }
@@ -130,31 +152,21 @@ button {
 /* ---- styles for function generateGrid() ----*/
 .container3x3 {
     display: grid;
-    grid-template-columns: 200px 200px 200px;
+    grid-template-columns: 20vh 20vh 20vh;
 }
 
 .board3 {
-    height: 200px;
+    height: 20vh;
     border: solid 1px black;
 }
 
 .container4x4 {
     display: grid;
-    grid-template-columns: 150px 150px 150px 150px;
+    grid-template-columns: 15vh 15vh 15vh 15vh;
 }
 
 .board4 {
-    height: 150px;
-    border: solid 1px black;
-}
-
-.container5x5 {
-    display: grid;
-    grid-template-columns: 120px 120px 120px 120px 120px;
-}
-
-.board5 {
-    height: 120px;
+    height: 15vh;
     border: solid 1px black;
 }
 

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let container = document.getElementById("container");
 
   let mainRow = document.createElement("div");
-  mainRow.setAttribute('class', 'row d-flex align-items-center');
+  mainRow.setAttribute('class', 'row d-flex align-items-center justify-content-center');
   mainRow.setAttribute('id', 'game-score-row');
   container.appendChild(mainRow);
 
@@ -11,19 +11,27 @@ document.addEventListener("DOMContentLoaded", function () {
   gameColumn.setAttribute('id', 'game-column');
   mainRow.appendChild(gameColumn);
 
+  let newRowZero = document.createElement("div");
+  newRowZero.setAttribute('class', 'row position-zero-menu');
+  newRowZero.setAttribute('id', 'position-zero');
+
   let newRowOne = document.createElement("div");
   newRowOne.setAttribute('class', 'row title-row position-one-menu');
   newRowOne.setAttribute('id', 'position-one');
+
   let newRowTwo = document.createElement("div");
   newRowTwo.setAttribute('class', 'row position-two-menu');
   newRowTwo.setAttribute('id', 'position-two');
+
   let newRowThree = document.createElement("div");
   newRowThree.setAttribute('class', 'row position-three-menu');
   newRowThree.setAttribute('id', 'position-three');
+
   let newRowFour = document.createElement("div");
   newRowFour.setAttribute('class', 'row position-four-menu');
   newRowFour.setAttribute('id', 'position-four');
 
+  gameColumn.appendChild(newRowZero);
   gameColumn.appendChild(newRowOne);
   gameColumn.appendChild(newRowTwo);
   gameColumn.appendChild(newRowThree);
@@ -35,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let mainMenuButtons = `
   <button onclick="selectDifficulty()">Start</button>
-  <button>How to Play</button>
+  <a href="instructions.html"><button>How to play</button></a>
   `
   document.getElementById('position-one').innerHTML = gameTitle;
   document.getElementById('position-three').innerHTML = mainMenuButtons;
@@ -57,6 +65,7 @@ let totalScore = 0;
 
 function mainMenu(gameStarted) {
   console.log("game started is " + gameStarted);
+  document.getElementById('position-zero').innerHTML = "";
   document.getElementById('position-one').innerHTML = "";
   document.getElementById('position-two').innerHTML = "";
   document.getElementById('position-three').innerHTML = "";
@@ -70,6 +79,10 @@ function mainMenu(gameStarted) {
   let gameColumn = document.getElementById("game-column");
   gameColumn.removeAttribute('class');
   gameColumn.setAttribute('class', 'col-12 order-2 d-flex align-items-center flex-column');
+
+  let rowZero = document.getElementById("position-zero");
+  rowZero.removeAttribute('class');
+  rowZero.setAttribute('class', 'row position-zero-menu');
 
   let rowOne = document.getElementById("position-one");
   rowOne.removeAttribute('class');
@@ -93,7 +106,7 @@ function mainMenu(gameStarted) {
 
   let mainMenuButtons = `
   <button onclick="selectDifficulty()">Start</button>
-  <button>How to Play</button>
+  <button href"instructions.html">How to Play</button>
   `;
   document.getElementById('position-one').innerHTML = gameTitle;
   document.getElementById('position-three').innerHTML = mainMenuButtons;
@@ -230,12 +243,10 @@ function playGame(viewTimerSelection, gameChoice) {
 }
 
 function generateGrid(requirement) {
-  console.log("the grid size from new function generateGrid() is " + gridSize);
-
   let grid = `
     <div class="container${gridSize}x${gridSize}">
     `;
-  if (requirement) { 
+  if (requirement) {
     for (let i = 0; i < (gridSize * gridSize); i++) {
       let rowGrid = `
               <div class="board${gridSize} squares" id="${i}"></div>
@@ -244,16 +255,16 @@ function generateGrid(requirement) {
     }
   } else {
     for (let i = 0; i < (gridSize * gridSize); i++) {
-    let rowGrid = `
+      let rowGrid = `
         <div class="board${gridSize} squares" id="square${i}" onclick="addColour(${i})"></div>
         `;
-    grid += rowGrid;
+      grid += rowGrid;
     }
   }
   grid += `
         </div>
     `;
-  
+
   return grid;
 }
 
@@ -270,13 +281,17 @@ function generateComputerGrid(newGame) {
     document.getElementById('position-three').innerHTML = "";
 
     let scoreColumn = document.createElement("div");
-    scoreColumn.setAttribute('class', 'col-2 order-1 d-flex align-items-center flex-column');
     scoreColumn.setAttribute('id', 'score-column');
+    scoreColumn.setAttribute('class', 'col-2 order-1 d-none d-lg-block d-flex align-items-center flex-column');
     mainRow.appendChild(scoreColumn);
 
     let gameColumn = document.getElementById("game-column")
     gameColumn.removeAttribute('class');
     gameColumn.setAttribute('class', 'col-10 order-2 d-flex align-items-center flex-column');
+
+    let rowZero = document.getElementById("position-zero");
+    rowZero.removeAttribute('class');
+    rowZero.setAttribute('class', 'row position-zero-game');
 
     let rowOne = document.getElementById("position-one");
     rowOne.removeAttribute('class');
@@ -296,11 +311,22 @@ function generateComputerGrid(newGame) {
 
 
     let scoreColumnTitle = `
+    <div id="score-column-header">
       <button onclick="mainMenu(true)">Main menu</button>
-      <h1>Score</h2>
-      `;
+      <h1>Score</h1>
+    </div>
+    `;
 
     document.getElementById('score-column').innerHTML = scoreColumnTitle;
+
+    let mobileButtons = `
+    <div id="mobile-buttons" class="d-flex flex-row d-lg-none">
+      <button onclick="mainMenu(true)">Main menu</button>
+      <button type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">Score</button>
+    </div>
+    `;
+
+    document.getElementById('position-zero').innerHTML = mobileButtons;
 
   } else {
 
@@ -326,11 +352,6 @@ function generateComputerGrid(newGame) {
 }
 
 function convertArrayToPattern(array) {
-  console.log("the array to be converted to a pattern is: " + array);
-
-  // Converts arrays into colours on the grid.  No 'else' statement as needed to define a value for orange otherwise on the compare stage of the game (function patternComparePlayer()),
-  // if the player did not fill in a colour it would automatically fill in the colourless grid square as orange.
-
   for (let i in array) {
     var setColor = document.getElementById(i);
     if (array[i] === 0) {
@@ -369,7 +390,7 @@ function setTimer() {
       `;
     document.getElementById('position-one').innerHTML = goButton;
   } else {
-    viewTimer() 
+    viewTimer()
   }
 }
 
@@ -398,10 +419,10 @@ function generatePlayerGrid() {
   console.log("The player grid size is: " + gridSize);
 
   document.getElementById('position-one').innerHTML = "";
-  
+
   grid = generateGrid(false);
   document.getElementById('position-two').innerHTML = grid;
-  
+
   generatePalette();
   playerTimer();
 }
@@ -493,12 +514,12 @@ function patternComparePlayer() {
     <h2>Click button to compare patterns</h2>
     <button class="gameOptionsButton" id="switch-button" onclick="patternCompareComputer()">Switch</button>
     `;
-    document.getElementById('position-one').innerHTML = switchButton;
+  document.getElementById('position-one').innerHTML = switchButton;
 
-    grid = generateGrid(true);
-    document.getElementById('position-two').innerHTML = grid;
+  grid = generateGrid(true);
+  document.getElementById('position-two').innerHTML = grid;
 
-    convertArrayToPattern(userPattern);
+  convertArrayToPattern(userPattern);
 }
 
 function patternCompareComputer() {
@@ -506,12 +527,12 @@ function patternCompareComputer() {
     <h2>Click button to compare patterns</h2>
     <button class="gameOptionsButton" id="switch-button" onclick="patternComparePlayer()">switch</button>
     `;
-    document.getElementById('position-one').innerHTML = switchButton;
+  document.getElementById('position-one').innerHTML = switchButton;
 
-    grid = generateGrid(true);
-    document.getElementById('position-two').innerHTML = grid;
+  grid = generateGrid(true);
+  document.getElementById('position-two').innerHTML = grid;
 
-    convertArrayToPattern(computerPattern);
+  convertArrayToPattern(computerPattern);
 }
 
 function checkCompletion() {
@@ -565,23 +586,42 @@ function gameStatus() {
   }
 
   //Adds result of the round to the score column
-  let displayResults = document.getElementById("score-column");
+  let displayResultsColumn = document.getElementById("score-column");
 
-  let roundScoreBox = document.createElement("div");
-  roundScoreBox.setAttribute('class', 'round-score-box')
+  let columnRoundScoreBox = document.createElement("div");
+  columnRoundScoreBox.setAttribute('class', 'round-score-box')
 
-  let newScore = document.createElement("h3");
-  newScore.setAttribute('class', 'result-entry');
-  newScore.innerHTML = result;
+  let columnNewScore = document.createElement("h3");
+  columnNewScore.setAttribute('class', 'result-entry');
+  columnNewScore.innerHTML = result;
 
-  let playerTime = document.createElement("h2");
-  playerTime.setAttribute('class', 'result-entry');
-  playerTime.innerHTML = seconds + ":" + milliseconds;
+  let columnPlayerTime = document.createElement("h2");
+  columnPlayerTime.setAttribute('class', 'result-entry');
+  columnPlayerTime.innerHTML = seconds + ":" + milliseconds;
 
-  roundScoreBox.appendChild(newScore);
-  roundScoreBox.appendChild(playerTime);
+  columnRoundScoreBox.appendChild(columnNewScore);
+  columnRoundScoreBox.appendChild(columnPlayerTime);
 
-  displayResults.appendChild(roundScoreBox);
+  displayResultsColumn.appendChild(columnRoundScoreBox);
+
+  //Adds result of the round to the score modal
+  let displayResultsModal = document.getElementById("score-modal");
+
+  let modalRoundScoreBox = document.createElement("div");
+  modalRoundScoreBox.setAttribute('class', 'round-score-box')
+
+  let modalNewScore = document.createElement("h3");
+  modalNewScore.setAttribute('class', 'result-entry');
+  modalNewScore.innerHTML = result;
+
+  let modalPlayerTime = document.createElement("h2");
+  modalPlayerTime.setAttribute('class', 'result-entry');
+  modalPlayerTime.innerHTML = seconds + ":" + milliseconds;
+
+  modalRoundScoreBox.appendChild(modalNewScore);
+  modalRoundScoreBox.appendChild(modalPlayerTime);
+
+  displayResultsModal.appendChild(modalRoundScoreBox);
 
   //Opens up the end of round message box for player to trigger next round or to notify end of current game.
 
