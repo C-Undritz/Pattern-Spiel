@@ -453,7 +453,7 @@ function generatePalette() {
     `;
   for (let i = 0; i < (colourPalette); i++) {
     let insertColour = `
-        <div class="color-selector" id="${colourArray[i]}" onclick="pickColour('${colourArray[i]}')"></div>
+        <div id="palette-${colourArray[i]}")"></div>
         `;
     palette += insertColour;
   }
@@ -462,6 +462,7 @@ function generatePalette() {
     `;
   document.getElementById('position-three').innerHTML = palette;
   generateSubmitButton();
+  pickColour();
 }
 
 function generateSubmitButton() {
@@ -471,10 +472,101 @@ function generateSubmitButton() {
   document.getElementById('position-four').innerHTML = submitButton;
 }
 
-function pickColour(colourChosen) {
-  console.log(colourChosen);
-  userColourSelected = colourChosen;
-  console.log(userColourSelected);
+function pickColour() {
+  let red = document.getElementById("palette-red");
+  let green = document.getElementById("palette-green");
+  let blue = document.getElementById("palette-blue");
+  let yellow = document.getElementById("palette-yellow");
+  let purple = document.getElementById("palette-purple");
+  let orange = document.getElementById("palette-orange");
+
+  red.addEventListener('click', function() {
+    userColourSelected = "red";
+    console.log(userColourSelected);
+    red.setAttribute('class', 'color-selected');
+    green.setAttribute('class', 'color-deselected');
+    blue.setAttribute('class', 'color-deselected');
+    yellow.setAttribute('class', 'color-deselected');
+    if ((colourPalette === 5) || (colourPalette === 6)) {
+      purple.setAttribute('class', 'color-deselected');
+      if (colourPalette === 6) {
+        orange.setAttribute('class', 'color-deselected');
+      }
+    }
+  });
+
+  green.addEventListener('click', function() {
+    userColourSelected = "green";
+    console.log(userColourSelected);
+    red.setAttribute('class', 'color-deselected');
+    green.setAttribute('class', 'color-selected');
+    blue.setAttribute('class', 'color-deselected');
+    yellow.setAttribute('class', 'color-deselected');
+    if ((colourPalette === 5) || (colourPalette === 6)) {
+      purple.setAttribute('class', 'color-deselected');
+      if (colourPalette === 6) {
+        orange.setAttribute('class', 'color-deselected');
+      }
+    }
+  });
+
+  blue.addEventListener('click', function() {
+    userColourSelected = "blue";
+    console.log(userColourSelected);
+    red.setAttribute('class', 'color-deselected');
+    green.setAttribute('class', 'color-deselected');
+    blue.setAttribute('class', 'color-selected');
+    yellow.setAttribute('class', 'color-deselected');
+    if ((colourPalette) === 5 || (colourPalette === 6)) {
+      purple.setAttribute('class', 'color-deselected');
+      if (colourPalette === 6) {
+        orange.setAttribute('class', 'color-deselected');
+      }
+    }
+  });
+
+  yellow.addEventListener('click', function() {
+    userColourSelected = "yellow";
+    console.log(userColourSelected);
+    red.setAttribute('class', 'color-deselected');
+    green.setAttribute('class', 'color-deselected');
+    blue.setAttribute('class', 'color-deselected');
+    yellow.setAttribute('class', 'color-selected');
+    if ((colourPalette === 5) || (colourPalette === 6)) {
+      purple.setAttribute('class', 'color-deselected');
+      if (colourPalette === 6) {
+        orange.setAttribute('class', 'color-deselected');
+      }
+    }
+  });
+
+  if ((colourPalette === 5) || (colourPalette === 6)) {
+    purple.addEventListener('click', function() {
+      userColourSelected = "purple";
+      console.log(userColourSelected);
+      red.setAttribute('class', 'color-deselected');
+      green.setAttribute('class', 'color-deselected');
+      blue.setAttribute('class', 'color-deselected');
+      yellow.setAttribute('class', 'color-deselected');
+      purple.setAttribute('class', 'color-selected');
+      if (colourPalette === 6) {
+        orange.setAttribute('class', 'color-deselected');
+      }
+    });
+  }
+
+  if (colourPalette === 6) {
+    orange.addEventListener('click', function() {
+      userColourSelected = "orange";
+      console.log(userColourSelected);
+      red.setAttribute('class', 'color-deselected');
+      green.setAttribute('class', 'color-deselected');
+      blue.setAttribute('class', 'color-deselected');
+      yellow.setAttribute('class', 'color-deselected');
+      purple.setAttribute('class', 'color-deselected');
+      orange.setAttribute('class', 'color-selected');
+    });
+  }  
 }
 
 function addColour(identifier, colourChosen) {
@@ -587,6 +679,7 @@ function gameStatus() {
 
   //Adds result of the round to the score column
   let displayResultsColumn = document.getElementById("score-column");
+  let displayResultsModal = document.getElementById("score-modal");
 
   let columnRoundScoreBox = document.createElement("div");
   columnRoundScoreBox.setAttribute('class', 'round-score-box')
@@ -603,24 +696,8 @@ function gameStatus() {
   columnRoundScoreBox.appendChild(columnPlayerTime);
 
   displayResultsColumn.appendChild(columnRoundScoreBox);
-
-  //Adds result of the round to the score modal
-  let displayResultsModal = document.getElementById("score-modal");
-
-  let modalRoundScoreBox = document.createElement("div");
-  modalRoundScoreBox.setAttribute('class', 'round-score-box')
-
-  let modalNewScore = document.createElement("h3");
-  modalNewScore.setAttribute('class', 'result-entry');
-  modalNewScore.innerHTML = result;
-
-  let modalPlayerTime = document.createElement("h2");
-  modalPlayerTime.setAttribute('class', 'result-entry');
-  modalPlayerTime.innerHTML = seconds + ":" + milliseconds;
-
-  modalRoundScoreBox.appendChild(modalNewScore);
-  modalRoundScoreBox.appendChild(modalPlayerTime);
-
+  //https://stackoverflow.com/questions/6244985/insert-html-element-two-or-more-times-using-javascript
+  var modalRoundScoreBox = columnRoundScoreBox.cloneNode(true);
   displayResultsModal.appendChild(modalRoundScoreBox);
 
   //Opens up the end of round message box for player to trigger next round or to notify end of current game.

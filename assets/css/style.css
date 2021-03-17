@@ -183,35 +183,60 @@ button {
     margin: 20px 0px;
 }
 
-.color-selector {
+#palette-red {
     height: 100px;
     width: 100px;
     margin: 10px;
     border-radius: 50%;
-}
-
-#red {
     background-color: red;
 }
 
-#green {
+#palette-green {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 50%;
     background-color: green;
 }
 
-#blue {
+#palette-blue {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 50%;
     background-color: blue;
 }
 
-#yellow {
+#palette-yellow {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 50%;
     background-color: yellow;
 }
 
-#purple {
+#palette-purple {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 50%;
     background-color: purple;
 }
 
-#orange {
+#palette-orange {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 50%;
     background-color: orange;
+}
+
+.color-selected {
+    border: solid black 5px;
+}
+
+.color-deselected {
+    border: transparent;
 }
 
 /*------------------ timer -------------------------*/
