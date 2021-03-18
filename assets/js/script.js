@@ -61,7 +61,7 @@ var timer;
 var milliseconds = 0;
 var seconds = 0;
 var minutes = 0;
-let totalScore = 0;
+let totalScore;
 
 function mainMenu(gameStarted) {
   console.log("game started is " + gameStarted);
@@ -211,6 +211,7 @@ function playGame(viewTimerSelection, gameChoice) {
   viewTimerSelected = viewTimerSelection;
 
   gameRound = 1;
+  totalScore = 0;
   console.log("game round is: " + gameRound);
 
   console.log(gridSize);
@@ -224,7 +225,7 @@ function playGame(viewTimerSelection, gameChoice) {
 
   if (gameChoice) {
     let optionButtons = `
-      <button class="gameOptionsButton" id="0" onclick="generateComputerGrid(1)">Play Game!</button>
+      <button class="gameOptionsButton" id="0" onclick="generateComputerGrid(true)">Play Game!</button>
       <button class="" id="" onclick="selectDifficulty()">return</button>
       <button class="" id="" onclick="mainMenu(false)">Main menu</button>
       `;
@@ -232,14 +233,13 @@ function playGame(viewTimerSelection, gameChoice) {
     document.getElementById('position-three').innerHTML = optionButtons;
   } else {
     let optionButtons = `
-    <button class="gameOptionsButton" id="0" onclick="generateComputerGrid(1)">Play Game!</button>
+    <button class="gameOptionsButton" id="0" onclick="generateComputerGrid(true)">Play Game!</button>
       <button class="" id="" onclick="viewTimerSelection(colourPalette)">return</button>
       <button class="" id="" onclick="mainMenu(false)">Main menu</button>
       `;
     document.getElementById('position-two').innerHTML = selectOptionsText;
     document.getElementById('position-three').innerHTML = optionButtons;
   }
-  totalScore = 0;
 }
 
 function generateGrid(requirement) {
@@ -308,7 +308,6 @@ function generateComputerGrid(newGame) {
     let rowFour = document.getElementById("position-four");
     rowFour.removeAttribute('class')
     rowFour.setAttribute('class', 'row position-four-game');
-
 
     let scoreColumnTitle = `
     <div id="score-column-header">
@@ -710,7 +709,7 @@ function gameStatus() {
             <h2>You got a ${result}</h2>
             <h2>Your time: ${seconds}.${milliseconds}</h2>
             <h3>Ready for round ${gameRound}?</h3>
-            <button onclick="generateComputerGrid(0)">Next Round</button>
+            <button onclick="generateComputerGrid(false)">Next Round</button>
         </div>
         `;
 
@@ -763,6 +762,7 @@ function playAgain() {
   milliseconds = 0;
 
   gameRound = 1;
+  totalScore = 0;
 
-  generateComputerGrid(1);
+  generateComputerGrid(true);
 }
