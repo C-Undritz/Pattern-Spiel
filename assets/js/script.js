@@ -58,9 +58,9 @@ let userPattern;
 let gameRound;
 let startedGame = false;
 var timer;
-var milliseconds = 0;
-var seconds = 0;
-var minutes = 0;
+var milliseconds;
+var seconds;
+var minutes;
 let totalScore;
 
 function mainMenu(gameStarted) {
@@ -311,7 +311,7 @@ function generateComputerGrid(newGame) {
 
     let scoreColumnTitle = `
     <div id="score-column-header">
-      <button onclick="mainMenu(true)">Main menu</button>
+      <button onclick="stop()">Main menu</button>
       <h1>Score</h1>
     </div>
     `;
@@ -320,7 +320,7 @@ function generateComputerGrid(newGame) {
 
     let mobileButtons = `
     <div id="mobile-buttons" class="d-flex flex-row d-lg-none">
-      <button onclick="mainMenu(true)">Main menu</button>
+      <button onclick="stop()">Main menu</button>
       <button type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">Score</button>
     </div>
     `;
@@ -428,10 +428,13 @@ function generatePlayerGrid() {
 
 //https://www.youtube.com/watch?v=oY8V6GuZrkM 
 function playerTimer() {
-  Timer = setInterval(run, 10); // 10 so that the function is called 100 times a second.
+  milliseconds = 0;
+  seconds = 0;
+  minutes = 0;  
+  timer = setInterval(runPlayerTimer, 10); // 10 so that the function is called 100 times a second.
 }
 
-function run() {
+function runPlayerTimer() {
   milliseconds++;
   if (milliseconds == 100) {
     milliseconds = 0;
@@ -442,6 +445,16 @@ function run() {
     minutes++;
   }
 }
+
+function stopPlayerTimer() {
+  //stopTimer();
+  clearInterval(timer);
+}
+
+//function stopTimer() {
+  //clearInterval(timer);
+//}
+
 
 function generatePalette() {
   console.log("The player colour number chosen is:" + colourPalette)
@@ -634,6 +647,7 @@ function checkCompletion() {
   } else {
     patternComparePlayer()
     gameStatus()
+    stop()
   }
 }
 
@@ -649,7 +663,7 @@ function gameStatus() {
   let submitButton = document.getElementById('submit-button');
   submitButton.remove();
 
-  clearInterval(Timer) //-----------------------------------------------------------------------------------------------------
+  stopPlayerTimer() //-----------------------------------------------------------------------------------------------------
   console.log("You took " + minutes + " minutes");
   console.log("You took " + seconds + " seconds");
   console.log("You took " + milliseconds + " miliseconds");
@@ -689,7 +703,7 @@ function gameStatus() {
 
   let columnPlayerTime = document.createElement("h2");
   columnPlayerTime.setAttribute('class', 'result-entry');
-  columnPlayerTime.innerHTML = seconds + ":" + milliseconds;
+  columnPlayerTime.innerHTML = minutes + ":" + seconds + ":" + milliseconds;
 
   columnRoundScoreBox.appendChild(columnNewScore);
   columnRoundScoreBox.appendChild(columnPlayerTime);
