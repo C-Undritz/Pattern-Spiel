@@ -225,7 +225,7 @@ function playGame(viewTimerSelection, gameChoice) {
 
   if (gameChoice) {
     let optionButtons = `
-      <button class="gameOptionsButton" id="0" onclick="generateComputerGrid(true)">Play Game!</button>
+      <button class="gameOptionsButton" id="0" onclick="generateGameArea(true)">Play Game!</button>
       <button class="" id="" onclick="selectDifficulty()">return</button>
       <button class="" id="" onclick="mainMenu(false)">Main menu</button>
       `;
@@ -233,7 +233,7 @@ function playGame(viewTimerSelection, gameChoice) {
     document.getElementById('position-three').innerHTML = optionButtons;
   } else {
     let optionButtons = `
-    <button class="gameOptionsButton" id="0" onclick="generateComputerGrid(true)">Play Game!</button>
+    <button class="gameOptionsButton" id="0" onclick="generateGameArea(true)">Play Game!</button>
       <button class="" id="" onclick="viewTimerSelection(colourPalette)">return</button>
       <button class="" id="" onclick="mainMenu(false)">Main menu</button>
       `;
@@ -268,7 +268,7 @@ function generateGrid(requirement) {
   return grid;
 }
 
-function generateComputerGrid(newGame) {
+function generateGameArea(newGame) {
   console.log("is this a new game? " + newGame);
 
   // The 'newGame' parameter is needed for the five rounds to take place.  For the first round the 'game column' and 'score-column is set up for the first time and game state is '1'.  
@@ -311,7 +311,7 @@ function generateComputerGrid(newGame) {
 
     let scoreColumnTitle = `
     <div id="score-column-header">
-      <button onclick="stop()">Main menu</button>
+      <button onclick="mainMenu(true)" id="scoreColumnMenuButton">Main menu</button>
       <h1>Score</h1>
     </div>
     `;
@@ -320,7 +320,7 @@ function generateComputerGrid(newGame) {
 
     let mobileButtons = `
     <div id="mobile-buttons" class="d-flex flex-row d-lg-none">
-      <button onclick="stop()">Main menu</button>
+      <button onclick="mainMenu(true)" id="mobileViewMenuButton">Main menu</button>
       <button type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">Score</button>
     </div>
     `;
@@ -347,7 +347,7 @@ function generateComputerGrid(newGame) {
   document.getElementById('position-two').innerHTML = grid;
 
   createPatternArray();
-  setTimer();
+  setViewTimer();
 }
 
 function convertArrayToPattern(array) {
@@ -382,7 +382,7 @@ function createPatternArray() {
   convertArrayToPattern(computerPattern)
 }
 
-function setTimer() {
+function setViewTimer() {
   if (viewTimerSelected === 0) {
     let goButton = `
       <button class="gameOptionsButton" id="go-button" onclick="generatePlayerGrid()">Go!</button>
@@ -412,6 +412,19 @@ function viewTimer() {
     timeLeft -= 1;
     console.log("the time left is: " + timeLeft);
   }, 1000);
+
+  let scoreColumnMenuBtn = document.getElementById("scoreColumnMenuButton");
+  let mobileViewMenuBtn = document.getElementById("mobileViewMenuButton");
+  
+  scoreColumnMenuBtn.addEventListener('click', function() {
+    clearInterval(patternDisplayTimer);
+    console.log("timer interrupted")
+  })
+
+  mobileViewMenuBtn.addEventListener('click', function() {
+    clearInterval(patternDisplayTimer);
+    console.log("timer interrupted")
+  })
 }
 
 function generatePlayerGrid() {
@@ -447,14 +460,8 @@ function runPlayerTimer() {
 }
 
 function stopPlayerTimer() {
-  //stopTimer();
   clearInterval(timer);
 }
-
-//function stopTimer() {
-  //clearInterval(timer);
-//}
-
 
 function generatePalette() {
   console.log("The player colour number chosen is:" + colourPalette)
@@ -652,22 +659,14 @@ function checkCompletion() {
 }
 
 function gameStatus() {
-  console.log("gameStatus function " + userPattern);
   gameRound += 1;
-  console.log("the current round is " + gameRound);
-  console.log('the user pattern is: ' + userPattern);
-  console.log('the AI pattern is: ' + computerPattern);
   let score = 0;
   let result;
 
   let submitButton = document.getElementById('submit-button');
   submitButton.remove();
 
-  stopPlayerTimer() //-----------------------------------------------------------------------------------------------------
-  console.log("You took " + minutes + " minutes");
-  console.log("You took " + seconds + " seconds");
-  console.log("You took " + milliseconds + " miliseconds");
-
+  stopPlayerTimer() 
 
   for (i = 0; i < computerPattern.length; i++) {
     if (userPattern[i] === computerPattern[i]) {
@@ -679,15 +678,9 @@ function gameStatus() {
 
   if (score === userPattern.length) {
     result = "Win";
-    console.log("you win");
-    console.log("You got 100% right!");
     totalScore += 1;
-    console.log("your total score is " + totalScore);
   } else {
     result = "Loss";
-    console.log("you loose");
-    console.log("You got " + ((score / userPattern.length) * 100) + "% right");
-    console.log("your total score is " + totalScore);
   }
 
   //Adds result of the round to the score column
@@ -703,7 +696,11 @@ function gameStatus() {
 
   let columnPlayerTime = document.createElement("h2");
   columnPlayerTime.setAttribute('class', 'result-entry');
-  columnPlayerTime.innerHTML = minutes + ":" + seconds + ":" + milliseconds;
+  if (minutes) {
+    columnPlayerTime.innerHTML = minutes + ":" + seconds + ":" + milliseconds;
+  } else {
+    columnPlayerTime.innerHTML = seconds + ":" + milliseconds;
+  }
 
   columnRoundScoreBox.appendChild(columnNewScore);
   columnRoundScoreBox.appendChild(columnPlayerTime);
@@ -714,7 +711,6 @@ function gameStatus() {
   displayResultsModal.appendChild(modalRoundScoreBox);
 
   //Opens up the end of round message box for player to trigger next round or to notify end of current game.
-
   document.getElementById('position-three').innerHTML = "";
 
   if (gameRound < 6) {
@@ -723,7 +719,7 @@ function gameStatus() {
             <h2>You got a ${result}</h2>
             <h2>Your time: ${seconds}.${milliseconds}</h2>
             <h3>Ready for round ${gameRound}?</h3>
-            <button onclick="generateComputerGrid(false)">Next Round</button>
+            <button onclick="generateGameArea(false)">Next Round</button>
         </div>
         `;
 
@@ -734,7 +730,6 @@ function gameStatus() {
     document.getElementById('position-three').innerHTML = message;
 
   } else {
-    console.log("end of game");
     if (totalScore === 5) {
       let message = `
             <div id="messages-box">
@@ -750,7 +745,6 @@ function gameStatus() {
       document.getElementById('position-three').innerHTML = message;
 
     } else {
-      console.log("end of game");
       let message = `
             <div id="messages-box">
                 <h2>You scored ${totalScore}</h2>
@@ -771,12 +765,8 @@ function playAgain() {
   let scoreColumn = document.getElementById("score-column");
   scoreColumn.remove();
 
-  minutes = 0;
-  seconds = 0;
-  milliseconds = 0;
-
   gameRound = 1;
   totalScore = 0;
 
-  generateComputerGrid(true);
+  generateGameArea(true);
 }
