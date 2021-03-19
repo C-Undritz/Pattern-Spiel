@@ -56,6 +56,8 @@ let userColourSelected;
 let computerPattern;
 let userPattern;
 let gameRound;
+let colourPickSound;
+let colourAddSound;
 let startedGame = false;
 var timer;
 var milliseconds;
@@ -393,8 +395,8 @@ function setViewTimer() {
   }
 }
 
-// timer code adapted from 'Code with Ania Kubów' Youtube channel video: "Build your own COUNTDOWN TIMER in 15 lines of JavaScript code" (https://www.youtube.com/watch?v=vSV_Ml2_A88&t=19s)
-// with help from Bim who informed me that set interval should be declared as a variable
+// 
+
 function viewTimer() {
   let timerDisplay = document.getElementById("position-one");
   let currentTimer = document.createElement("h2");
@@ -499,7 +501,13 @@ function pickColour() {
   let purple = document.getElementById("palette-purple");
   let orange = document.getElementById("palette-orange");
 
+  colourPickSound = document.createElement("audio");
+  colourPickSound.src ="assets/sounds/pickColour.wav";
+
   red.addEventListener('click', function() {
+    colourPickSound.pause();
+    colourPickSound.currentTime = 0;
+    colourPickSound.play();
     userColourSelected = "red";
     console.log(userColourSelected);
     red.setAttribute('class', 'color-selected');
@@ -515,6 +523,9 @@ function pickColour() {
   });
 
   green.addEventListener('click', function() {
+    colourPickSound.pause();
+    colourPickSound.currentTime = 0;
+    colourPickSound.play();
     userColourSelected = "green";
     console.log(userColourSelected);
     red.setAttribute('class', 'color-deselected');
@@ -530,6 +541,9 @@ function pickColour() {
   });
 
   blue.addEventListener('click', function() {
+    colourPickSound.pause();
+    colourPickSound.currentTime = 0;
+    colourPickSound.play();
     userColourSelected = "blue";
     console.log(userColourSelected);
     red.setAttribute('class', 'color-deselected');
@@ -545,6 +559,9 @@ function pickColour() {
   });
 
   yellow.addEventListener('click', function() {
+    colourPickSound.pause();
+    colourPickSound.currentTime = 0;
+    colourPickSound.play();
     userColourSelected = "yellow";
     console.log(userColourSelected);
     red.setAttribute('class', 'color-deselected');
@@ -561,6 +578,9 @@ function pickColour() {
 
   if ((colourPalette === 5) || (colourPalette === 6)) {
     purple.addEventListener('click', function() {
+      colourPickSound.pause();
+      colourPickSound.currentTime = 0;
+      colourPickSound.play();
       userColourSelected = "purple";
       console.log(userColourSelected);
       red.setAttribute('class', 'color-deselected');
@@ -576,6 +596,9 @@ function pickColour() {
 
   if (colourPalette === 6) {
     orange.addEventListener('click', function() {
+      colourPickSound.pause();
+      colourPickSound.currentTime = 0;
+      colourPickSound.play();
       userColourSelected = "orange";
       console.log(userColourSelected);
       red.setAttribute('class', 'color-deselected');
@@ -591,8 +614,13 @@ function pickColour() {
 function addColour(identifier, colourChosen) {
   console.log(userColourSelected);
   let selectedSquare = document.getElementById('square' + identifier);
+  colourAddSound = document.createElement("audio");
+  colourAddSound.src ="assets/sounds/addColour.wav";
   if (userColourSelected) {
     selectedSquare.style.backgroundColor = userColourSelected;
+    colourAddSound.pause();
+    colourAddSound.currentTime = 0;
+    colourAddSound.play();
   } else {
     alert("you need to select a colour");
   }
