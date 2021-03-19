@@ -231,6 +231,19 @@ Please see [here](https://docs.github.com/en/free-pro-team@latest/github/creatin
 ># **CREDITS & THANKS**
 # Code
 
+* The function ViewTimer() timer code was learnt and adapted from 'Code with Ania Kubów' Youtube 
+channel video: "Build your own COUNTDOWN TIMER in 15 lines of JavaScript code" 
+(https://www.youtube.com/watch?v=vSV_Ml2_A88&t=19s).
+
+* The functions playerTimer(), runPlayerTimer() and stopPlayerTimer() was learnt and adapted from 
+'VerkkoNet' Youtube channel video: "Stopwatch in JS | JavaScript Tutorials | Web Development Tutorials"
+(https://www.youtube.com/watch?v=oY8V6GuZrkM).
+
+* Adding sound effects code for the pickColour() and addColour() functions was learnt from MDN Web Docs 'Audio
+for Web games" (https://developer.mozilla.org/en-US/docs/Games/Techniques/Audio_for_Web_Games).
+
+* The code for having the sound effects cease upon rapid clicking of the palette or grid was learnt from
+stackoverflow.com post "How to stop audio played by audio tag of HTML5" (https://stackoverflow.com/questions/3566967/how-to-stop-audio-played-by-audio-tag-of-html5).
 
 ---
 # Images and Content
@@ -240,6 +253,10 @@ Please see [here](https://docs.github.com/en/free-pro-team@latest/github/creatin
 
 ---
 # Acknowledgments
+
+* Despite following the Youtube tutorial for the viewTimer() function, the clearInterval method was not initiating the player
+generatePlayerGrid() function as required.  Thanks to Mr_Bim_alumni who pointed out that the setInterval method should be 
+declared as a variable so that the timer could be ceased with the clearInterval method.
 
 
 
