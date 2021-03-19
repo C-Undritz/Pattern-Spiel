@@ -315,9 +315,9 @@ invoked, that the timer actually carried on even though the display was not upda
 This meant that the generatePlayerGrid() being triggered by the timer was repeated being invoked and therefore
 repeatedly generated.  This meant that the user was not able to add colours.
 * *Fix: Bim_Alumni informed me that the setInterval() method needed to be declared as a variable
-so that when there is a variable to declare with the clearInterval() method and stop the timer completely.
+so that when there is a variable to declare with the clearInterval() method and stop the timer completely.*
 
-### responsive design on the score column.
+### Responsive design on the score column.
 * It was required that the score column is not show on any device 768px width and below and 
 instead the user accesses the score and main menu from a button that would appear at the top 
 of the screen.  to do this bootstrap display property was used 
@@ -327,4 +327,12 @@ of overwriting the 'align-items-center' class and so the main menu button and te
 Numerous options were tried to overcome this (adding in classes in different order, styling the column 
 in css) but none worked. 
 * *Fix: To overcome this the 'button' and 'h1' tags were placed in a div (where before this they were 
-not needed to be in a div) and the div styled as 'text-align: center'
+not needed to be in a div) and the div styled as 'text-align: center'*
+
+### View timer not stopping when Main Menu button selected from game area.
+* clearInterval(patternDisplayTimer) was added the mainMenu() function however this did not result in the
+timer stopping and so whilst the user exited to the main menu from the game page whilst the time was counting
+down once the timer finished the user was then placed within the game page.
+* *Fix: Within the viewTimer() function two event listeners were added for the Main menu button (one for the 
+score column and one for the mobile view buttons).  clearInterval(patternDisplayTimer) was added within a function
+for each of these*
