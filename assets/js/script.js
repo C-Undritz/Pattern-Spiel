@@ -1,3 +1,4 @@
+//builds the require elements for the positioning of the menu and game elements later in the code/game.
 document.addEventListener("DOMContentLoaded", function () {
   let container = document.getElementById("container");
 
@@ -6,105 +7,99 @@ document.addEventListener("DOMContentLoaded", function () {
   mainRow.setAttribute('id', 'game-score-row');
   container.appendChild(mainRow);
 
+  //the game and menu elements are all displayed within the gameColumn
   let gameColumn = document.createElement("div");
-  //gameColumn.setAttribute('class', 'col-12 order-2 d-flex align-items-center flex-column');
   gameColumn.setAttribute('id', 'game-column');
   mainRow.appendChild(gameColumn);
 
+  //positioning of the menu and game elements is within the five rows below.  CSS styles for the ids ensure a 100vh total at all times.
   let newRowZero = document.createElement("div");
-  //newRowZero.setAttribute('class', 'row position-zero-menu');
   newRowZero.setAttribute('id', 'position-zero');
 
   let newRowOne = document.createElement("div");
-  //newRowOne.setAttribute('class', 'row position-one-menu');
   newRowOne.setAttribute('id', 'position-one');
 
   let newRowTwo = document.createElement("div");
-  //newRowTwo.setAttribute('class', 'row position-two-menu');
   newRowTwo.setAttribute('id', 'position-two');
 
   let newRowThree = document.createElement("div");
-  //newRowThree.setAttribute('class', 'row position-three-menu');
   newRowThree.setAttribute('id', 'position-three');
 
   let newRowFour = document.createElement("div");
-  //newRowFour.setAttribute('class', 'row position-four-menu');
   newRowFour.setAttribute('id', 'position-four');
 
+  //appends the five row to the gameColumn
   gameColumn.appendChild(newRowZero);
   gameColumn.appendChild(newRowOne);
   gameColumn.appendChild(newRowTwo);
   gameColumn.appendChild(newRowThree);
   gameColumn.appendChild(newRowFour);
 
-  //let gameTitle = `
-    //<h1>Pattern Spiel!</h2>
-  //`
-
-  //let mainMenuButtons = `
-  //<button onclick="selectDifficulty()">Start</button>
-  //<a href="instructions.html"><button>How to play</button></a>
-  //`
-  //document.getElementById('position-one').innerHTML = gameTitle;
-  //document.getElementById('position-three').innerHTML = mainMenuButtons;
-
   mainMenu(false);
 })
 
-let gridSize;
-let colourPalette;
-let viewTimerSelected;
-let userColourSelected;
-let computerPattern;
-let userPattern;
-let gameRound;
-let colourPickSound;
-let colourAddSound;
-let startedGame = false;
-var timer;
-var milliseconds;
-var seconds;
-var minutes;
-let totalScore;
+/*------------------------- GLOBAL VARIABLES -------------------------*/
 
+let gridSize; //either 3 or 4, used to generate the grid and also the pattern arrays length.
+let colourPalette; //either 4, 5 or 6, used to limit the number range in the pattern arrays generated and the colour palette.
+let viewTimerSelected; //either 0, 5, 10 or 15, used to determine the number of seconds the player can view the pattern for.
+let userColourSelected; //assigned a colour from the palette and used to pass this value to the addColour function.
+let computerPattern; //array of random numbers for the creation the initial pattern for player to observe.
+let userPattern; //array of numbers generated from the user added colours in the grid. 
+let gameRound; //each game is 5 rounds, this variable tracks the round number between functions.
+let colourPickSound; //the sound played when a colour is selected from the palette.
+let colourAddSound; //the sound played when a colour is added to the grid.
+let milliseconds; //the millisecond count of the player timer that records the players time to complete a pattern. 
+let seconds; //the second count of the player timer that records the players time to complete a pattern. 
+let minutes; //the minute count of the player timer that records the players time to complete a pattern. 
+let totalScore; //records the win/loss score within the five round game.
+
+
+/*------------------------- MENU FUNCTIONS -------------------------*/
+
+/*
+sets up the five rows to contain options presented for selection within the menu screen and presents initial options.
+*/
 function mainMenu(gameStarted) {
   console.log("game started is " + gameStarted);
+  //removes all innerHTML elements so that at any point the main menu is selected then all previous content in the rows is removed.
+  //'gameStarted' is true or false depending on whether a game has been started or not when the mainMenu function is called.
   document.getElementById('position-zero').innerHTML = "";
   document.getElementById('position-one').innerHTML = "";
   document.getElementById('position-two').innerHTML = "";
   document.getElementById('position-three').innerHTML = "";
   document.getElementById('position-four').innerHTML = "";
 
-  if (gameStarted) {
+  if (gameStarted) { //removes the scoreColumn if the main menu is being called from within the game where the scorecolumn is present.
     let scoreColumn = document.getElementById("score-column");
     scoreColumn.remove();
   }
 
+  //selects game-column and sets the classes needed for the menu.
   let gameColumn = document.getElementById("game-column");
-  gameColumn.removeAttribute('class');
   gameColumn.setAttribute('class', 'col-12 order-2 d-flex align-items-center flex-column');
 
+  //selects the 1st row and sets the classes needed for the menu.
   let rowZero = document.getElementById("position-zero");
-  //rowZero.removeAttribute('class');
   rowZero.setAttribute('class', 'row position-zero-menu');
 
+  //selects the 2nd row and sets the classes needed for the menu.
   let rowOne = document.getElementById("position-one");
-  //rowOne.removeAttribute('class');
   rowOne.setAttribute('class', 'row position-one-menu');
 
+  //selects the 3rd row and sets the classes needed for the menu.
   let rowTwo = document.getElementById("position-two");
-  //rowTwo.removeAttribute('class');
   rowTwo.setAttribute('class', 'row position-two-menu');
 
+  //selects the 4th row and sets the classes needed for the menu.
   let rowThree = document.getElementById("position-three");
-  //rowThree.removeAttribute('class');
   rowThree.setAttribute('class', 'row position-three-menu');
 
+  //selects the 5th row and sets the classes needed for the menu.
   let rowFour = document.getElementById("position-four");
-  //rowFour.removeAttribute('class');
   rowFour.setAttribute('class', 'row position-four-menu');
 
-  let gameTitle = `
+  let gameTitle = ` 
     <h1>Pattern Spiel!</h2>
   `;
 
@@ -112,14 +107,20 @@ function mainMenu(gameStarted) {
   <button onclick="selectDifficulty()">Start</button>
   <button href"instructions.html">How to Play</button>
   `;
-  document.getElementById('position-one').innerHTML = gameTitle;
-  document.getElementById('position-three').innerHTML = mainMenuButtons;
+
+  document.getElementById('position-one').innerHTML = gameTitle; //sets the gameTitle into position-one row.
+  document.getElementById('position-three').innerHTML = mainMenuButtons; //sets the menu buttons to be initially shown.
 }
 
+/*
+defines a set of buttons for the player to select pre-set difficulties or a custom game.  Player can also select to go back one level up.
+*/
 function selectDifficulty() {
   let selectDifficultyText = `
   <h2>Select Difficulty</h2>
   `;
+
+  //each button has an "onclick" attribute that calls the required function with an associated parameter where required. 
   let difficultySelectionButtons = `
   <button class="" id="" onclick="setDifficultyVariables(1)">Very easy</button>
   <button class="" id="" onclick="setDifficultyVariables(2)">Easy</button>
@@ -129,10 +130,14 @@ function selectDifficulty() {
   <button class="" id="" onclick="gridSizeSelection()">Custom game</button>
   <button class="" id="" onclick="mainMenu(false)">return</button>
   `;
-  document.getElementById('position-two').innerHTML = selectDifficultyText;
-  document.getElementById('position-three').innerHTML = difficultySelectionButtons
+
+  document.getElementById('position-two').innerHTML = selectDifficultyText; //sets the menu guide text to position-two row.
+  document.getElementById('position-three').innerHTML = difficultySelectionButtons //sets the buttons to position-three row.
 }
 
+/*
+sets the variables required for the pre-set difficulties.
+*/
 function setDifficultyVariables(difficulty) {
   switch (difficulty) {
     case 1:
@@ -164,42 +169,57 @@ function setDifficultyVariables(difficulty) {
   console.log("Grid size is " + gridSize);
   console.log("Colour selection is " + colourPalette);
   console.log("Timer selected is " + viewTimerSelected);
-  playGame(viewTimerSelected, true);
+  playGame(viewTimerSelected, true); //playGame expects two parameters, the 'true' informs that the user has selected pre-set difficulties.
 }
 
+/*
+defines the first set of custom difficulty buttons to select the grid size.  Player can also select to go back one level up.
+*/
 function gridSizeSelection() {
   let selectOptionsText = `
       <h2>Select grid size</h2>
     `;
+
+  //each button has an "onclick" attribute that calls the next function with an associated parameter where required. 
   let optionButtons = `
     <button class="gameOptionsButton" id="3" onclick="colourNumberSelection(3)">3 x 3 grid</button>
     <button class="gameOptionsButton" id="4" onclick="colourNumberSelection(4)">4 x 4 grid</button>
     <button class="" id="" onclick="selectDifficulty()">return</button>
     `;
-  document.getElementById('position-two').innerHTML = selectOptionsText;
-  document.getElementById('position-three').innerHTML = optionButtons;
+  document.getElementById('position-two').innerHTML = selectOptionsText; //sets the menu guide text to position-two row.
+  document.getElementById('position-three').innerHTML = optionButtons; //sets the buttons to position-three row.
 }
 
+/*
+defines the second set of custom difficulty buttons to select the grid size.  Player can also select to go back one level up.
+*/
 function colourNumberSelection(gridSelection) {
-  gridSize = gridSelection;
+  gridSize = gridSelection; //the parameter passed to the function is the grid selection size; value assigned to global variable 'gridsize'.
   let selectOptionsText = `
       <h2>Select number of possible colours</h2>
     `;
+
+  //each button has an "onclick" attribute that calls the next function with an associated parameter where required. 
   let optionButtons = `
     <button class="gameOptionsButton" id="4" onclick="viewTimerSelection(4)">Up to 4 colours</button>
     <button class="gameOptionsButton" id="5" onclick="viewTimerSelection(5)">Up to 5 colours</button>
     <button class="gameOptionsButton" id="6" onclick="viewTimerSelection(6)">Up to 6 colours</button>
     <button class="" id="" onclick="gridSizeSelection()">return</button>
     `;
-  document.getElementById('position-two').innerHTML = selectOptionsText;
-  document.getElementById('position-three').innerHTML = optionButtons;
+  document.getElementById('position-two').innerHTML = selectOptionsText; //sets the menu guide text to position-two row.
+  document.getElementById('position-three').innerHTML = optionButtons; //sets the buttons to position-three row.
 }
 
+/*
+defines the final set of custom difficulty buttons to select how long the pattern can be viewed.  Player can also select to go back one level up.
+*/
 function viewTimerSelection(colourSelection) {
-  colourPalette = colourSelection;
+  colourPalette = colourSelection; //the parameter passed to the function is the colour number selection size; value assigned to global variable 'colourPalette'.
   let selectOptionsText = `
       <h2>Select how long you will be able to view the pattern</h2>
     `;
+
+  //each button has an "onclick" attribute that calls the next function with an associated parameter where required. 
   let optionButtons = `
     <button class="gameOptionsButton" id="0" onclick="playGame(0, false)">No Timer</button>
     <button class="gameOptionsButton" id="5" onclick="playGame(5, false)">5 Seconds</button>
@@ -207,35 +227,36 @@ function viewTimerSelection(colourSelection) {
     <button class="gameOptionsButton" id="15" onclick="playGame(15, false)">15 seconds</button>
     <button class="" id="" onclick="colourNumberSelection(gridSize)">return</button>
     `;
-  document.getElementById('position-two').innerHTML = selectOptionsText;
-  document.getElementById('position-three').innerHTML = optionButtons;
+  document.getElementById('position-two').innerHTML = selectOptionsText; //sets the menu guide text to position-two row.
+  document.getElementById('position-three').innerHTML = optionButtons; //sets the buttons to position-three row.
 }
 
+/*
+Defines the last set of buttons that launch the game with the chosen options, allows user to go up level or go to the main menu.
+*/
 function playGame(viewTimerSelection, gameChoice) {
   viewTimerSelected = viewTimerSelection;
 
-  gameRound = 1;
-  totalScore = 0;
-  console.log("game round is: " + gameRound);
-
-  console.log(gridSize);
-  console.log(colourPalette);
-  console.log(viewTimerSelected);
-  console.log("user has selected a predetermined difficulty: " + gameChoice);
+  gameRound = 1; //sets game round to the 1st round prior to calling generateGameArea().
+  totalScore = 0; //sets total score to 0 upon a new game.
 
   let selectOptionsText = `
       <h2>Ready?</h2>
     `;
 
   if (gameChoice) {
+    // sets buttons if the player arrived here from the pre-set difficulty options.  Needed so that the return button directs correctly.
+    // Play Game button calls the next function that generates the game area
     let optionButtons = `
-      <button class="gameOptionsButton" id="0" onclick="generateGameArea(true)">Play Game!</button>
+      <button class="gameOptionsButton" id="0" onclick="generateGameArea(true)">Play Game!</button> 
       <button class="" id="" onclick="selectDifficulty()">return</button>
       <button class="" id="" onclick="mainMenu(false)">Main menu</button>
       `;
     document.getElementById('position-two').innerHTML = selectOptionsText;
     document.getElementById('position-three').innerHTML = optionButtons;
   } else {
+    // sets buttons if the player arrived here from the customs difficulty options.  Needed so that the return button directs correctly.
+    // Play Game button calls the next function that generates the game area
     let optionButtons = `
     <button class="gameOptionsButton" id="0" onclick="generateGameArea(true)">Play Game!</button>
       <button class="" id="" onclick="viewTimerSelection(colourPalette)">return</button>
@@ -246,6 +267,14 @@ function playGame(viewTimerSelection, gameChoice) {
   }
 }
 
+/*------------------------- GAME FUNCTIONS -------------------------*/
+
+/*
+The function called that generates the required grid using the 'gridSize' variable.
+The requirement parameter expects a true or false value.
+- True will generate a grid with the associated attributes needed for the computer to display the pattern to be memorised.
+- False will generate a grid with the associated attributes needed for the player grid to be filled in with colours to match the pattern.
+*/
 function generateGrid(requirement) {
   let grid = `
     <div class="container${gridSize}x${gridSize}">
@@ -272,47 +301,54 @@ function generateGrid(requirement) {
   return grid;
 }
 
+/*
+sets up the five rows to contain the elements of the game display, the score column and the responsive elements of the score display.
+*/
 function generateGameArea(newGame) {
   console.log("is this a new game? " + newGame);
 
-  // The 'newGame' parameter is needed for the five rounds to take place.  For the first round the 'game column' and 'score-column is set up for the first time and game state is '1'.  
-  // Between rounds the 'game-column' does not need setting up again, the score column needs to be maintained and the between round message needs to be removed.
-  if (newGame) {
+  //The 'newGame' parameter expects a true or false value and is needed for the five rounds of one game to take place. 
+  //- For a new game the value is 'true' and the 'game column' and 'score-column is set up for the first time.  
+  //- Between rounds the value is false so the score column is maintained and the between round message needs to be removed.
+
+  if (newGame) { // the following happens if newGame = true; therefore the start of a new game.
     let mainRow = document.getElementById("game-score-row");
 
     document.getElementById('position-one').innerHTML = "";
     document.getElementById('position-two').innerHTML = "";
     document.getElementById('position-three').innerHTML = "";
 
+    //creates the score column and appends to the game-score-row. Uses bootstrap classes so that this will only show on displays ≥992px.
     let scoreColumn = document.createElement("div");
     scoreColumn.setAttribute('id', 'score-column');
     scoreColumn.setAttribute('class', 'col-2 order-1 d-none d-lg-block d-flex align-items-center flex-column');
     mainRow.appendChild(scoreColumn);
 
+    //selects game-column and sets the classes needed for the game screen (main change is from col-12 to col-10 to accomodate the score-column).
     let gameColumn = document.getElementById("game-column")
-    gameColumn.removeAttribute('class');
     gameColumn.setAttribute('class', 'col-10 order-2 d-flex align-items-center flex-column');
 
+    //selects the 1st row and sets the classes needed for the game screen.
     let rowZero = document.getElementById("position-zero");
-    //rowZero.removeAttribute('class');
     rowZero.setAttribute('class', 'row position-zero-game');
 
+    //selects the 2nd row and sets the classes needed for the game screen.
     let rowOne = document.getElementById("position-one");
-    //rowOne.removeAttribute('class');
     rowOne.setAttribute('class', 'row position-one-game');
 
+    //selects the 3rd row and sets the classes needed for the game screen.
     let rowTwo = document.getElementById("position-two");
-    //rowTwo.removeAttribute('class');
     rowTwo.setAttribute('class', 'row position-two-game');
 
+    //selects the 4th row and sets the classes needed for the game screen.
     let rowThree = document.getElementById("position-three");
-    //rowThree.removeAttribute('class');
     rowThree.setAttribute('class', 'row position-three-game');
 
+    //selects the 5th row and sets the classes needed for the game screen.
     let rowFour = document.getElementById("position-four");
-    //rowFour.removeAttribute('class')
     rowFour.setAttribute('class', 'row position-four-game');
 
+    //the main menu button and title of the score column for displays ≥992px.
     let scoreColumnTitle = `
     <div id="score-column-header">
       <button onclick="mainMenu(true)" id="scoreColumnMenuButton">Main menu</button>
@@ -322,6 +358,7 @@ function generateGameArea(newGame) {
 
     document.getElementById('score-column').innerHTML = scoreColumnTitle;
 
+    //the main menu and score buttons for displays <992px.
     let mobileButtons = `
     <div id="mobile-buttons" class="d-flex flex-row d-lg-none">
       <button onclick="mainMenu(true)" id="mobileViewMenuButton">Main menu</button>
@@ -329,34 +366,32 @@ function generateGameArea(newGame) {
     </div>
     `;
 
-    document.getElementById('position-zero').innerHTML = mobileButtons;
+    document.getElementById('position-zero').innerHTML = mobileButtons; // mobile buttons are displays top and center of the game screen.
 
-  } else {
+  } else { // the following happens if newGame = false; therefore between rounds of a game.
+    let rowOne = document.getElementById("position-one");
+    rowOne.innerHTML = ""; // removes the HTML generated by functions patternCompareComputer and patternComparePlayer between rounds
 
     let rowThree = document.getElementById("position-three");
-    rowThree.innerHTML = "";
-    rowThree.removeAttribute('class');
-    rowThree.setAttribute('class', 'row position-three-game');
-
-    let rowOne = document.getElementById("position-one");
-    rowOne.innerHTML = "";
-
-    var milliseconds = 0;
-    var seconds = 0;
-    var minutes = 0;
-    console.log("the timer has been reset: " + milliseconds + "." + seconds + "." + minutes);
+    rowThree.innerHTML = ""; // remove the end of round message between rounds.
+    rowThree.setAttribute('class', 'row position-three-game'); //sets the classes needed for the game screen. 
   }
 
-  grid = generateGrid(true);
+  grid = generateGrid(true); // calls the generateGrid function to display a grid for the computer to display the pattern.
   document.getElementById('position-two').innerHTML = grid;
 
   createPatternArray();
   setViewTimer();
 }
 
+/*
+Converts the array passed as parameter to colours on the grid
+- The array.length and amount of grid squares will be the same.
+- each iteration of the loop moves through each subsequent value of the array and the grid squares to determine the colour assigned.
+*/
 function convertArrayToPattern(array) {
   for (let i in array) {
-    var setColor = document.getElementById(i);
+    var setColor = document.getElementById(i); //the grid squares are the only elements with the ids: 1,2,3,4... etc
     if (array[i] === 0) {
       setColor.style.backgroundColor = "red";
     } else if (array[i] === 1) {
@@ -373,32 +408,38 @@ function convertArrayToPattern(array) {
   }
 }
 
+/*
+Creates an array with random numbers.  Uses variables gridSize and colourPalette so that array length and number value range is that required
+*/
 function createPatternArray() {
-  //create array of between 9 and 16 (depending on grid size) which consists of random numbers between 0 and the colourPalette variable (4, 5 or 6)
   var newPatternArray = [];
   for (let i = 0; i < (gridSize * gridSize); i++) {
     let number = Math.floor(Math.random() * colourPalette);
     newPatternArray.push(number);
   }
   console.log("computer pattern array: " + newPatternArray);
-  computerPattern = newPatternArray;
+  computerPattern = newPatternArray; //assigns new array to the global variable computerPattern
 
-  convertArrayToPattern(computerPattern)
+  convertArrayToPattern(computerPattern) //passes the new array to convertArrayToPattern() to have the pattern shown as colours on the grid
 }
 
+/*
+determines whether a button should be shown (if no timer has been selected) or whether a timer should be shown.
+*/
 function setViewTimer() {
-  if (viewTimerSelected === 0) {
+  if (viewTimerSelected === 0) { //sets a button if no timer selected.
     let goButton = `
       <button class="gameOptionsButton" id="go-button" onclick="generatePlayerGrid()">Go!</button>
       `;
     document.getElementById('position-one').innerHTML = goButton;
-  } else {
+  } else { //calls the viewTimer function if 5, 10 or 15 seconds selected.
     viewTimer()
   }
 }
 
-// 
-
+/*
+displays and counts down to zero from the view time selected (either 5, 10 or 15 seconds)
+*/
 function viewTimer() {
   let timerDisplay = document.getElementById("position-one");
   let currentTimer = document.createElement("h2");
@@ -407,7 +448,7 @@ function viewTimer() {
 
   let timeLeft = viewTimerSelected;
   let patternDisplayTimer = setInterval(function () {
-    if (timeLeft <= 0) {
+    if (timeLeft <= 0) { //stops timer when value reaches 0 and triggers the creation of the player grid.
       clearInterval(patternDisplayTimer);
       console.log("timer complete");
       generatePlayerGrid()
@@ -420,38 +461,44 @@ function viewTimer() {
   let scoreColumnMenuBtn = document.getElementById("scoreColumnMenuButton");
   let mobileViewMenuBtn = document.getElementById("mobileViewMenuButton");
 
+  //stops the timer if the main menu button in the score column is selected during the countdown.
   scoreColumnMenuBtn.addEventListener('click', function () {
     clearInterval(patternDisplayTimer);
     console.log("timer interrupted")
   })
 
+  //stops the timer if the main menu mobile button is selected during the countdown.
   mobileViewMenuBtn.addEventListener('click', function () {
     clearInterval(patternDisplayTimer);
     console.log("timer interrupted")
   })
 }
 
+/*
+creates the player grid
+*/
 function generatePlayerGrid() {
-  console.log("The player grid size is: " + gridSize);
+  document.getElementById('position-one').innerHTML = ""; //clears the computer generated pattern from the game screen.
 
-  document.getElementById('position-one').innerHTML = "";
-
-  grid = generateGrid(false);
+  grid = generateGrid(false); // calls the generateGrid function with a value of false so that the player grid is created
   document.getElementById('position-two').innerHTML = grid;
 
   generatePalette();
   playerTimer();
 }
 
-//https://www.youtube.com/watch?v=oY8V6GuZrkM 
-function playerTimer() {
+/*
+the following three functions are concerned with timing how long the player takes to complete their pattern and submit
+- learnt and adapted from https://www.youtube.com/watch?v=oY8V6GuZrkM 
+*/
+function playerTimer() { //sets that timer values to 0 and sets the variable to the runPlayerTimer function.
   milliseconds = 0;
   seconds = 0;
   minutes = 0;
   timer = setInterval(runPlayerTimer, 10); // 10 so that the function is called 100 times a second.
 }
 
-function runPlayerTimer() {
+function runPlayerTimer() { //increases the variables as per the set interval
   milliseconds++;
   if (milliseconds == 100) {
     milliseconds = 0;
@@ -463,12 +510,15 @@ function runPlayerTimer() {
   }
 }
 
-function stopPlayerTimer() {
+function stopPlayerTimer() { //stops the timer; this function is called by the gameStatus() function
   clearInterval(timer);
 }
 
+/*
+creates the palette on the game screen for the user to select colours to add to the grid.
+- colourPalette value will dictate how many values of the colourArray will be used.
+*/
 function generatePalette() {
-  console.log("The player colour number chosen is:" + colourPalette)
   let colourArray = ['red', 'green', 'blue', 'yellow', 'purple', 'orange']
 
   let palette = `
@@ -476,25 +526,32 @@ function generatePalette() {
     `;
   for (let i = 0; i < (colourPalette); i++) {
     let insertColour = `
-        <div id="palette-${colourArray[i]}")"></div>
+        <div id="palette-${colourArray[i]}")"></div> 
         `;
     palette += insertColour;
   }
   palette += `
         </div>
     `;
+
   document.getElementById('position-three').innerHTML = palette;
+
   generateSubmitButton();
-  pickColour();
+  pickColour(); //pickColour called so that event listeners for palette are set up.
 }
 
+/*
+creates a submit button at the bottom of the game area which will call checkCompletion() function when selected.
+*/
 function generateSubmitButton() {
-  console.log("generating submit button");
   let submitButton = `
     <button id="submit-button" onclick="checkCompletion()">Submit</button>`;
   document.getElementById('position-four').innerHTML = submitButton;
 }
 
+/*
+deals with the events that occur when a user selects a colour from the palette.
+*/
 function pickColour() {
   let red = document.getElementById("palette-red");
   let green = document.getElementById("palette-green");
@@ -504,22 +561,23 @@ function pickColour() {
   let orange = document.getElementById("palette-orange");
 
   colourPickSound = document.createElement("audio");
-  colourPickSound.src = "assets/sounds/pickColour.wav";
+  colourPickSound.src = "assets/sounds/pickColour.wav"; // sets the colour pick sound
 
-  red.addEventListener('click', function () {
-    colourPickSound.pause();
-    colourPickSound.currentTime = 0;
-    colourPickSound.play();
-    userColourSelected = "red";
+  red.addEventListener('click', function () { //event listener set up for this colour elememnt on the palette.
+    colourPickSound.pause(); // pauses sound if it is already playing.
+    colourPickSound.currentTime = 0; // resets sound to 0
+    colourPickSound.play(); // plays sounds when colour element on palette clicked.
+    userColourSelected = "red"; // assigns the chosen colour to the variable 'userColourSelected'.
     console.log(userColourSelected);
+    // the following ensures that when red is selected that user feedback is provided to show that it is the chosen colour
     red.setAttribute('class', 'color-selected');
     green.setAttribute('class', 'color-deselected');
     blue.setAttribute('class', 'color-deselected');
     yellow.setAttribute('class', 'color-deselected');
-    if ((colourPalette === 5) || (colourPalette === 6)) {
+    if ((colourPalette === 5) || (colourPalette === 6)) { //for purple; selection and deselection only occurs if the colourPalette is 5 or 6.
       purple.setAttribute('class', 'color-deselected');
       if (colourPalette === 6) {
-        orange.setAttribute('class', 'color-deselected');
+        orange.setAttribute('class', 'color-deselected'); //for orane; selection and deselection only occurs if the colourPalette is 6.
       }
     }
   });
@@ -613,20 +671,26 @@ function pickColour() {
   }
 }
 
-function addColour(identifier, colourChosen) {
-  console.log(userColourSelected);
+/*
+called everytime a user clicks on a grid square; will add colour to the grid square.
+*/
+function addColour(identifier) {
   let selectedSquare = document.getElementById('square' + identifier);
+
   colourAddSound = document.createElement("audio");
-  colourAddSound.src = "assets/sounds/addColour.wav";
+  colourAddSound.src = "assets/sounds/addColour.wav"; // sets the colour add sound.
+
   if (userColourSelected) {
-    selectedSquare.style.backgroundColor = userColourSelected;
-    colourAddSound.pause();
-    colourAddSound.currentTime = 0;
-    colourAddSound.play();
+    selectedSquare.style.backgroundColor = userColourSelected; // assigns the colour selected from the palette to the grid square.
+    colourAddSound.pause(); // pauses sound if it is already playing.
+    colourAddSound.currentTime = 0; // resets sound to 0.
+    colourAddSound.play(); // plays sounds when player clicks on a grid after selecting a colour.
   } else {
-    alert("you need to select a colour");
+    alert("you need to select a colour"); //show alert if user has not selected a colour.
   }
 }
+
+/*------------------------- CHECKS AND RESULTS FUNCTIONS -------------------------*/
 
 function userPatternArray() {
   var gridOfSquares = document.getElementsByClassName('squares');
@@ -765,7 +829,7 @@ function gameStatus() {
             <div id="messages-box">
                 <h2>You got top marks!</h2>
                 <button onclick="playAgain()">Play again?</button>
-                <button onclick="mainMenu(false)">Main menu"</button>
+                <button onclick="mainMenu(true)">Main menu"</button>
             </div>
             `;
       let rowThree = document.getElementById("position-three");
