@@ -7,28 +7,28 @@ document.addEventListener("DOMContentLoaded", function () {
   container.appendChild(mainRow);
 
   let gameColumn = document.createElement("div");
-  gameColumn.setAttribute('class', 'col-12 order-2 d-flex align-items-center flex-column');
+  //gameColumn.setAttribute('class', 'col-12 order-2 d-flex align-items-center flex-column');
   gameColumn.setAttribute('id', 'game-column');
   mainRow.appendChild(gameColumn);
 
   let newRowZero = document.createElement("div");
-  newRowZero.setAttribute('class', 'row position-zero-menu');
+  //newRowZero.setAttribute('class', 'row position-zero-menu');
   newRowZero.setAttribute('id', 'position-zero');
 
   let newRowOne = document.createElement("div");
-  newRowOne.setAttribute('class', 'row title-row position-one-menu');
+  //newRowOne.setAttribute('class', 'row position-one-menu');
   newRowOne.setAttribute('id', 'position-one');
 
   let newRowTwo = document.createElement("div");
-  newRowTwo.setAttribute('class', 'row position-two-menu');
+  //newRowTwo.setAttribute('class', 'row position-two-menu');
   newRowTwo.setAttribute('id', 'position-two');
 
   let newRowThree = document.createElement("div");
-  newRowThree.setAttribute('class', 'row position-three-menu');
+  //newRowThree.setAttribute('class', 'row position-three-menu');
   newRowThree.setAttribute('id', 'position-three');
 
   let newRowFour = document.createElement("div");
-  newRowFour.setAttribute('class', 'row position-four-menu');
+  //newRowFour.setAttribute('class', 'row position-four-menu');
   newRowFour.setAttribute('id', 'position-four');
 
   gameColumn.appendChild(newRowZero);
@@ -37,16 +37,18 @@ document.addEventListener("DOMContentLoaded", function () {
   gameColumn.appendChild(newRowThree);
   gameColumn.appendChild(newRowFour);
 
-  let gameTitle = `
-    <h1>Pattern Spiel!</h2>
-  `
+  //let gameTitle = `
+    //<h1>Pattern Spiel!</h2>
+  //`
 
-  let mainMenuButtons = `
-  <button onclick="selectDifficulty()">Start</button>
-  <a href="instructions.html"><button>How to play</button></a>
-  `
-  document.getElementById('position-one').innerHTML = gameTitle;
-  document.getElementById('position-three').innerHTML = mainMenuButtons;
+  //let mainMenuButtons = `
+  //<button onclick="selectDifficulty()">Start</button>
+  //<a href="instructions.html"><button>How to play</button></a>
+  //`
+  //document.getElementById('position-one').innerHTML = gameTitle;
+  //document.getElementById('position-three').innerHTML = mainMenuButtons;
+
+  mainMenu(false);
 })
 
 let gridSize;
@@ -83,23 +85,23 @@ function mainMenu(gameStarted) {
   gameColumn.setAttribute('class', 'col-12 order-2 d-flex align-items-center flex-column');
 
   let rowZero = document.getElementById("position-zero");
-  rowZero.removeAttribute('class');
+  //rowZero.removeAttribute('class');
   rowZero.setAttribute('class', 'row position-zero-menu');
 
   let rowOne = document.getElementById("position-one");
-  rowOne.removeAttribute('class');
+  //rowOne.removeAttribute('class');
   rowOne.setAttribute('class', 'row position-one-menu');
 
   let rowTwo = document.getElementById("position-two");
-  rowTwo.removeAttribute('class');
+  //rowTwo.removeAttribute('class');
   rowTwo.setAttribute('class', 'row position-two-menu');
 
   let rowThree = document.getElementById("position-three");
-  rowThree.removeAttribute('class');
+  //rowThree.removeAttribute('class');
   rowThree.setAttribute('class', 'row position-three-menu');
 
   let rowFour = document.getElementById("position-four");
-  rowFour.removeAttribute('class');
+  //rowFour.removeAttribute('class');
   rowFour.setAttribute('class', 'row position-four-menu');
 
   let gameTitle = `
@@ -292,23 +294,23 @@ function generateGameArea(newGame) {
     gameColumn.setAttribute('class', 'col-10 order-2 d-flex align-items-center flex-column');
 
     let rowZero = document.getElementById("position-zero");
-    rowZero.removeAttribute('class');
+    //rowZero.removeAttribute('class');
     rowZero.setAttribute('class', 'row position-zero-game');
 
     let rowOne = document.getElementById("position-one");
-    rowOne.removeAttribute('class');
+    //rowOne.removeAttribute('class');
     rowOne.setAttribute('class', 'row position-one-game');
 
     let rowTwo = document.getElementById("position-two");
-    rowTwo.removeAttribute('class');
+    //rowTwo.removeAttribute('class');
     rowTwo.setAttribute('class', 'row position-two-game');
 
     let rowThree = document.getElementById("position-three");
-    rowThree.removeAttribute('class');
+    //rowThree.removeAttribute('class');
     rowThree.setAttribute('class', 'row position-three-game');
 
     let rowFour = document.getElementById("position-four");
-    rowFour.removeAttribute('class')
+    //rowFour.removeAttribute('class')
     rowFour.setAttribute('class', 'row position-four-game');
 
     let scoreColumnTitle = `
@@ -417,13 +419,13 @@ function viewTimer() {
 
   let scoreColumnMenuBtn = document.getElementById("scoreColumnMenuButton");
   let mobileViewMenuBtn = document.getElementById("mobileViewMenuButton");
-  
-  scoreColumnMenuBtn.addEventListener('click', function() {
+
+  scoreColumnMenuBtn.addEventListener('click', function () {
     clearInterval(patternDisplayTimer);
     console.log("timer interrupted")
   })
 
-  mobileViewMenuBtn.addEventListener('click', function() {
+  mobileViewMenuBtn.addEventListener('click', function () {
     clearInterval(patternDisplayTimer);
     console.log("timer interrupted")
   })
@@ -445,7 +447,7 @@ function generatePlayerGrid() {
 function playerTimer() {
   milliseconds = 0;
   seconds = 0;
-  minutes = 0;  
+  minutes = 0;
   timer = setInterval(runPlayerTimer, 10); // 10 so that the function is called 100 times a second.
 }
 
@@ -502,9 +504,9 @@ function pickColour() {
   let orange = document.getElementById("palette-orange");
 
   colourPickSound = document.createElement("audio");
-  colourPickSound.src ="assets/sounds/pickColour.wav";
+  colourPickSound.src = "assets/sounds/pickColour.wav";
 
-  red.addEventListener('click', function() {
+  red.addEventListener('click', function () {
     colourPickSound.pause();
     colourPickSound.currentTime = 0;
     colourPickSound.play();
@@ -522,7 +524,7 @@ function pickColour() {
     }
   });
 
-  green.addEventListener('click', function() {
+  green.addEventListener('click', function () {
     colourPickSound.pause();
     colourPickSound.currentTime = 0;
     colourPickSound.play();
@@ -540,7 +542,7 @@ function pickColour() {
     }
   });
 
-  blue.addEventListener('click', function() {
+  blue.addEventListener('click', function () {
     colourPickSound.pause();
     colourPickSound.currentTime = 0;
     colourPickSound.play();
@@ -558,7 +560,7 @@ function pickColour() {
     }
   });
 
-  yellow.addEventListener('click', function() {
+  yellow.addEventListener('click', function () {
     colourPickSound.pause();
     colourPickSound.currentTime = 0;
     colourPickSound.play();
@@ -577,7 +579,7 @@ function pickColour() {
   });
 
   if ((colourPalette === 5) || (colourPalette === 6)) {
-    purple.addEventListener('click', function() {
+    purple.addEventListener('click', function () {
       colourPickSound.pause();
       colourPickSound.currentTime = 0;
       colourPickSound.play();
@@ -595,7 +597,7 @@ function pickColour() {
   }
 
   if (colourPalette === 6) {
-    orange.addEventListener('click', function() {
+    orange.addEventListener('click', function () {
       colourPickSound.pause();
       colourPickSound.currentTime = 0;
       colourPickSound.play();
@@ -608,14 +610,14 @@ function pickColour() {
       purple.setAttribute('class', 'color-deselected');
       orange.setAttribute('class', 'color-selected');
     });
-  }  
+  }
 }
 
 function addColour(identifier, colourChosen) {
   console.log(userColourSelected);
   let selectedSquare = document.getElementById('square' + identifier);
   colourAddSound = document.createElement("audio");
-  colourAddSound.src ="assets/sounds/addColour.wav";
+  colourAddSound.src = "assets/sounds/addColour.wav";
   if (userColourSelected) {
     selectedSquare.style.backgroundColor = userColourSelected;
     colourAddSound.pause();
@@ -694,7 +696,7 @@ function gameStatus() {
   let submitButton = document.getElementById('submit-button');
   submitButton.remove();
 
-  stopPlayerTimer() 
+  stopPlayerTimer()
 
   for (i = 0; i < computerPattern.length; i++) {
     if (userPattern[i] === computerPattern[i]) {
