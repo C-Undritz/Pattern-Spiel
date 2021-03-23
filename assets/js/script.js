@@ -45,15 +45,15 @@ let colourPalette; //either 4, 5 or 6, used to limit the number range in the pat
 let viewTimerSelected; //either 0, 5, 10 or 15, used to determine the number of seconds the player can view the pattern for.
 let userColourSelected; //assigned a colour from the palette and used to pass this value to the addColour function.
 let computerPattern; //array of random numbers for the creation the initial pattern for player to observe.
-let userPattern; //array of numbers generated from the user added colours in the grid. 
+let userPattern; //array of numbers generated from the user added colours in the grid.
 let gameRound; //each game is 5 rounds, this variable tracks the round number between functions.
 let colourPickSound; //the sound played when a colour is selected from the palette.
 let colourAddSound; //the sound played when a colour is added to the grid.
-let milliseconds; //the millisecond count of the player timer that records the players time to complete a pattern. 
-let seconds; //the second count of the player timer that records the players time to complete a pattern. 
-let minutes; //the minute count of the player timer that records the players time to complete a pattern. 
+let milliseconds; //the millisecond count of the player timer that records the players time to complete a pattern.
+let seconds; //the second count of the player timer that records the players time to complete a pattern.
+let minutes; //the minute count of the player timer that records the players time to complete a pattern.
+let timer; //the timer variable for the player timer.
 let totalScore; //records the win/loss score within the five round game.
-let timer;
 
 
 /*------------------------- MENU FUNCTIONS -------------------------*/
@@ -100,7 +100,7 @@ function mainMenu(gameStarted) {
   let rowFour = document.getElementById("position-four");
   rowFour.setAttribute('class', 'row position-four-menu');
 
-  let gameTitle = ` 
+  let gameTitle = `
     <h1>Pattern Spiel!</h2>
   `;
 
@@ -121,7 +121,7 @@ function selectDifficulty() {
   <h2>Select Difficulty</h2>
   `;
 
-  //each button has an "onclick" attribute that calls the required function with an associated parameter where required. 
+  //each button has an "onclick" attribute that calls the required function with an associated parameter where required.
   let difficultySelectionButtons = `
   <button class="" id="" onclick="setDifficultyVariables(1)">Very easy</button>
   <button class="" id="" onclick="setDifficultyVariables(2)">Easy</button>
@@ -181,7 +181,7 @@ function gridSizeSelection() {
       <h2>Select grid size</h2>
     `;
 
-  //each button has an "onclick" attribute that calls the next function with an associated parameter where required. 
+  //each button has an "onclick" attribute that calls the next function with an associated parameter where required.
   let optionButtons = `
     <button class="gameOptionsButton" id="3" onclick="colourNumberSelection(3)">3 x 3 grid</button>
     <button class="gameOptionsButton" id="4" onclick="colourNumberSelection(4)">4 x 4 grid</button>
@@ -200,7 +200,7 @@ function colourNumberSelection(gridSelection) {
       <h2>Select number of possible colours</h2>
     `;
 
-  //each button has an "onclick" attribute that calls the next function with an associated parameter where required. 
+  //each button has an "onclick" attribute that calls the next function with an associated parameter where required.
   let optionButtons = `
     <button class="gameOptionsButton" id="4" onclick="viewTimerSelection(4)">Up to 4 colours</button>
     <button class="gameOptionsButton" id="5" onclick="viewTimerSelection(5)">Up to 5 colours</button>
@@ -220,7 +220,7 @@ function viewTimerSelection(colourSelection) {
       <h2>Select how long you will be able to view the pattern</h2>
     `;
 
-  //each button has an "onclick" attribute that calls the next function with an associated parameter where required. 
+  //each button has an "onclick" attribute that calls the next function with an associated parameter where required.
   let optionButtons = `
     <button class="gameOptionsButton" id="0" onclick="playGame(0, false)">No Timer</button>
     <button class="gameOptionsButton" id="5" onclick="playGame(5, false)">5 Seconds</button>
@@ -248,23 +248,23 @@ function playGame(viewTimerSelection, gameChoice) {
   if (gameChoice) {
     //sets buttons if the player arrived here from the pre-set difficulty options.  Needed so that the return button directs correctly.
     //Play Game button calls the next function that generates the game area.
-    let optionButtons = `
-      <button class="gameOptionsButton" id="0" onclick="generateGameArea(true)">Play Game!</button> 
+    let optionButtonsA = `
+      <button class="gameOptionsButton" id="0" onclick="generateGameArea(true)">Play Game!</button>
       <button class="" id="" onclick="selectDifficulty()">return</button>
       <button class="" id="" onclick="mainMenu(false)">Main menu</button>
       `;
     document.getElementById('position-two').innerHTML = selectOptionsText;
-    document.getElementById('position-three').innerHTML = optionButtons;
+    document.getElementById('position-three').innerHTML = optionButtonsA;
   } else {
     //sets buttons if the player arrived here from the customs difficulty options.  Needed so that the return button directs correctly.
     //Play Game button calls the next function that generates the game area.
-    let optionButtons = `
+    let optionButtonsB = `
     <button class="gameOptionsButton" id="0" onclick="generateGameArea(true)">Play Game!</button>
       <button class="" id="" onclick="viewTimerSelection(colourPalette)">return</button>
       <button class="" id="" onclick="mainMenu(false)">Main menu</button>
       `;
     document.getElementById('position-two').innerHTML = selectOptionsText;
-    document.getElementById('position-three').innerHTML = optionButtons;
+    document.getElementById('position-three').innerHTML = optionButtonsB;
   }
 }
 
@@ -308,8 +308,8 @@ sets up the five rows to contain the elements of the game display, the score col
 function generateGameArea(newGame) {
   console.log("is this a new game? " + newGame);
 
-  //The 'newGame' parameter expects a true or false value and is needed for the five rounds of one game to take place. 
-  //- For a new game the value is 'true' and the 'game column' and 'score-column is set up for the first time.  
+  //The 'newGame' parameter expects a true or false value and is needed for the five rounds of one game to take place.
+  //- For a new game the value is 'true' and the 'game column' and 'score-column is set up for the first time.
   //- Between rounds the value is false so the score column is maintained and the between round message needs to be removed.
 
   if (newGame) { //the following happens if newGame = true; therefore the start of a new game.
@@ -375,7 +375,7 @@ function generateGameArea(newGame) {
 
     let rowThree = document.getElementById("position-three");
     rowThree.innerHTML = ""; //remove the end of round message between rounds.
-    rowThree.setAttribute('class', 'row position-three-game'); //sets the classes needed for the game screen. 
+    rowThree.setAttribute('class', 'row position-three-game'); //sets the classes needed for the game screen.
   }
 
   let grid = generateGrid(true); //calls the generateGrid function to display a grid for the computer to display the pattern.
@@ -444,8 +444,8 @@ displays and counts down to zero from the view time selected (either 5, 10 or 15
 */
 function viewTimer() {
   let timerDisplay = document.getElementById("position-one"); //timer displays in position-one.
-  let currentTimer = document.createElement("h2"); 
-  currentTimer.setAttribute('id', 'current-timer'); 
+  let currentTimer = document.createElement("h2");
+  currentTimer.setAttribute('id', 'current-timer');
   timerDisplay.appendChild(currentTimer);
 
   let timeLeft = viewTimerSelected;
@@ -528,7 +528,7 @@ function generatePalette() {
     `;
   for (let i = 0; i < (colourPalette); i++) {
     let insertColour = `
-        <div id="palette-${colourArray[i]}")"></div> 
+        <div id="palette-${colourArray[i]}")"></div>
         `;
     palette += insertColour;
   }
@@ -771,7 +771,7 @@ checks results, display relevant messages and options to the player and progress
 */
 function gameStatus() {
   gameRound += 1; //progresses the game round by 1.
-  let score = 0; 
+  let score = 0;
   let result;
 
   let submitButton = document.getElementById('submit-button');
@@ -845,11 +845,11 @@ function gameStatus() {
   } else { //if five rounds have however occured then the following 'end of game' messages will be displayed.
     //only displayed if the player has achieved a win on all five rounds.
     //two buttons presented to the user: 'Play again' will launch another game with the same settings.  'Main menu' for the menu.
-    if (totalScore === 5) { 
+    if (totalScore === 5) {
       let message = `
             <div id="messages-box">
                 <h2>You got top marks!</h2>
-                <button onclick="playAgain()">Play again?</button> 
+                <button onclick="playAgain()">Play again?</button>
                 <button onclick="mainMenu(true)">Main menu"</button>
             </div>
             `;
