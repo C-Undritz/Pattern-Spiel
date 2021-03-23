@@ -537,6 +537,8 @@ function generatePalette() {
 
   document.getElementById('position-three').innerHTML = palette;
 
+  userColourSelected = ""; //ensures that the userColourSelected value (from pickColour function) is not maintained between rounds/games.
+
   generateSubmitButton();
   pickColour(); //pickColour called so that event listeners for palette are set up.
 }
