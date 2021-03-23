@@ -439,6 +439,7 @@ function setViewTimer() {
 
 /*
 displays and counts down to zero from the view time selected (either 5, 10 or 15 seconds).
+- learnt and adapted from pt code" (https://www.youtube.com/watch?v=vSV_Ml2_A88&t=19s).
 */
 function viewTimer() {
   let timerDisplay = document.getElementById("position-one"); //timer displays in position-one.
