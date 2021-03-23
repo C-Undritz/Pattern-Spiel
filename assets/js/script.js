@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
   gameColumn.appendChild(newRowFour);
 
   mainMenu(false);
-})
+});
 
 /*------------------------- GLOBAL VARIABLES -------------------------*/
 
@@ -53,6 +53,7 @@ let milliseconds; //the millisecond count of the player timer that records the p
 let seconds; //the second count of the player timer that records the players time to complete a pattern. 
 let minutes; //the minute count of the player timer that records the players time to complete a pattern. 
 let totalScore; //records the win/loss score within the five round game.
+let timer;
 
 
 /*------------------------- MENU FUNCTIONS -------------------------*/
@@ -132,7 +133,7 @@ function selectDifficulty() {
   `;
 
   document.getElementById('position-two').innerHTML = selectDifficultyText; //sets the menu guide text to position-two row.
-  document.getElementById('position-three').innerHTML = difficultySelectionButtons //sets the buttons to position-three row.
+  document.getElementById('position-three').innerHTML = difficultySelectionButtons; //sets the buttons to position-three row.
 }
 
 /*
@@ -325,7 +326,7 @@ function generateGameArea(newGame) {
     mainRow.appendChild(scoreColumn);
 
     //selects game-column and sets the classes needed for the game screen (main change is from col-12 to col-10 to accomodate the score-column).
-    let gameColumn = document.getElementById("game-column")
+    let gameColumn = document.getElementById("game-column");
     gameColumn.setAttribute('class', 'col-10 order-2 d-flex align-items-center flex-column');
 
     //selects the 1st row and sets the classes needed for the game screen.
@@ -377,7 +378,7 @@ function generateGameArea(newGame) {
     rowThree.setAttribute('class', 'row position-three-game'); //sets the classes needed for the game screen. 
   }
 
-  grid = generateGrid(true); //calls the generateGrid function to display a grid for the computer to display the pattern.
+  let grid = generateGrid(true); //calls the generateGrid function to display a grid for the computer to display the pattern.
   document.getElementById('position-two').innerHTML = grid;
 
   createPatternArray();
@@ -391,7 +392,7 @@ Converts the array passed as parameter to colours on the grid.
 */
 function convertArrayToPattern(array) {
   for (let i in array) {
-    var setColor = document.getElementById(i); //the grid squares are the only elements with the ids: 1,2,3,4... etc.
+    let setColor = document.getElementById(i); //the grid squares are the only elements with the ids: 1,2,3,4... etc.
     if (array[i] === 0) {
       setColor.style.backgroundColor = "red";
     } else if (array[i] === 1) {
@@ -420,7 +421,7 @@ function createPatternArray() {
   console.log("computer pattern array: " + newPatternArray);
   computerPattern = newPatternArray; //assigns new array to the global variable computerPattern.
 
-  convertArrayToPattern(computerPattern) //passes the new array to convertArrayToPattern() to have the pattern shown as colours on the grid.
+  convertArrayToPattern(computerPattern); //passes the new array to convertArrayToPattern() to have the pattern shown as colours on the grid.
 }
 
 /*
@@ -433,7 +434,7 @@ function setViewTimer() {
       `;
     document.getElementById('position-one').innerHTML = goButton;
   } else { //calls the viewTimer function if 5, 10 or 15 seconds selected.
-    viewTimer()
+    viewTimer();
   }
 }
 
@@ -452,7 +453,7 @@ function viewTimer() {
     if (timeLeft <= 0) { //stops timer when value reaches 0 and triggers the creation of the player grid.
       clearInterval(patternDisplayTimer);
       console.log("timer complete");
-      generatePlayerGrid()
+      generatePlayerGrid();
     }
     currentTimer.innerHTML = timeLeft;
     timeLeft -= 1;
@@ -465,14 +466,14 @@ function viewTimer() {
   //stops the timer if the main menu button in the score column is selected during the countdown.
   scoreColumnMenuBtn.addEventListener('click', function () {
     clearInterval(patternDisplayTimer);
-    console.log("timer interrupted")
-  })
+    console.log("timer interrupted");
+  });
 
   //stops the timer if the main menu mobile button is selected during the countdown.
   mobileViewMenuBtn.addEventListener('click', function () {
     clearInterval(patternDisplayTimer);
-    console.log("timer interrupted")
-  })
+    console.log("timer interrupted");
+  });
 }
 
 /*
@@ -481,7 +482,7 @@ creates the player grid.
 function generatePlayerGrid() {
   document.getElementById('position-one').innerHTML = ""; //clears the computer generated pattern from the game screen.
 
-  grid = generateGrid(false); //calls the generateGrid function with a value of false so that the player grid is created.
+  let grid = generateGrid(false); //calls the generateGrid function with a value of false so that the player grid is created.
   document.getElementById('position-two').innerHTML = grid;
 
   generatePalette();
@@ -520,7 +521,7 @@ creates the palette on the game screen for the user to select colours to add to 
 - colourPalette value will dictate how many values of the colourArray will be used.
 */
 function generatePalette() {
-  let colourArray = ['red', 'green', 'blue', 'yellow', 'purple', 'orange']
+  let colourArray = ['red', 'green', 'blue', 'yellow', 'purple', 'orange'];
 
   let palette = `
         <div id="palette-area">
@@ -699,14 +700,14 @@ function addColour(identifier) {
 checks that all squares have been coloured and if so, calls the next required functions.
 */
 function checkCompletion() {
-  userPatternArray() //runs this function to get the current array so that the length can be checked.
+  userPatternArray(); //runs this function to get the current array so that the length can be checked.
 
   if (userPattern.length < (gridSize * gridSize)) {
     alert("please fill in all squares");
   } else {
-    patternComparePlayer()
-    gameStatus()
-    stopPlayerTimer()
+    patternComparePlayer();
+    gameStatus();
+    stopPlayerTimer();
   }
 }
 
@@ -715,7 +716,7 @@ converts the player pattern to an array to compare with the computer generated a
 */
 function userPatternArray() {
   var gridOfSquares = document.getElementsByClassName('squares');
-  squareCount = gridOfSquares.length;
+  let squareCount = gridOfSquares.length;
   userPattern = []; //the array for the colour values.
   for (let i = 0; i < squareCount; i++) { //for loop to check each square and add a value to the array depending on colour found.
     if (gridOfSquares[i].style.backgroundColor === "red") {
@@ -745,7 +746,7 @@ function patternComparePlayer() {
     `;
   document.getElementById('position-one').innerHTML = switchButton;
 
-  grid = generateGrid(true); //Parameter is true as the grid needed does not need to be interacted with.
+  let grid = generateGrid(true); //Parameter is true as the grid needed does not need to be interacted with.
   document.getElementById('position-two').innerHTML = grid; //creates the grid on the game screen.
 
   convertArrayToPattern(userPattern); //calls the function to convert the userPattern array to a pattern on the grid.
@@ -759,7 +760,7 @@ function patternCompareComputer() {
     `;
   document.getElementById('position-one').innerHTML = switchButton;
 
-  grid = generateGrid(true); //Parameter is true as the grid needed does not need to be interacted with.
+  let grid = generateGrid(true); //Parameter is true as the grid needed does not need to be interacted with.
   document.getElementById('position-two').innerHTML = grid; //creates the grid on the game screen.
 
   convertArrayToPattern(computerPattern); //calls the function to convert the computerPattern array to a pattern on the grid.
@@ -777,7 +778,7 @@ function gameStatus() {
   submitButton.remove(); //removes the submit button.
 
   //determines the player score by interating through both arrays and where the values equal each other at each index, 1 is added to the score.
-  for (i = 0; i < computerPattern.length; i++) {
+  for (let i = 0; i < computerPattern.length; i++) {
     if (userPattern[i] === computerPattern[i]) {
       score += 1;
     }
@@ -798,7 +799,7 @@ function gameStatus() {
   let displayResultsModal = document.getElementById("score-modal");
 
   let columnRoundScoreBox = document.createElement("div"); //creates a div element 'score box' for the score for each round.
-  columnRoundScoreBox.setAttribute('class', 'round-score-box')
+  columnRoundScoreBox.setAttribute('class', 'round-score-box');
 
   let columnNewResult = document.createElement("h3");
   columnNewResult.setAttribute('class', 'result-entry');
