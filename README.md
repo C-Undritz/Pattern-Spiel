@@ -245,9 +245,14 @@ for Web games" (https://developer.mozilla.org/en-US/docs/Games/Techniques/Audio_
 * The code for having the sound effects cease upon rapid clicking of the palette or grid was learnt from
 stackoverflow.com post "How to stop audio played by audio tag of HTML5" (https://stackoverflow.com/questions/3566967/how-to-stop-audio-played-by-audio-tag-of-html5).
 
+* The code for cloning a created element within JS so that is can be used again (used for adding the score-box 
+to both the mobile score button and score column) was learnt from stackoverflow.com post "Insert HTML element 
+two (or more) times using JavaScript" (https://stackoverflow.com/questions/6244985/insert-html-element-two-or-more-times-using-javascript).
 ---
 # Images and Content
 ## Images:
+* All images used where created by Christopher Undritz for this project.
+
 ## Content:
 
 
