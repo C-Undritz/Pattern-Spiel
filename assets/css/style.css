@@ -364,17 +364,38 @@ h2 {
     width: 150px;
     font-size: 1.25rem;
   }
+  
+  #palette-red,
+  #palette-green,
+  #palette-blue,
+  #palette-yellow,
+  #palette-purple,
+  #palette-orange {
+    height: 90px;
+    width: 90px;
+    margin: 5px;
+  }
 }
 
 @media screen and (max-width: 992px) {
   .position-zero-game {
-    height: 7vh;
+    height: 7vh; /*Provides space for the mobile buttons to show*/
   }
 
   .position-one-game {
-    height: 11vh;
+    height: 11vh; /*reduction is space for the mobile buttons to show above*/
   }
 
+  .container3x3 {
+    grid-template-columns: 16vh 16vh 16vh;
+  }
+
+  .board3 {
+    height: 16vh;
+  }
+} 
+
+@media screen and (max-width: 620px) {
   .position-two-game {
     height: 50vh;
   }
@@ -393,41 +414,64 @@ h2 {
     width: 80px;
     margin: 5px;
   }
-} 
+}
 
 @media screen and (max-width: 480px) {
   #title h1 {
     font-size: 8em;
   }
 
-  .position-two-game {
+  /*.position-two-game {
     height: 50vh;
   }
 
   .position-three-game {
     height: 25vh;
-  }
+  }*/
 
   .container3x3 {
-    grid-template-columns: 16vh 16vh 16vh;
+    grid-template-columns: 14vh 14vh 14vh;
   }
-
+  
   .board3 {
-    height: 16vh;
+    height: 14vh;
   }
-
+/*
   .container4x4 {
-    display: grid;
     grid-template-columns: 15vh 15vh 15vh 15vh;
   }
 
   .board4 {
     height: 15vh;
-    border: solid 1px black;
+  }*/
+}
+
+
+@media screen and (max-width: 380px) {
+  #title h1 {
+    font-size: 6em;
+  }
+
+  .menu-text {
+    font-size: 2em;
+  }
+
+  .btn {
+    height: 32px;
+    width: 137px;
+    font-size: 1rem;
+  }
+
+  .position-two-game {
+    height: 45vh;
+  }
+
+  .position-four-game {
+    height: 12vh;
   }
 
   #palette-area {
-    margin: 10px 0px;
+    margin: 5px 0px;
   }
 
   #palette-red,
@@ -436,19 +480,8 @@ h2 {
   #palette-yellow,
   #palette-purple,
   #palette-orange {
-    height: 70px;
-    width: 70px;
-    margin: 2px 4px;
-  }
-}
-
-
-@media screen and (max-width: 380px) {
-  #title h1 {
-    font-size: 6.75em;
-  }
-
-  .menu-text {
-    font-size: 2em;
+    height: 60px;
+    width: 60px;
+    margin: 2px 6px;
   }
 }
