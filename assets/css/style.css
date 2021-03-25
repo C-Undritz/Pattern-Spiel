@@ -111,7 +111,7 @@ h2 {
     height: 18vh;
     margin-top: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 
@@ -167,22 +167,24 @@ h2 {
     text-shadow: 0 0 50px #ffffff, 0 0 50px #ffffff;
     text-align: center;
     letter-spacing: -5px;
+    line-height: 1;
+    margin-bottom: 2rem;
 }
 
 .h1-red {
-    color: red;
+    color: #ff0000;
 }
 
 .h1-green {
-    color: green;
+    color: #008000;
 }
 
 .h1-blue {
-    color: blue;
+    color: #0000ff;
 }
 
 .h1-yellow {
-    color: yellow;
+    color: #ffff00;
 }
 
 .menu-text {
@@ -212,22 +214,22 @@ h2 {
 }
 
 .btn-red {
-    background-color: red;
+    background-color: #ff0000;
     color: white;
 }
 
 .btn-green {
-    background-color: green;
+    background-color: #008000;
     color: white;
 }
 
 .btn-blue {
-    background-color: blue;
+    background-color: #0000ff;
     color: white;
 }
 
 .btn-yellow {
-    background-color: yellow;
+    background-color: #ffff00;
     color: grey;
 }
 
@@ -277,7 +279,7 @@ h2 {
     width: 100px;
     margin: 10px;
     border-radius: 50%;
-    background-color: red;
+    background-color: #ff0000;
 }
 
 #palette-green {
@@ -285,7 +287,7 @@ h2 {
     width: 100px;
     margin: 10px;
     border-radius: 50%;
-    background-color: green;
+    background-color: #008000;
 }
 
 #palette-blue {
@@ -293,7 +295,7 @@ h2 {
     width: 100px;
     margin: 10px;
     border-radius: 50%;
-    background-color: blue;
+    background-color: #0000ff;
 }
 
 #palette-yellow {
@@ -301,7 +303,7 @@ h2 {
     width: 100px;
     margin: 10px;
     border-radius: 50%;
-    background-color: yellow;
+    background-color: #ffff00;
 }
 
 #palette-purple {
@@ -309,7 +311,7 @@ h2 {
     width: 100px;
     margin: 10px;
     border-radius: 50%;
-    background-color: purple;
+    background-color: #800080;
 }
 
 #palette-orange {
@@ -317,7 +319,7 @@ h2 {
     width: 100px;
     margin: 10px;
     border-radius: 50%;
-    background-color: orange;
+    background-color: #ffa500;
 }
 
 .color-selected {
@@ -356,13 +358,97 @@ h2 {
 }
 
 /*---------------------------- MEDIA QUERIES------------------------------*/
-@media screen and (max-width: 992px ) {
-    .position-zero-game {
-    height: 7vh;
-    }
+@media screen and (max-width: 1024px) {
+  .btn {
+    height: 35px;
+    width: 150px;
+    font-size: 1.25rem;
+  }
+}
 
-/*Contains the timer countdown display*/
-.position-one-game {
+@media screen and (max-width: 992px) {
+  .position-zero-game {
+    height: 7vh;
+  }
+
+  .position-one-game {
     height: 11vh;
-    }
+  }
+
+  .position-two-game {
+    height: 50vh;
+  }
+
+  .position-three-game {
+    height: 25vh;
+  }
+
+  #palette-red,
+  #palette-green,
+  #palette-blue,
+  #palette-yellow,
+  #palette-purple,
+  #palette-orange {
+    height: 80px;
+    width: 80px;
+    margin: 5px;
+  }
 } 
+
+@media screen and (max-width: 480px) {
+  #title h1 {
+    font-size: 8em;
+  }
+
+  .position-two-game {
+    height: 50vh;
+  }
+
+  .position-three-game {
+    height: 25vh;
+  }
+
+  .container3x3 {
+    grid-template-columns: 16vh 16vh 16vh;
+  }
+
+  .board3 {
+    height: 16vh;
+  }
+
+  .container4x4 {
+    display: grid;
+    grid-template-columns: 15vh 15vh 15vh 15vh;
+  }
+
+  .board4 {
+    height: 15vh;
+    border: solid 1px black;
+  }
+
+  #palette-area {
+    margin: 10px 0px;
+  }
+
+  #palette-red,
+  #palette-green,
+  #palette-blue,
+  #palette-yellow,
+  #palette-purple,
+  #palette-orange {
+    height: 70px;
+    width: 70px;
+    margin: 2px 4px;
+  }
+}
+
+
+@media screen and (max-width: 380px) {
+  #title h1 {
+    font-size: 6.75em;
+  }
+
+  .menu-text {
+    font-size: 2em;
+  }
+}

@@ -525,7 +525,7 @@ function generatePalette() {
   let colourArray = ['red', 'green', 'blue', 'yellow', 'purple', 'orange'];
 
   let palette = `
-        <div id="palette-area">
+        <div class="d-flex justify-content-center flex-wrap" id="palette-area">
     `;
   for (let i = 0; i < (colourPalette); i++) {
     let insertColour = `
