@@ -19,6 +19,11 @@ h2 {
     margin: 0;
 }
 
+h3 {
+    font-family: 'Truculenta', serif;
+    margin: 0;
+}
+
 
 #score-column {
     height: 100vh;
@@ -64,11 +69,11 @@ h2 {
 
 /*Houses the Game title only*/
 .position-zero-menu {
-    height: 0vh;
+    height: 5vh;
 }
 
 .position-one-menu {
-    height: 48vh;
+    height: 42vh;
     margin-top: 0;
     display: flex;
     justify-content: flex-end;
@@ -76,7 +81,7 @@ h2 {
 
 /*Houses the guiding text for each difficulty option*/
 .position-two-menu {
-    height: 4vh;
+    height: 5vh;
     margin-top: 0;
     display: flex;
     justify-content: center;
@@ -141,11 +146,19 @@ h2 {
 }
 
 /*These are the settings for position-three and position four to display the between round and end of game message*/
-.position-three-message {
-    height: 22vh;
-    width: 50%;
+.position-one-message {
+    height: 18vh;
     margin-top: 0;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.position-three-message {
+    height: 22vh;
+    width: 100%;
+    margin-top: 0;
+    /*display: flex;*/
     justify-content: center;
 }
 
@@ -340,8 +353,8 @@ h2 {
 }
 
 .round-score-box {
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.7);
     margin: 2px;
     border-radius: 25px;
     width: 100%;
@@ -350,10 +363,10 @@ h2 {
 
 #messages-box {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
     border-radius: 25px;
-    width: 60%;
+    width:30%;
     text-align: center;
 }
 
@@ -383,7 +396,11 @@ h2 {
   }
 
   .position-one-game {
-    height: 11vh; /*reduction is space for the mobile buttons to show above*/
+    height: 11vh; /*reduction is space for the mobile buttons to show above during the game*/
+  }
+
+  .position-one-message {
+    height: 11vh; /*reduction is space for the mobile buttons to show above during the end of round/game screen*/
   }
 
   .container3x3 {
@@ -393,7 +410,11 @@ h2 {
   .board3 {
     height: 16vh;
   }
-} 
+
+  #messages-box {
+    width: 50%;
+  }
+}
 
 @media screen and (max-width: 620px) {
   .position-two-game {
@@ -444,21 +465,24 @@ h2 {
   .board4 {
     height: 15vh;
   }*/
+
+  #messages-box {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 380px) {
   #title h1 {
-    font-size: 6em;
+    font-size: 5.25em;
+    padding-top: 10px;
   }
 
-  .menu-text {
-    font-size: 2em;
+  .position-one-menu {
+    height: 41vh;
   }
 
-  .btn {
-    height: 32px;
-    width: 137px;
-    font-size: 1rem;
+  .position-three-menu {
+    height: 55vh;
   }
 
   .position-two-game {
@@ -467,6 +491,28 @@ h2 {
 
   .position-four-game {
     height: 12vh;
+  }
+
+  .position-one-message {
+    height: 20vh; /*increase in space for the compare text and button to show at lower resolution*/
+  }
+
+  .position-three-message {
+    height: 28vh;
+  }
+
+  .btn {
+    height: 32px;
+    width: 137px;
+    font-size: 1rem;
+  }
+
+  .menu-text {
+    font-size: 2em;
+  }
+
+  #view-timer {
+    font-size: 4em;
   }
 
   #palette-area {
@@ -482,5 +528,9 @@ h2 {
     height: 60px;
     width: 60px;
     margin: 2px 6px;
+  }
+
+  #messages-box {
+    width: 95%;
   }
 }
