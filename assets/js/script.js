@@ -9,12 +9,14 @@ let userPattern; //array of numbers generated from the user added colours in the
 let gameRound; //each game is 5 rounds, this variable tracks the round number between functions.
 let colourPickSound; //the sound played when a colour is selected from the palette.
 let colourAddSound; //the sound played when a colour is added to the grid.
+let winSound; //the sound played when a player successfully matches a pattern.
+let looseSound; //the sound played when a player is unsuccessful in matching a pattern.
 let milliseconds; //the millisecond count of the player timer that records the players time to complete a pattern.
 let seconds; //the second count of the player timer that records the players time to complete a pattern.
 let minutes; //the minute count of the player timer that records the players time to complete a pattern.
 let timer; //the timer variable for the player timer.
 let totalScore; //records the win/loss score within the five round game.
-let message;
+let message; //the message presented to the player at the end of a round/game.
 let gameColumn = document.querySelector("#game-column");
 let rowZero = document.querySelector('#position-zero');
 let rowOne = document.querySelector('#position-one');
@@ -182,7 +184,7 @@ function viewTimerSelection(colourSelection) {
     <button class="btn btn-yellow" onclick="playGame(15, false)">15 seconds</button>
     <button class="btn btn-red" onclick="colourNumberSelection(gridSize)">return</button>
     `;
-    
+
   rowTwo.innerHTML = selectOptionsText; //sets the menu guide text to position-two row.
   rowThree.innerHTML = optionButtons; //sets the buttons to position-three row.
 }
@@ -714,14 +716,16 @@ function gameStatus() {
     }
   }
 
-  console.log("the result is " + score);
+  resultSound(score);
 
   //determines a win/loss by checking if the score is the same as the array length (9 or 16 depending on grid size chosen).
   if (score === userPattern.length) {
-    result = "Well done! All matched!";
+    messageResult = "Well done! All matched!";
+    displayResult = "Win"
     totalScore += 1;
   } else {
-    result = "Opps! Not quite.";
+    messageResult = "Opps! Not quite.";
+    displayResult = "loss"
   }
 
   //Adds result of the round to the score column.
@@ -733,7 +737,7 @@ function gameStatus() {
 
   let columnNewResult = document.createElement("h3");
   columnNewResult.setAttribute('class', 'result-entry');
-  columnNewResult.innerHTML = result; //h3 element created which displays 'Win' or 'Loss'.
+  columnNewResult.innerHTML = displayResult; //h3 element created which displays 'Win' or 'Loss'.
 
   let columnPlayerTime = document.createElement("h2"); //h2 element to display the time taken to get the result.
   columnPlayerTime.setAttribute('class', 'result-entry');
@@ -762,19 +766,19 @@ function gameStatus() {
     if (minutes) {
       message = `
         <div id="messages-box">
-            <h2>${result}</h2>
-            <h2>Your time: ${minutes}m ${seconds}.${milliseconds}s</h2>
-            <h3>Ready for round ${gameRound}?</h3>
-            <button class="btn btn-blue" onclick="generateGameArea(false)">Next Round</button>
+          <h2>${messageResult}</h2>
+          <h2>Your time: ${minutes}m ${seconds}.${milliseconds}s</h2>
+          <h3>Ready for round ${gameRound}?</h3>
+          <button class="btn btn-blue" onclick="generateGameArea(false)">Next Round</button>
         </div>
         `;
     } else {
       message = `
         <div id="messages-box">
-            <h2>${result}</h2>
-            <h2>Your time: ${seconds}.${milliseconds}s</h2>
-            <h3>Ready for round ${gameRound}?</h3>
-            <button class="btn btn-blue" onclick="generateGameArea(false)">Next Round</button>
+          <h2>${messageResult}</h2>
+          <h2>Your time: ${seconds}.${milliseconds}s</h2>
+          <h3>Ready for round ${gameRound}?</h3>
+          <button class="btn btn-blue" onclick="generateGameArea(false)">Next Round</button>
         </div>
         `;
     }
@@ -782,33 +786,50 @@ function gameStatus() {
     rowFour.setAttribute('class', 'row position-four-message'); //changes the class so that the message can be displayed.
     rowThree.innerHTML = message; //displays the message in position-three.
   } else { //if five rounds have however occured then the following 'end of game' messages will be displayed.
-    //only displayed if the player has achieved a win on all five rounds.
     //two buttons presented to the user: 'Play again' will launch another game with the same settings. 
-    if (totalScore === 5) {
-      message = `
-        <div id="messages-box">
-            <h2>You got top marks!</h2>
-            <button class="btn btn-red" onclick="playAgain()">Play again?</button>
-            <button class="btn btn-blue" onclick="mainMenu(true)">Main menu"</button>
-        </div>
-        `;
-    } else {
-      //only displayed if the player got any 'loss' result on the last game of five rounds.
-      //two buttons presented to the user: 'Play again' will launch another game with the same settings. 
-      message = `
-        <div id="messages-box">
+      if (minutes) {
+        message = `
+          <div id="messages-box">
+              <h2>${messageResult}</h2>
+              <h2>Your time: ${minutes}m ${seconds}.${milliseconds}s</h2>
+              <h2>You scored ${totalScore}/5</h2>
+              <div class="d-flex flex-row">
+                <button class="btn btn-red" onclick="playAgain()">Play again?</button>
+                <button class="btn btn-blue" onclick="mainMenu(true)">Main menu</button>
+              </div>
+          </div>
+          `;
+      } else {
+        message = `
+          <div id="messages-box">
+            <h2>${messageResult}</h2>
+            <h2>Your time: ${seconds}.${milliseconds}s</h2>
             <h2>You scored ${totalScore}/5</h2>
-            <button class="btn btn-red" onclick="playAgain()">Play again?</button>
-            <button class="btn btn-blue" onclick="mainMenu(true)">Main menu</button>
-        </div>
-        `;
+            <div class="d-flex flex-row">
+              <button class="btn btn-red" onclick="playAgain()">Play again?</button>
+              <button class="btn btn-blue" onclick="mainMenu(true)">Main menu</button>
+            </div>
+          </div>
+          `;  
+      }
+      rowThree.setAttribute('class', 'row position-three-message'); //changes the class so that the message can be displayed.
+      rowFour.setAttribute('class', 'row position-four-message'); //changes the class so that the message can be displayed.
+      rowThree.innerHTML = message; //displays the message in position-three.
     }
-    rowThree.setAttribute('class', 'row position-three-message'); //changes the class so that the message can be displayed.
-    rowFour.setAttribute('class', 'row position-four-message'); //changes the class so that the message can be displayed.
-    rowThree.innerHTML = message; //displays the message in position-three.
-  }
 }
 
+function resultSound(score) {
+  winSound = document.createElement("audio");
+  winSound.src = "assets/sounds/win.wav"; //sets the sound to play for a win.
+  looseSound = document.createElement("audio");
+  looseSound.src = "assets/sounds/loose.wav"; //sets the sound to play for a loose.
+
+  if (score === (computerPattern.length)) {
+    winSound.play(); //plays sounds when the player achieves a win.
+  } else {
+    looseSound.play(); //plays sounds when the player looses.
+  }
+}
 /*
 sets up the necessary variables and elements should the player chose 'play again' from the 'end of game' messages.
 */
