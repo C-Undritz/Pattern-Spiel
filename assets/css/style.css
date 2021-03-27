@@ -123,6 +123,7 @@ h3 {
 /*Contains the pattern grid*/
 .position-two-game {
     height: 60vh;
+    width: 100%; /*---------------- new -------*/
     margin-top: 0;
     display: flex;
     justify-content: center;
@@ -254,6 +255,21 @@ h3 {
 
 
 /* ---- styles for function generateGrid() ----*/
+.grid {
+  width: 100%;
+  max-width: 500px;
+}
+
+.square-row {
+  width: 100%;
+}
+
+.square {
+  width: 33%;
+  aspect-ratio: 1 / 1;
+  border: solid 1px black;
+}
+
 .container3x3 {
     display: grid;
     grid-template-columns: 18vh 18vh 18vh;
@@ -285,53 +301,41 @@ h3 {
     background-color: #ffffff;
     display: flex;
     margin: 20px 0px;
-}
-
-#palette-red {
-    height: 100px;
-    width: 100px;
-    margin: 10px;
-    border-radius: 50%;
-    background-color: #ff0000;
-}
-
-#palette-green {
-    height: 100px;
-    width: 100px;
-    margin: 10px;
-    border-radius: 50%;
-    background-color: #008000;
-}
-
-#palette-blue {
-    height: 100px;
-    width: 100px;
-    margin: 10px;
-    border-radius: 50%;
-    background-color: #0000ff;
-}
-
-#palette-yellow {
-    height: 100px;
-    width: 100px;
-    margin: 10px;
-    border-radius: 50%;
-    background-color: #ffff00;
-}
-
-#palette-purple {
-    height: 100px;
-    width: 100px;
-    margin: 10px;
-    border-radius: 50%;
-    background-color: #800080;
-}
-
+} 
+ 
+#palette-red,
+#palette-green,
+#palette-blue,
+#palette-yellow,
+#palette-purple,
 #palette-orange {
     height: 100px;
     width: 100px;
     margin: 10px;
     border-radius: 50%;
+} 
+
+#palette-red {
+    background-color: #ff0000;
+}
+
+#palette-green {
+    background-color: #008000;
+}
+
+#palette-blue {
+    background-color: #0000ff;
+}
+
+#palette-yellow {
+    background-color: #ffff00;
+}
+
+#palette-purple {
+    background-color: #800080;
+}
+
+#palette-orange {
     background-color: #ffa500;
 }
 
@@ -434,7 +438,7 @@ h3 {
     height: 80px;
     width: 80px;
     margin: 5px;
-  }
+  } 
 }
 
 @media screen and (max-width: 480px) {
@@ -489,8 +493,12 @@ h3 {
     height: 45vh;
   }
 
+  .position-three-game {
+    height: 27vh;
+  }
+
   .position-four-game {
-    height: 12vh;
+    height: 10vh;
   }
 
   .position-one-message {
@@ -525,8 +533,8 @@ h3 {
   #palette-yellow,
   #palette-purple,
   #palette-orange {
-    height: 60px;
-    width: 60px;
+    height: 55px;
+    width: 55px;
     margin: 2px 6px;
   }
 

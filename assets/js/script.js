@@ -232,24 +232,46 @@ The function called that generates the required grid using the 'gridSize' variab
 The requirement parameter expects a true or false value.
 - True will generate a grid with the associated attributes needed for the computer to display the pattern to be memorised.
 - False will generate a grid with the associated attributes needed for the player grid to be filled in with colours to match the pattern.
+- had some trouble with the below function posted on stackoverflow to get an answer: https://stackoverflow.com/questions/66833813/building-html-using-loops-in-js.
 */
 function generateGrid(requirement) {
+  let gridId = 0
   let grid = `
-    <div class="container${gridSize}x${gridSize}">
+    <div class="grid">
     `;
   if (requirement) {
-    for (let i = 0; i < (gridSize * gridSize); i++) {
-      let rowGrid = `
-              <div class="board${gridSize} squares" id="${i}"></div>
-              `;
-      grid += rowGrid;
+    for (let i = 0; i < gridSize; i++) {
+      let gridRow = `
+        <div class="square-row d-flex flex-row">
+        `;
+        for (let s = 0; s < gridSize; s++) {
+          gridId += 1
+          let square = `
+            <div class="square squares" id="${(gridId - 1)}"></div>
+            `;
+          gridRow += square;
+        }
+      gridRow +=`
+        </div>
+      `;
+      grid += gridRow;
     }
   } else {
-    for (let i = 0; i < (gridSize * gridSize); i++) {
-      let rowGrid = `
-        <div class="board${gridSize} squares" id="square${i}" onclick="addColour(${i})"></div>
+    for (let i = 0; i < gridSize; i++) {
+      let gridRow = `
+        <div class="square-row d-flex flex-row">
         `;
-      grid += rowGrid;
+        for (let s = 0; s < gridSize; s++) {
+          gridId += 1
+          let square =`
+            <div class="square squares" id="square${(gridId - 1)}" onclick="addColour(${(gridId - 1)})"></div>
+            `;
+          gridRow += square;
+        }
+      gridRow +=`
+        </div>
+      `;
+      grid += gridRow
     }
   }
   grid += `
@@ -258,6 +280,33 @@ function generateGrid(requirement) {
 
   return grid;
 }
+
+
+// function generateGrid(requirement) {
+//   let grid = `
+//     <div class="container${gridSize}x${gridSize}">
+//     `;
+//   if (requirement) {
+//     for (let i = 0; i < (gridSize * gridSize); i++) {
+//       let rowGrid = `
+//               <div class="board${gridSize} squares" id="${i}"></div>
+//               `;
+//       grid += rowGrid;
+//     }
+//   } else {
+//     for (let i = 0; i < (gridSize * gridSize); i++) {
+//       let rowGrid = `
+//         <div class="board${gridSize} squares" id="square${i}" onclick="addColour(${i})"></div>
+//         `;
+//       grid += rowGrid;
+//     }
+//   }
+//   grid += `
+//         </div>
+//     `;
+
+//   return grid;
+// }
 
 /*
 sets up the five rows to contain the elements of the game display, the score column and the responsive elements of the score display.
