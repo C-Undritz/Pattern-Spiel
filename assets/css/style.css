@@ -24,6 +24,21 @@ h3 {
     margin: 0;
 }
 
+.modal-header {
+    justify-content: center;
+    border-bottom: transparent;
+}
+
+.modal-content {
+    /* background-color: #40C6FF; */
+    background: url("../images/clouds-background.png") top right;
+    background-size: 150%;
+}
+
+.modal-footer {
+    justify-content: center;
+    border-top: transparent;
+}
 
 #score-column {
     height: 100vh;
