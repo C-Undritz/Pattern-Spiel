@@ -247,7 +247,7 @@ function generateGrid(requirement) {
         for (let s = 0; s < gridSize; s++) {
           gridId += 1
           let square = `
-            <div class="square squares" id="${(gridId - 1)}"></div>
+            <div class="squares" id="${(gridId - 1)}"></div>
             `;
           gridRow += square;
         }
@@ -264,7 +264,7 @@ function generateGrid(requirement) {
         for (let s = 0; s < gridSize; s++) {
           gridId += 1
           let square =`
-            <div class="square squares" id="square${(gridId - 1)}" onclick="addColour(${(gridId - 1)})"></div>
+            <div class="squares" id="square${(gridId - 1)}" onclick="addColour(${(gridId - 1)})"></div>
             `;
           gridRow += square;
         }
@@ -319,6 +319,7 @@ function generateGameArea(newGame) {
     document.getElementById('position-one').innerHTML = "";
     document.getElementById('position-two').innerHTML = "";
     document.getElementById('position-three').innerHTML = "";
+    document.getElementById("score-modal").innerHTML = ""; //removes scores from mobile score button.
 
     //creates the score column and appends to the game-score-row. Uses bootstrap classes so that this will only show on displays ≥992px.
     let scoreColumn = document.createElement("div");
@@ -772,7 +773,7 @@ function gameStatus() {
     displayResult = "Loss"
   }
 
-  //Adds result of the round to the score column.
+  //Adds 'displayResult' and time taken in the round to the score column.
   let displayResultsColumn = document.getElementById("score-column");
   let displayResultsModal = document.getElementById("score-modal");
 
@@ -882,6 +883,7 @@ sets up the necessary variables and elements should the player chose 'play again
 function playAgain() {
   let scoreColumn = document.getElementById("score-column");
   scoreColumn.remove();
+  document.getElementById("score-modal").innerHTML = "";
 
   gameRound = 1; //resets the game round count.
   totalScore = 0; //resets the score.
