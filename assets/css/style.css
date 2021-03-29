@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: url("../images/menuBackground_1.png") no-repeat top right;
+    background: url("../images/clouds-background.png") top right;
 }
 
 h1 {
@@ -256,7 +256,7 @@ h3 {
 
 /* ---- styles for function generateGrid() ----*/
 .grid {
-  width: 100%;
+  /*width: 100%;*/
   max-width: 500px;
 }
 
@@ -264,30 +264,10 @@ h3 {
   width: 100%;
 }
 
-.square {
+.squares {
   width: 33%;
   aspect-ratio: 1 / 1;
   border: solid 1px black;
-}
-
-.container3x3 {
-    display: grid;
-    grid-template-columns: 18vh 18vh 18vh;
-}
-
-.board3 {
-    height: 18vh;
-    border: solid 1px black;
-}
-
-.container4x4 {
-    display: grid;
-    grid-template-columns: 15vh 15vh 15vh 15vh;
-}
-
-.board4 {
-    height: 15vh;
-    border: solid 1px black;
 }
 
 #submitButton {
@@ -407,14 +387,6 @@ h3 {
     height: 11vh; /*reduction is space for the mobile buttons to show above during the end of round/game screen*/
   }
 
-  .container3x3 {
-    grid-template-columns: 16vh 16vh 16vh;
-  }
-
-  .board3 {
-    height: 16vh;
-  }
-
   #messages-box {
     width: 50%;
   }
@@ -452,22 +424,6 @@ h3 {
 
   .position-three-game {
     height: 25vh;
-  }*/
-
-  .container3x3 {
-    grid-template-columns: 14vh 14vh 14vh;
-  }
-  
-  .board3 {
-    height: 14vh;
-  }
-/*
-  .container4x4 {
-    grid-template-columns: 15vh 15vh 15vh 15vh;
-  }
-
-  .board4 {
-    height: 15vh;
   }*/
 
   #messages-box {
