@@ -32,7 +32,7 @@ The test sheet and results can be viewed from this link:
 ># **FUNCTIONALITY TESTING**
 ## Logic
 The final game logic showing the flow through the functions is shown below.
-* [Current version (1.4)](assets/readme/PatternSpiel-Logic.pdf)
+* [Current version (1.4)](assets/readme/PatternSpiel-Logic_v1.4.pdf)
 
 The following testing completed at resolutions using Google Chrome Devtools: 
 * 1920 x 1080 (desktop)
