@@ -701,7 +701,7 @@ function checkCompletion() {
 converts the player pattern to an array to compare with the computer generated array in the gameStatus() function.
 */
 function userPatternArray() {
-  var gridOfSquares = document.getElementsByClassName('squares');
+  var gridOfSquares = document.getElementsByClassName('squares' + gridSize);
   userPattern = []; //the array for the colour values.
   for (let i = 0; i < gridOfSquares.length; i++) { //for loop to check each square and add a value to the array depending on colour found.
     if (gridOfSquares[i].style.backgroundColor === "red") {
