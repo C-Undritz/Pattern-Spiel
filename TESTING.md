@@ -30,6 +30,10 @@ The test sheet and results can be viewed from this link:
     * Apple iPhone 5 and iPhone 8
 ---
 ># **FUNCTIONALITY TESTING**
+## Logic
+The final game logic showing the flow through the functions is shown below.
+* [Current version (1.4)](assets/readme/PatternSpiel-Logic.pdf)
+
 The following testing completed at resolutions using Google Chrome Devtools: 
 * 1920 x 1080 (desktop)
 * 768 x 1024 (iPad)
@@ -345,3 +349,11 @@ revealed that the grid now did not work in Firefox (it worked in Edge, Chrome an
 test Safari at that point)).  Therefore the aspect-ratio work around using css was used from w3schools.com (https://www.w3schools.com/howto/howto_css_aspect_ratio.asp).
 This meant that I needed to again define a separate css style for a 3x3 and 4x4 grid (using aspect-ratio this was not necessary) and also
 use the 'gridSize' variable in the class name for each square generated for the grid to target these styles.
+
+### Dark mode on Samsung internet.
+* Testing on mobile devices revealed an issue with the display of the games colours when Samsung internet is in dark mode.
+The screen grabs below shows the main menu in Samsung internet in light mode and then in dark mode.
+* <img src="assets/readme/SamsungInternet_lightmode.jpg" style="margin: 0;height: 500px;"> * <img src="assets/readme/SamsungInternet_darkmode.jpg" style="margin: 0;height: 500px;">
+* The game looks fine in other browser dark modes.  It is documented [here](https://interaction.net.au/articles/samsung-internet-and-night-mode/) the issues with
+the dark mode on Samsung internet.  I was unable to implement the fixes recommended and so this is reported but not addressed.  At the time of writing
+according to caniuse.com, samsung internet has a global usage of 2.64% and many of these will unlikely be in dark mode.
