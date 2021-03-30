@@ -255,7 +255,7 @@ function generateGrid(requirement) {
       for (let s = 0; s < gridSize; s++) {
         gridId += 1
         let square = `
-            <div class="squares" id="${(gridId - 1)}"></div>
+            <div class="squares${gridSize}" id="${(gridId - 1)}"></div>
             `;
         gridRow += square;
       }
@@ -272,7 +272,7 @@ function generateGrid(requirement) {
       for (let s = 0; s < gridSize; s++) {
         gridId += 1
         let square = `
-            <div class="squares" id="square${(gridId - 1)}" onclick="addColour(${(gridId - 1)})"></div>
+            <div class="squares${gridSize}" id="square${(gridId - 1)}" onclick="addColour(${(gridId - 1)})"></div>
             `;
         gridRow += square;
       }

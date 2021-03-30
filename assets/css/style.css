@@ -425,9 +425,15 @@ h3 {
   width: 100%;
 }
 
-.squares {
+.squares3 {
   width: 33%;
-  aspect-ratio: 1 / 1;
+  padding-top: 33%; /*maintains an aspect-ratio of 1 / 1.*/
+  border: solid 1px black;
+}
+
+.squares4 {
+  width: 25%;
+  padding-top: 25%; /*maintains an aspect-ratio of 1 / 1.*/
   border: solid 1px black;
 }
 
