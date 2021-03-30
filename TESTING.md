@@ -336,3 +336,12 @@ down once the timer finished the user was then placed within the game page.
 * *Fix: Within the viewTimer() function two event listeners were added for the Main menu button (one for the 
 score column and one for the mobile view buttons).  clearInterval(patternDisplayTimer) was added within a function
 for each of these*
+
+### Aspect ratio on the grid squares.
+* initially css grid was used to create the grid, however extensive media queries were needed to provide responsiveness.
+So research provided the new css property 'aspect-ratio' and so the generateGrid function was updated along with the 
+css to create the grid using this.  Along with using 'max-width', this resulted in a more responsive grid.  However testing 
+revealed that the grid now did not work in Firefox (it worked in Edge, Chrome and Opera (did not have the opportunity to
+test Safari at that point)).  Therefore the aspect-ratio work around using css was used from w3schools.com (https://www.w3schools.com/howto/howto_css_aspect_ratio.asp).
+This meant that I needed to again define a separate css style for a 3x3 and 4x4 grid (using aspect-ratio this was not necessary) and also
+use the 'gridSize' variable in the class name for each square generated for the grid to target these styles.
