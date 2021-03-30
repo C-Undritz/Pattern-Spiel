@@ -47,6 +47,7 @@ function mainMenu(gameStarted) {
   if (gameStarted) { //removes the scoreColumn if the main menu is being called from within the game where the scorecolumn is present.
     let scoreColumn = document.getElementById("score-column");
     scoreColumn.remove();
+    stopPlayerTimer() 
   }
 
   //selects game-column and sets the classes needed for the menu.
@@ -500,6 +501,7 @@ function runPlayerTimer() { //increases the variables as per the set interval.
     seconds = 0;
     minutes++;
   }
+  console.log(timer);
 }
 
 function stopPlayerTimer() { //stops the timer; this function is called by the checkCompletion() function.
