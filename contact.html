@@ -10,42 +10,49 @@
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
   <title>Pattern Spiel</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("user_pewCc4z8rRBLkjAeE4KTQ");
+    })();
+  </script>
 </head>
 
 <body>
-    <section>
-        <div class="container-fluid">
-            <div id="feedback-form">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-10 col-lg-6 cf-spacing" id="contact-form-top">
-                        <h1 class="text-center">We would love to hear from you.</h1>
-                        <h2 id="contact-form-text">If you have any feedback, questions or suggestions, then we would be more than happy to hear from you!  
-                            Please fill out the form below and we will respond promptly.
-                        </h2>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-10 col-lg-6" id="contact-form-bottom">
-                        <form action="#">
-                            <input class="text-input rounded" type="text" id="name" placeholder="Name" name="name"
-                                required><br>
-                            <input class="text-input rounded" type="email" id="email" placeholder="Email address"
-                                name="email" required><br>
-                            <textarea class="text-input rounded" rows="4" name="question"
-                                placeholder="Message..." required></textarea>
-                            <div class="d-flex justify-content-center">
-                                <input type="submit" class="btn btn-blue" value="Submit">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row justify-content-center mt-5">
-                    <div class="col-12 col-md-10 col-lg-6" id="contact-mm-btn">
-                        <button class="btn btn-yellow" id="mm-btn">Main menu</button>
-                    </div>
-                </div>
-            </div>
+  <section>
+    <div class="container-fluid">
+      <div id="feedback-form">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-6 cf-spacing" id="contact-form-top">
+            <h1 class="text-center">We would love to hear from you.</h1>
+            <h2 id="contact-form-text">If you have any feedback, questions or suggestions, then we would be more than
+              happy to hear from you!
+              Please fill out the form below and we will respond promptly.
+            </h2>
+          </div>
         </div>
-    </section>
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-6" id="contact-form-bottom">
+            <form onsubmit="return sendMail(this);">
+              <input class="text-input rounded" type="text" id="name" placeholder="Name" name="name" required><br>
+              <input class="text-input rounded" type="email" id="email" placeholder="Email address" name="email"
+                required><br>
+              <textarea class="text-input rounded" rows="4" name="feedback" placeholder="Message..."
+                required></textarea>
+              <div class="d-flex justify-content-center">
+                <input type="submit" class="btn btn-blue" value="Submit">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+          <div class="col-12 col-md-10 col-lg-6" id="contact-mm-btn">
+            <button class="btn btn-yellow" id="mm-btn">Main menu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--<script src="assets/js/sendEmail.js"></script>-->
   <script src="assets/js/script_cf.js"></script>
 </body>
