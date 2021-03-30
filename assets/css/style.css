@@ -1,12 +1,28 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Ranchers&family=Truculenta:wght@300;400;600&display=swap');
 
 /*---- Screen setup -----*/
 body {
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background: url("../images/clouds-background.png") top right;
 }
 
@@ -25,7 +41,9 @@ h3 {
 }
 
 .modal-header {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border-bottom: transparent;
 }
 
@@ -36,7 +54,9 @@ h3 {
 }
 
 .modal-footer {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border-top: transparent;
 }
 
@@ -53,30 +73,54 @@ h3 {
 }
 
 #position-one {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   /*border: 10px solid red;*/
   text-align: center;
 }
 
 #position-two {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   /*border: 8px solid red;*/
 }
 
 #position-three {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   /*border: 10px solid red;*/
   position: relative;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #position-four {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   /*border: 10px solid red;*/
 }
 
@@ -86,32 +130,48 @@ h3 {
 .position-zero-menu {
   height: 7vh;
   width: 100%;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .position-one-menu {
   height: 40vh;
   margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 /*Houses the guiding text for each difficulty option*/
 .position-two-menu {
   height: 5vh;
   margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /*Houses all of the game options selection buttons*/
 .position-three-menu {
   height: 48vh;
   margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .position-four-menu {
@@ -124,17 +184,27 @@ h3 {
 .position-zero-game {
   height: 0vh;
   margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /*Contains the timer countdown display*/
 .position-one-game {
   height: 18vh;
   margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /*Contains the pattern grid*/
@@ -143,34 +213,54 @@ h3 {
   width: 100%;
   /*---------------- new -------*/
   margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /*Contains the Palette*/
 .position-three-game {
   height: 15vh;
   margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /*Contains the submit button*/
 .position-four-game {
   height: 7vh;
   margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /*These are the settings for position-three and position four to display the between round and end of game message*/
 .position-one-message {
   height: 18vh;
   margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .position-three-message {
@@ -178,7 +268,9 @@ h3 {
   width: 100%;
   margin-top: 0;
   /*display: flex;*/
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .position-four-message {
@@ -187,7 +279,8 @@ h3 {
 
 #score-column {
   background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
+          box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
 }
 
 #score-column-header {
@@ -305,14 +398,16 @@ h3 {
 #contact-form-top {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
+  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
+          box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
   border-radius: 25px 25px 0px 0px;
 }
 
 #contact-form-bottom {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
+  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
+          box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
   border-radius: 0px 0px 25px 25px;
 }
 
@@ -345,6 +440,8 @@ h3 {
 #palette-area {
   border-radius: 25px;
   background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 20px 0px;
 }
@@ -404,7 +501,8 @@ h3 {
 
 .round-score-box {
   background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.7);
+          box-shadow: 0 0 50px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.7);
   margin: 2px;
   border-radius: 25px;
   width: 100%;
@@ -414,7 +512,8 @@ h3 {
 #messages-box {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
+  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
+          box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
   border-radius: 25px;
   width: 30%;
   text-align: center;
