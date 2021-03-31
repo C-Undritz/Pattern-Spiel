@@ -7,7 +7,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Ranchers&family=Truculenta:wght@300;400;600&display=swap');
 
-/*---- Screen setup -----*/
+/*------------------- Screen setup ------------------------*/
 body {
   height: 100vh;
   display: -webkit-box;
@@ -26,51 +26,14 @@ body {
   background: url("../images/clouds-background.png") top right;
 }
 
-h1 {
-  font-family: 'Ranchers', serif;
-}
+/*---- These are the settings for <div> elements that are in index.html that the main menu and game components will be set within.  
+There are five positions in total ----*/
 
-h2 {
-  font-family: 'Truculenta', serif;
-  margin: 0;
-}
-
-h3 {
-  font-family: 'Truculenta', serif;
-  margin: 0;
-}
-
-.modal-header {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-bottom: transparent;
-}
-
-.modal-content {
-  /* background-color: #40C6FF; */
-  background: url("../images/clouds-background.png") top right;
-  background-size: 150%;
-}
-
-.modal-footer {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-top: transparent;
-}
-
-#score-column {
-  height: 100vh;
-}
-
-/*These are the elements that the main menu and game components will be set within.  there are five positions in total*/
-#position-zero {
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*width: 100%;*/
-  /*border: 10px solid red;*/
-}
+/* #position-zero {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+} */
 
 #position-one {
   display: -webkit-box;
@@ -80,7 +43,6 @@ h3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  /*border: 10px solid red;*/
   text-align: center;
 }
 
@@ -92,7 +54,6 @@ h3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  /*border: 8px solid red;*/
 }
 
 #position-three {
@@ -103,7 +64,6 @@ h3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  /*border: 10px solid red;*/
   position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -121,12 +81,11 @@ h3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  /*border: 10px solid red;*/
 }
 
-/*These are the settings for the four main menu and game component elements during the main menu and game difficulty selection*/
+/*---- These are the specific settings for the five positions during the main menu and game difficulty selection screens ----*/
 
-/*Houses the Game title only*/
+/*Specific settings required in the menu to position the contact us button*/
 .position-zero-menu {
   height: 7vh;
   width: 100%;
@@ -135,52 +94,54 @@ h3 {
           justify-content: flex-end;
 }
 
+/*Specific settings required in the menu to position the game title*/
 .position-one-menu {
   height: 40vh;
   margin-top: 0;
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex; */
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
 
-/*Houses the guiding text for each difficulty option*/
+/*Specific settings required in the menu to position the guiding text for each difficulty option*/
 .position-two-menu {
   height: 5vh;
   margin-top: 0;
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex; */
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-/*Houses all of the game options selection buttons*/
+/*Specific settings required in the menu to position all of the game options selection buttons*/
 .position-three-menu {
   height: 48vh;
   margin-top: 0;
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex; */
   width: 100%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
+  /* -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center;
+          align-items: center; */
 }
 
+/*Specific settings required in the menu to position the social media icons*/
 .position-four-menu {
   height: 0vh;
 }
 
-/*These are the settings for the five main menu and game component elements during the game*/
+/*---- These are the specific settings for the five positions during the game screens ----*/
 
-/*Contains the tablet and mobile view buttons*/
+/*Specific settings required in the game to position the tablet and mobile view buttons when they are required*/
 .position-zero-game {
   height: 0vh;
   margin-top: 0;
@@ -192,30 +153,25 @@ h3 {
           justify-content: center;
 }
 
-/*Contains the timer countdown display*/
+/*Specific settings required in the game to position the view timer or 'go' button*/
 .position-one-game {
   height: 18vh;
   margin-top: 0;
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: flex; */
+  justify-content: flex-end;
+  align-items: center;
 }
 
-/*Contains the pattern grid*/
+/*Specific settings required in the game to position the grid during the pattern display and when being filled in by the player*/
 .position-two-game {
   height: 60vh;
   width: 100%;
-  /*---------------- new -------*/
   margin-top: 0;
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex; */
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -224,57 +180,60 @@ h3 {
           align-items: center;
 }
 
-/*Contains the Palette*/
+/*Specific settings required in the game to position the colour palette*/
 .position-three-game {
   height: 15vh;
   margin-top: 0;
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex; */
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-/*Contains the submit button*/
+/*Specific settings required in the game to position the submit button*/
 .position-four-game {
   height: 7vh;
   margin-top: 0;
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
+  display: flex; */
+  /* -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center;
+          justify-content: center; */
 }
 
-/*These are the settings for position-three and position four to display the between round and end of game message*/
+/*---- These are the specific settings detailing changes to some positions required during the game screen to show the end of round messages ----*/
+
+/*Specific settings required for position-one to position the compare results text and button*/
 .position-one-message {
   height: 18vh;
   margin-top: 0;
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: flex; */
+  justify-content: flex-end;
+  align-items: center;
 }
 
+/*Specific settings required for position-three to position the end of round/game messages below the grid*/
 .position-three-message {
-  height: 22vh;
+  height: 32vh;
   width: 100%;
   margin-top: 0;
   /*display: flex;*/
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: flex-start;
 }
 
+/*Specific settings required for position-four to position the end of round/game messages below the grid*/
 .position-four-message {
   height: 0vh;
+}
+
+/*---- These are the specific settings for the score column ----*/
+#score-column {
+  height: 100vh;
 }
 
 #score-column {
@@ -285,6 +244,28 @@ h3 {
 
 #score-column-header {
   text-align: center;
+}
+
+.round-score-box {
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.7);
+          box-shadow: 0 0 50px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.7);
+  margin: 2px;
+  border-radius: 25px;
+  width: 100%;
+  text-align: center;
+}
+
+/*------------------- Fonts & Text styles ------------------------*/
+
+h1 {
+  font-family: 'Ranchers', serif;
+}
+
+h2,
+h3 {
+  font-family: 'Truculenta', serif;
+  margin: 0;
 }
 
 #title h1 {
@@ -321,7 +302,35 @@ h3 {
   margin-bottom: 20px;
 }
 
-/*------------------- buttons ------------------------*/
+#view-timer {
+  font-size: 5em;
+  font-family: 'Ranchers', serif;
+  color: grey;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
+}
+
+/*------------------- Modal styles ------------------------*/
+
+.modal-content {
+  background: url("../images/clouds-background.png") top right;
+  background-size: 150%;
+}
+
+.modal-header {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: transparent;
+}
+
+.modal-footer {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-top: transparent;
+}
+
+/*------------------- button styles ------------------------*/
 
 .btn {
   font-weight: 400;
@@ -335,7 +344,7 @@ h3 {
 
 .btn:hover {
   width: 185px;
-  color: white;
+  color: white; /*stops the bootstrap style of turning the text black upon hover*/
 }
 
 .btn-red {
@@ -381,7 +390,11 @@ h3 {
   color: grey;
 }
 
-/* ---- styles for the contact form ----*/
+#go-button {
+  margin-bottom: 20px;
+}
+
+/*------------------- contact form styles ------------------------*/
 
 #contact-form-text {
   text-align: justify;
@@ -415,10 +428,10 @@ h3 {
   text-align: center;
 }
 
-/* ---- styles for function generateGrid() ----*/
+/*------------------- Grid styles (function generateGrid()) ------------------------*/
+
 .grid {
-  /*width: 100%;*/
-  max-width: 500px;
+  max-width: 550px;
 }
 
 .square-row {
@@ -437,18 +450,11 @@ h3 {
   border: solid 1px black;
 }
 
-#submitButton {
-  margin: 20px 0px;
-}
-
-/* ---- styles for palette ----*/
+/*------------------- palette styles (generatePalette()) ------------------------*/
 
 #palette-area {
   border-radius: 25px;
   background-color: #ffffff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   margin: 20px 0px;
 }
 
@@ -496,41 +502,62 @@ h3 {
   border: transparent;
 }
 
-/*------------------ timer -------------------------*/
-
-#view-timer {
-  font-size: 5em;
-  font-family: 'Ranchers', serif;
-  color: grey;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
-}
-
-.round-score-box {
-  background-color: rgba(255, 255, 255, 0.7);
-  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.7);
-          box-shadow: 0 0 50px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.7);
-  margin: 2px;
-  border-radius: 25px;
-  width: 100%;
-  text-align: center;
-}
+/*------------------ message box styles -------------------------*/
 
 #messages-box {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.6);
-  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
-          box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
   border-radius: 25px;
   width: 30%;
+  margin-top: 20px;
   text-align: center;
 }
 
+.compare-box {
+    margin-bottom: 10px;
+}
+
 /*---------------------------- MEDIA QUERIES------------------------------*/
+@media screen and (max-width: 1400px) {
+  .grid {
+  max-width: 465px;
+  }
+}
+
 @media screen and (max-width: 1024px) {
-  .btn {
+  /* .btn {
     height: 35px;
     width: 150px;
     font-size: 1.25rem;
+  } */
+}
+
+@media screen and (max-width: 992px) {
+  .position-zero-game {
+    height: 7vh; /*Provides space for the mobile buttons to show*/
+  }
+
+  .position-one-game {
+    height: 11vh; /*reduction is space for the mobile buttons to show above during the game*/
+  }
+
+  .position-one-message {
+    height: 11vh; /*reduction is space for the mobile buttons to show above during the end of round/game screen*/
+  }
+
+  #messages-box {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .position-two-game {
+    height: 50vh;
+  }
+
+  .position-three-game {
+    height: 25vh;
   }
 
   #palette-red,
@@ -543,38 +570,13 @@ h3 {
     width: 90px;
     margin: 5px;
   }
-}
 
-@media screen and (max-width: 992px) {
-  .position-zero-game {
-    height: 7vh;
-    /*Provides space for the mobile buttons to show*/
-  }
-
-  .position-one-game {
-    height: 11vh;
-    /*reduction is space for the mobile buttons to show above during the game*/
-  }
-
-  .position-one-message {
-    height: 11vh;
-    /*reduction is space for the mobile buttons to show above during the end of round/game screen*/
-  }
-
-  #messages-box {
-    width: 50%;
+  .compare-box {
+    margin-bottom: 0px;
   }
 }
 
 @media screen and (max-width: 620px) {
-  .position-two-game {
-    height: 50vh;
-  }
-
-  .position-three-game {
-    height: 25vh;
-  }
-
   #palette-red,
   #palette-green,
   #palette-blue,
@@ -591,14 +593,6 @@ h3 {
   #title h1 {
     font-size: 8em;
   }
-
-  /*.position-two-game {
-    height: 50vh;
-  }
-
-  .position-three-game {
-    height: 25vh;
-  }*/
 
   #messages-box {
     width: 80%;
@@ -632,18 +626,11 @@ h3 {
   }
 
   .position-one-message {
-    height: 20vh;
-    /*increase in space for the compare text and button to show at lower resolution*/
+    height: 20vh; /*increase in space for the compare text and button to show at lower resolution*/
   }
 
   .position-three-message {
     height: 28vh;
-  }
-
-  .btn {
-    height: 32px;
-    width: 137px;
-    font-size: 1rem;
   }
 
   .menu-text {
@@ -658,18 +645,42 @@ h3 {
     margin: 5px 0px;
   }
 
+  #messages-box {
+    width: 95%;
+  }
+
+  #go-button {
+  margin-bottom: 0px;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .position-one-game {
+  justify-content: center;
+  }
+
+  .position-one-message {
+  justify-content: center;
+  }
+
   #palette-red,
   #palette-green,
   #palette-blue,
   #palette-yellow,
   #palette-purple,
   #palette-orange {
-    height: 55px;
-    width: 55px;
-    margin: 2px 6px;
+    height: 54px;
+    width: 54px;
+    margin: 2px 4px;
   }
 
+  .btn {
+    height: 32px;
+    width: 137px;
+    font-size: 1rem;
+  } 
+
   #messages-box {
-    width: 95%;
+    margin-top: 5px;
   }
 }

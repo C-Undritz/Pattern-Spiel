@@ -726,8 +726,10 @@ The following two functions run at the end of a round to allow the player to swi
 */
 function patternComparePlayer() {
   let switchButton = `
-    <h2>Compare results</h2>
-    <button class="btn btn-yellow" id="switch-button" onclick="patternCompareComputer()">Switch</button>
+    <div class="compare-box">
+        <h2>Compare results</h2>
+        <button class="btn btn-yellow" id="switch-button" onclick="patternCompareComputer()">Switch</button>
+    </div>
     `;
   rowOne.innerHTML = switchButton;
 
@@ -740,8 +742,10 @@ function patternComparePlayer() {
 //allows the player to switch from viewing the computer pattern to their own again.
 function patternCompareComputer() {
   let switchButton = `
-    <h2>Compare results</h2>
-    <button class="btn btn-yellow" id="switch-button" onclick="patternComparePlayer()">Switch</button>
+    <div class="compare-box">
+        <h2>Compare results</h2>
+        <button class="btn btn-yellow" id="switch-button" onclick="patternComparePlayer()">Switch</button>
+    </div>
     `;
   rowOne.innerHTML = switchButton;
 
