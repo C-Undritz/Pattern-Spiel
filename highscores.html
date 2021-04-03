@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Memory Game - Pattern Spiel">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+  <title>Pattern Spiel</title>
+</head>
+
+<body>
+  <div class="container-fluid" id="high-score-container">
+    <div id="title-hs">
+      <h1>
+        <span class="h1-red">P</span><span class="h1-green">a</span><span class="h1-blue">t</span><span
+          class="h1-yellow">t</span><span class="h1-red">e</span><span class="h1-green">r</span><span
+          class="h1-blue">n </span><span class="h1-yellow">S</span><span class="h1-red">p</span><span
+          class="h1-green">i</span><span class="h1-blue">e</span><span class="h1-yellow">l</span><span
+          class="h1-red">!</span>
+      </h1>
+      <h2>
+        Current high scores.
+      </h2>
+      <a role="button" class="btn btn-green" href="index.html">Main Menu</a>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="d-flex flex-row flex-wrap justify-content-center">
+      <div class="high-score-box cloud-box">
+        <h2>Easy</h2>
+        <ol id="highScoresEasy"></ol>
+      </div>
+      <div class="high-score-box cloud-box">
+        <h2>Medium</h2>
+        <ol id="highScoresMedium"></ol>
+      </div>
+      <div class="high-score-box cloud-box">
+        <h2>Hard</h2>
+        <ol id="highScoresHard"></ol>
+      </div>
+      <div class="high-score-box cloud-box">
+        <h2>Very Hard</h2>
+        <ol id="highScoresVeryHard"></ol>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/script_hs.js"></script>
+</body>
