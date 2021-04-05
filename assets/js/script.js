@@ -4,9 +4,9 @@ let gridSize; //either 3 or 4, used to generate the grid and also the pattern ar
 let colourPalette; //either 4, 5 or 6, used to limit the number range in the pattern arrays generated and the colour palette.
 let viewTimerSelected; //either 0, 5, 10 or 15, used to determine the number of seconds the player can view the pattern for.
 let userColourSelected; //assigned a colour from the palette and used to pass this value to the addColour function.
+let difficultySelected; //assigned 1, 2, 3 or 4 to represent the difficulty selected.
 let computerPattern; //array of random numbers for the creation the initial pattern for player to observe.
 let userPattern; //array of numbers generated from the user added colours in the grid.
-let difficultySelected; //assigned 1, 2, 3 or 4 to represent the difficulty selected.
 let gameRound; //each game is 5 rounds, this variable tracks the round number between functions.
 let colourPickSound; //the sound played when a colour is selected from the palette.
 let colourAddSound; //the sound played when a colour is added to the grid.
@@ -16,10 +16,8 @@ let milliseconds; //the millisecond count of the player timer that records the p
 let seconds; //the second count of the player timer that records the players time to complete a pattern.
 let minutes; //the minute count of the player timer that records the players time to complete a pattern.
 let timer; //the timer variable for the player timer.
-let totalScore; //records the win/loss score within the five round game.
-let gameScore;
-let message; //the message presented to the player at the end of a round/game.
-let messageChoice; //the message choice for the displayHighScore function
+let totalMatched; //records the how many patterns have been matched as the game progresses through the five rounds.
+let gameScore; //the totalscore recorded and updated as the game progresses through the five rounds to give a total at the end.
 let gameColumn = document.querySelector("#game-column");
 let rowZero = document.querySelector('#position-zero');
 let rowOne = document.querySelector('#position-one');
@@ -38,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 sets up the five rows to contain options presented for selection within the menu screen and presents initial options.
 */
 function mainMenu(gameStarted) {
-  console.log("game started is " + gameStarted);
   //removes all innerHTML elements so that at any point the main menu is selected then all previous content in the rows is removed.
   //'gameStarted' is true or false depending on whether a game has been started or not when the mainMenu function is called.
   document.getElementById('position-zero').innerHTML = "";
@@ -119,25 +116,21 @@ function setDifficultyVariables(difficulty) {
       gridSize = 3;
       colourPalette = 4;
       viewTimerSelected = 15;
-      //difficultySelected = "1";
       break;
     case 2:
       gridSize = 3;
       colourPalette = 4;
       viewTimerSelected = 10;
-      //difficultySelected = "2";
       break;
     case 3:
       gridSize = 3;
       colourPalette = 4;
       viewTimerSelected = 5;
-      //difficultySelected = "3";
       break;
     case 4:
       gridSize = 3;
       colourPalette = 5;
       viewTimerSelected = 10;
-      //difficultySelected = "4";
       break;
   }
   playGame(viewTimerSelected, true); //playGame expects two parameters, the 'true' informs that the user has selected pre-set difficulties.
@@ -147,7 +140,7 @@ function setDifficultyVariables(difficulty) {
 defines the first set of custom difficulty buttons to select the grid size.  Player can also select to go back one level up.
 */
 function gridSizeSelection() {
-  difficultySelected = 0;
+  difficultySelected = 0; //assigns a value of 0 for conditional requests later on in regards to display of messages and saving of scores.
   let selectOptionsText = `
       <h2 class="menu-text">Select grid size</h2>
     `;
@@ -213,7 +206,7 @@ function playGame(viewTimerSelection, gameChoice) {
   viewTimerSelected = viewTimerSelection;
 
   gameRound = 1;
-  totalScore = 0; //sets total score to 0 upon a new game.
+  totalMatched = 0; //sets total score to 0 upon a new game.
   gameScore = 0; //resets the score.
 
   let selectOptionsText = `
@@ -298,33 +291,6 @@ function generateGrid(requirement) {
 
   return grid;
 }
-
-
-// function generateGrid(requirement) {
-//   let grid = `
-//     <div class="container${gridSize}x${gridSize}">
-//     `;
-//   if (requirement) {
-//     for (let i = 0; i < (gridSize * gridSize); i++) {
-//       let rowGrid = `
-//               <div class="board${gridSize} squares" id="${i}"></div>
-//               `;
-//       grid += rowGrid;
-//     }
-//   } else {
-//     for (let i = 0; i < (gridSize * gridSize); i++) {
-//       let rowGrid = `
-//         <div class="board${gridSize} squares" id="square${i}" onclick="addColour(${i})"></div>
-//         `;
-//       grid += rowGrid;
-//     }
-//   }
-//   grid += `
-//         </div>
-//     `;
-
-//   return grid;
-// }
 
 /*
 sets up the five rows to contain the elements of the game display, the score column and the responsive elements of the score display.
@@ -422,7 +388,6 @@ function createPatternArray() {
     let number = Math.floor(Math.random() * colourPalette);
     newPatternArray.push(number);
   }
-  console.log("computer pattern array: " + newPatternArray);
   computerPattern = newPatternArray; //assigns new array to the global variable computerPattern.
 
   convertArrayToPattern(computerPattern); //passes the new array to convertArrayToPattern() to have the pattern shown as colours on the grid.
@@ -769,35 +734,34 @@ checks results, display relevant messages and options to the player and progress
 */
 function gameStatus() {
   gameRound += 1; //progresses the game round by 1.
-  console.log("this is round" + gameRound);
-  let score = 0;
-  let result;
 
   let submitButton = document.getElementById('submit-button');
   submitButton.remove(); //removes the submit button.
 
-  //determines whether the player pattern matches the computer pattern by interating through both arrays and where the values equal each other at each index, 1 is added to the score.
-  // - if the score is the same value as the array length then it is a match, if score is less than the array value then it is not a match.
+  //----- determines whether the player pattern matches the computer pattern by interating through both arrays and where the values equal each other at each index, 1 is added to the score.-----//
+  //if the score is the same value as the array length then it is a match, if score is less than the array value then it is not a match.
+  let score = 0;
   for (let i = 0; i < computerPattern.length; i++) {
     if (userPattern[i] === computerPattern[i]) {
       score += 1;
     }
   }
+  resultSound(score);
   console.log("current matchScore is " + score);
 
-  //determines a win/loss messages by checking if the score is the same as the array length (9 or 16 depending on grid size chosen).
+  //----- determines a win/loss messages by checking if the score is the same as the array length (9 or 16 depending on grid size chosen). -----//
   //'messageResult' is displayed in the end of round message
   //'displayResult' is displayed in the score column and score modal.
   if (score === userPattern.length) {
     messageResult = "Well done! All matched!";
     displayResult = "Win"
-    totalScore += 1;
+    totalMatched += 1;
   } else {
     messageResult = "Opps! Not quite.";
     displayResult = "Loss"
   }
 
-  //determines the round score which is a function of a point value award for a correct match and the time taken to achieve this.
+  //----- determines the round score which is a function of a point value award for a correct match and the time taken to achieve this. -----//
   let secondsString = seconds.toString();
   let millisecondsString = milliseconds.toString();
   let secondsTakenString = (secondsString + '.' + millisecondsString); //combines the seconds and milliseconds variables to give a complete value.
@@ -808,31 +772,16 @@ function gameStatus() {
   let secondsScoreString = (60 - secondsTakenString); //assigns a point value to the seconds taken = 60 seconds minus the time in seconds taken
   console.log("the points earned for the time taken is " + secondsScoreString);
 
-  let matchScore; //assigns a point value if the player achieved a pattern match.  60 points for getting it right. 0 points for not.
-  if (score === 9) {
-    matchScore = 60;
-  } else {
-    matchScore = 0;
-  }
-
+  (score === 9) ? matchScore = 60: matchScore = 0;
   console.log("the score for getting the pattern right/wrong is " + matchScore);
 
-  let roundScore; //assigns a round score if the pattern was matched.  The round score will 0 if there is no match. 
-  if (matchScore === 60) {
-    roundScore = ((matchScore + secondsScoreString) - minuteScore);
-  } else {
-    roundScore = 0;
-  }
+  (matchScore === 60) ? roundScore = ((matchScore + secondsScoreString) - minuteScore): roundScore = 0;
   console.log("the score for this round is " + roundScore);
 
   gameScore += roundScore; //the game score (5 rounds) is all of the round scores added together.
   console.log("the current game score is " + gameScore);
 
-  //-----------------------------------------------------------------------------
-
-  resultSound(score);
-
-  //Adds 'displayResult' and time taken in the round to the score column.
+  //----- Adds 'displayResult' and time taken in the round to the score column. -----//
   let displayResultsColumn = document.getElementById("score-column");
   let displayResultsModal = document.getElementById("score-modal");
 
@@ -866,13 +815,10 @@ function gameStatus() {
   //Opens up the end of round message box for player to trigger next round or to notify end of current game.
   rowThree.innerHTML = "";
 
-  // if (gameRound === 6) {
-  //   highScore(gameScore)
-  // }
-
+  //----- End of round messages. -----//
   if (gameRound < 6) { //the following will display if the game round is less than 6 so player is therefore between rounds.
     if (minutes) {
-      message = `
+      endOfRoundMessage = `
         <div class="messages-box cloud-box">
           <h2>${messageResult}</h2>
           <h2>Your time: ${minutes}m ${seconds}.${milliseconds}s</h2>
@@ -881,7 +827,7 @@ function gameStatus() {
         </div>
         `;
     } else {
-      message = `
+      endOfRoundMessage = `
         <div class="messages-box cloud-box">
           <h2>${messageResult}</h2>
           <h2>Your time: ${seconds}.${milliseconds}s</h2>
@@ -893,26 +839,26 @@ function gameStatus() {
     rowOne.setAttribute('class', 'row position-one-message'); //changes the class so all features can be displayed
     rowThree.setAttribute('class', 'row position-three-message'); //changes the class so all features can be displayed
     rowFour.setAttribute('class', 'row position-four-message'); //changes the class so that the message can be displayed.
-    rowThree.innerHTML = message; //displays the message in position-three.
+    rowThree.innerHTML = endOfRoundMessage; //displays the message in position-three.
   } else { //if five rounds have however occured then the following 'end of game' messages will be displayed.
     //two buttons presented to the user: 'Play again' will launch another game with the same settings. 
     if (minutes) {
-      message = `
+      endOfRoundMessage = `
           <div class="messages-box cloud-box">
               <h2>${messageResult}</h2>
               <h2>Your time: ${minutes}m ${seconds}.${milliseconds}s</h2>
-              <h2>You matched ${totalScore}/5</h2>
+              <h2>You matched ${totalMatched}/5</h2>
               <div class="d-flex flex-row">
                 <button class="btn btn-red" onclick="displayHighscore()">Continue</button>
               </div>
           </div>
           `;
     } else {
-      message = `
+      endOfRoundMessage = `
           <div class="messages-box cloud-box">
             <h2>${messageResult}</h2>
             <h2>Your time: ${seconds}.${milliseconds}s</h2>
-            <h2>You matched ${totalScore}/5</h2>
+            <h2>You matched ${totalMatched}/5</h2>
             <div class="d-flex flex-row justify-content-center">
               <button class="btn btn-red" onclick="displayHighScore()">Continue</button>
             </div>
@@ -922,7 +868,7 @@ function gameStatus() {
     rowOne.setAttribute('class', 'row position-one-message'); //changes the class so all features can be displayed
     rowThree.setAttribute('class', 'row position-three-message'); //changes the class so all features can be displayed
     rowFour.setAttribute('class', 'row position-four-message'); //changes the class so that the message can be displayed.
-    rowThree.innerHTML = message; //displays the message in position-three.
+    rowThree.innerHTML = endOfRoundMessage; //displays the message in position-three.
   }
 }
 
@@ -932,67 +878,69 @@ function resultSound(score) {
   looseSound = document.createElement("audio");
   looseSound.src = "assets/sounds/loose.wav"; //sets the sound to play for a loose.
 
-  if (score === (computerPattern.length)) {
-    winSound.play(); //plays sounds when the player achieves a win.
-  } else {
-    looseSound.play(); //plays sounds when the player looses.
-  }
+  (score === (computerPattern.length)) ? winSound.play(): looseSound.play(); //plays sounds when the player makes a match or not.
 }
 
+/*
+displays the end game messages depending on what the player selected and the current state of the high scores in local storage.
+*/
 function displayHighScore() {
   console.log("this is the highscore function calling out that the final score is " + gameScore);
   console.log("the difficulty is " + difficultySelected);
-  let finalScore = gameScore.toFixed(2);
-  let currentHighScores;
+  let finalScore = gameScore.toFixed(2); //sets the finalScore variable that will be used in this function.
+  let currentHighScores; //the variable that will be used for the local storage high scores to be read.
 
-  rowThree.innerHTML = "";
-  rowOne.innerHTML = "";
+  rowOne.innerHTML = ""; //clears row one for the message to be displayed.
+  rowThree.innerHTML = ""; //clears row three for the message to be displayed.
 
+  //sets currentHighScores to the correct local storage object depending on difficulty selected.
   switch (difficultySelected) {
     case 0:
-      console.log("switch case part: this message is displaying if you selected a custom game (1)");
+      console.log("switch case part: this message is displaying if you selected a custom game (1)"); //if custom game selected score will not be saved so no local stoarge object selected.
       break;
     case 1:
       console.log("switch case part: this message is displaying if you selected Easy (1)")
-      currentHighScores = JSON.parse(localStorage.getItem('highScores-Easy')) || [];
+      currentHighScores = JSON.parse(localStorage.getItem('highScores-Easy')) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
       break;
     case 2:
       console.log("switch case part: this message is displaying if you selected Medium (1)")
-      currentHighScores = JSON.parse(localStorage.getItem('highScores-Medium')) || [];
+      currentHighScores = JSON.parse(localStorage.getItem('highScores-Medium')) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
       break;
     case 3:
       console.log("switch case part: this message is displaying if you selected Hard (1)")
-      currentHighScores = JSON.parse(localStorage.getItem('highScores-Hard')) || [];
+      currentHighScores = JSON.parse(localStorage.getItem('highScores-Hard')) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
       break;
     case 4:
       console.log("switch case part: this message is displaying if you selected Very Hard (1)")
-      currentHighScores = JSON.parse(localStorage.getItem('highScores-veryHard')) || [];
+      currentHighScores = JSON.parse(localStorage.getItem('highScores-veryHard')) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
       break;
   }
-  
-  if (difficultySelected === 0) {
-    messageChoice = false;
+
+  //determines the message displayed and the final score message depending on whether a custom game was selected, the score achieved and the state of local storage object.
+  if (difficultySelected === 0) { //sets variables to determine the message if a custom game was selected 
+    endOfGameMessage = false;
     finalScoreMessage = "";
     console.log("Choosing message to display part: this is displaying if you selected a custom game (2)");
-    console.log("message choice is " + messageChoice);
-  } else {
-    if (currentHighScores.length < 3) {
-      messageChoice = true;
+    console.log("message choice is " + endOfGameMessage);
+  } else { //sets variables to determine the message displayed if a set difficulty was selected
+    if (currentHighScores.length < 3) { //each highscore object can have three entries; determines if a score enters by default if there are currently less that three entries.
+      endOfGameMessage = true;
       console.log("Choosing message to display part: this is displaying if the current games high scores length are less than 3 (2)");
-      console.log("message choice is " + messageChoice);
-    } else if (finalScore > currentHighScores[2].score) {
-      messageChoice = true;
+      console.log("message choice is " + endOfGameMessage);
+    } else if (finalScore > currentHighScores[2].score) { //if there are three entries; determines if the current score is higher than the existing value at position 2.
+      endOfGameMessage = true;
       console.log("Choosing message to display part: this is displaying if the current games high scores length is 3 but you have a new high score (2)");
-      console.log("message choice is " + messageChoice);
-    } else {
-      messageChoice = false;
+      console.log("message choice is " + endOfGameMessage);
+    } else { // sets variables if three entries and high score is less than that in position 0 (so score is not high enough).
+      endOfGameMessage = false;
       finalScoreMessage = "No high score this time.";
-      console.log("Choosing message to display part: this is displaying if you have not got a new high score (2)");
-      console.log("message choice is " + messageChoice);
+      console.log("Choosing message to display part: this is displaying if you have NOT got a new high score (2)");
+      console.log("message choice is " + endOfGameMessage);
     }
   }
 
-  if (messageChoice === true) {
+  //details the message displayed depending on the boolean value determined above.
+  if (endOfGameMessage === true) {
     console.log("From the display message part: if this message is displaying you got a hew high score");
     let highScoreMessage = `
       <div class="save-score-box cloud-box d-flex flex-column">
@@ -1007,7 +955,7 @@ function displayHighScore() {
         <button class="btn btn-blue" onclick="mainMenu(true)">Main menu</button>
       </div>
     `;
-    rowTwo.innerHTML = highScoreMessage;
+    rowTwo.innerHTML = highScoreMessage; //displays message in the middle of the screen in row two.
     let playername = document.getElementById('playername');
     playername.addEventListener('keyup', function () {
       saveScoreBtn.disabled = !playername.value; //score button disabled if no value in username form entry.
@@ -1023,30 +971,34 @@ function displayHighScore() {
         <button class="btn btn-blue" onclick="mainMenu(true)">Main menu</button>
       </div>
     `;
-    rowTwo.innerHTML = highScoreMessage;
+    rowTwo.innerHTML = highScoreMessage; //displays message in the middle of the screen in row two.
   }
 }
 
+/*
+Saves highscores as Key/Value pairs in the correct object in local storage based in difficulty selected.
+*/
 function saveHighScore(event) {
   console.log("clicked the save button")
   console.log("the difficulty is " + difficultySelected);
-  event.preventDefault();
-  let playername = document.getElementById('playername');
+  event.preventDefault(); //prevents default action of form button.
+  let playername = document.getElementById('playername'); //gets the value the user have entered to save score against
 
+  //sets the object to add score to depending on difficulty selected.
   switch (difficultySelected) {
     case 1:
-      const highScoresEasy = JSON.parse(localStorage.getItem("highScores-Easy")) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
+      const highScoresEasy = JSON.parse(localStorage.getItem("highScores-Easy"));
       const savedScoreEasy = {
-        score: gameScore.toFixed(2),
-        name: playername.value
+        score: gameScore.toFixed(2), //saves score to two decimal places.
+        name: playername.value //value entered by the user as 'name'.
       };
-      highScoresEasy.push(savedScoreEasy);
-      highScoresEasy.sort((a, b) => b.score - a.score);
-      highScoresEasy.splice(3);
-      localStorage.setItem('highScores-Easy', JSON.stringify(highScoresEasy));
+      highScoresEasy.push(savedScoreEasy); //add new score and player name to local storage object.
+      highScoresEasy.sort((a, b) => b.score - a.score); //sorts the scores in descending order.
+      highScoresEasy.splice(3); //ensures that there are no more than three entries saved in the high score object.
+      localStorage.setItem('highScores-Easy', JSON.stringify(highScoresEasy)); //saves the new score to local storage.
       break;
     case 2:
-      const highScoresMedium = JSON.parse(localStorage.getItem("highScores-Medium")) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
+      const highScoresMedium = JSON.parse(localStorage.getItem("highScores-Medium"));
       const savedScoreMedium = {
         score: gameScore.toFixed(2),
         name: playername.value
@@ -1057,7 +1009,7 @@ function saveHighScore(event) {
       localStorage.setItem('highScores-Medium', JSON.stringify(highScoresMedium));
       break;
     case 3:
-      const highScoresHard = JSON.parse(localStorage.getItem("highScores-Hard")) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
+      const highScoresHard = JSON.parse(localStorage.getItem("highScores-Hard"));
       const savedScoreHard = {
         score: gameScore.toFixed(2),
         name: playername.value
@@ -1068,7 +1020,7 @@ function saveHighScore(event) {
       localStorage.setItem('highScores-Hard', JSON.stringify(highScoresHard));
       break;
     case 4:
-      const highScoresVeryHard = JSON.parse(localStorage.getItem("highScores-veryHard")) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
+      const highScoresVeryHard = JSON.parse(localStorage.getItem("highScores-veryHard"));
       const savedScoreVeryHard = {
         score: gameScore.toFixed(2),
         name: playername.value
@@ -1079,64 +1031,19 @@ function saveHighScore(event) {
       localStorage.setItem('highScores-veryHard', JSON.stringify(highScoresVeryHard));
       break;
   }
-
-  // let playername = document.getElementById('playername');
-  // const highScores = JSON.parse(localStorage.getItem("highScores")) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
-
-  // const savedScore = {
-  //   score: gameScore.toFixed(2),
-  //   name: playername.value
-  // };
-
-  // highScores.push(savedScore);
-  // highScores.sort((a, b) => b.score - a.score);
-  // highScores.splice(5);
-  // localStorage.setItem('highScores', JSON.stringify(highScores));
-  saveScoreBtn.disabled = true;
+  saveScoreBtn.disabled = true; //disables the save game button so score cannot be saved twice.
 }
-
-
-
-
-
-
-// else { //if five rounds have however occured then the following 'end of game' messages will be displayed.
-//   //two buttons presented to the user: 'Play again' will launch another game with the same settings. 
-//   if (minutes) {
-//     message = `
-//         <div id="messages-box">
-//             <h2>${messageResult}</h2>
-//             <h2>Your time: ${minutes}m ${seconds}.${milliseconds}s</h2>
-//             <h2>You matched ${totalScore}/5</h2>
-//             <div class="d-flex flex-row">
-//               <button class="btn btn-red" onclick="playAgain()">Play again?</button>
-//               <button class="btn btn-blue" onclick="mainMenu(true)">Main menu</button>
-//             </div>
-//         </div>
-//         `;
-//   } else {
-//     message = `
-//         <div id="messages-box">
-//           <h2>${messageResult}</h2>
-//           <h2>Your time: ${seconds}.${milliseconds}s</h2>
-//           <h2>You matched ${totalScore}/5</h2>
-//           <div class="d-flex flex-row justify-content-center">
-//             <button class="btn btn-red" onclick="playAgain()">Play again?</button>
-//             <button class="btn btn-blue" onclick="mainMenu(true)">Main menu</button>
-//           </div>
-//         </div>
-//         `;
 
 /*
 sets up the necessary variables and elements should the player chose 'play again' from the 'end of game' messages.
 */
 function playAgain() {
   let scoreColumn = document.getElementById("score-column");
-  scoreColumn.remove();
-  document.getElementById("score-modal").innerHTML = "";
+  scoreColumn.remove(); //removes the column so the the previous games results are not shown (score column is set up again in generateGameArea function.
+  document.getElementById("score-modal").innerHTML = ""; //removes the previous games results from the modal.
 
   gameRound = 1; //resets the game round count.
-  totalScore = 0; //resets the score.
+  totalMatched = 0; //resets the score.
   gameScore = 0; //resets the score.
 
   generateGameArea(true);
