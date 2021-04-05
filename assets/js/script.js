@@ -19,6 +19,7 @@ let timer; //the timer variable for the player timer.
 let totalScore; //records the win/loss score within the five round game.
 let gameScore;
 let message; //the message presented to the player at the end of a round/game.
+let messageChoice; //the message choice for the displayHighScore function
 let gameColumn = document.querySelector("#game-column");
 let rowZero = document.querySelector('#position-zero');
 let rowOne = document.querySelector('#position-one');
@@ -112,30 +113,31 @@ function selectDifficulty() {
 sets the variables required for the pre-set difficulties.
 */
 function setDifficultyVariables(difficulty) {
+  difficultySelected = difficulty;
   switch (difficulty) {
     case 1:
       gridSize = 3;
       colourPalette = 4;
       viewTimerSelected = 15;
-      difficultySelected = "1";
+      //difficultySelected = "1";
       break;
     case 2:
       gridSize = 3;
       colourPalette = 4;
       viewTimerSelected = 10;
-      difficultySelected = "2";
+      //difficultySelected = "2";
       break;
     case 3:
       gridSize = 3;
       colourPalette = 4;
       viewTimerSelected = 5;
-      difficultySelected = "3";
+      //difficultySelected = "3";
       break;
     case 4:
       gridSize = 3;
       colourPalette = 5;
       viewTimerSelected = 10;
-      difficultySelected = "4";
+      //difficultySelected = "4";
       break;
   }
   playGame(viewTimerSelected, true); //playGame expects two parameters, the 'true' informs that the user has selected pre-set difficulties.
@@ -145,6 +147,7 @@ function setDifficultyVariables(difficulty) {
 defines the first set of custom difficulty buttons to select the grid size.  Player can also select to go back one level up.
 */
 function gridSizeSelection() {
+  difficultySelected = 0;
   let selectOptionsText = `
       <h2 class="menu-text">Select grid size</h2>
     `;
@@ -940,39 +943,98 @@ function displayHighScore() {
   console.log("this is the highscore function calling out that the final score is " + gameScore);
   console.log("the difficulty is " + difficultySelected);
   let finalScore = gameScore.toFixed(2);
+  let currentHighScores;
 
   rowThree.innerHTML = "";
   rowOne.innerHTML = "";
 
-  let highScoreMessage = `
-    <div class="save-score-box cloud-box d-flex flex-column">
-      <h1>New high score!</h1>
-      <h1>${finalScore}</h1>
-      <h2>Enter name to save score</h2>
-      <form class="d-flex flex-column align-items-center">
-        <input type="text" name="playername" id="playername" placeholder="playername"/>
-        <button type="submit" class="btn btn-green" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>Save</button>
-      </form>
-      <button class="btn btn-red" onclick="playAgain()">Play again?</button>
-      <button class="btn btn-blue" onclick="mainMenu(true)">Main menu</button>
-    </div>
-  `;
-  rowTwo.innerHTML = highScoreMessage;
+  switch (difficultySelected) {
+    case 0:
+      console.log("switch case part: this message is displaying if you selected a custom game (1)");
+      break;
+    case 1:
+      console.log("switch case part: this message is displaying if you selected Easy (1)")
+      currentHighScores = JSON.parse(localStorage.getItem('highScores-Easy')) || [];
+      break;
+    case 2:
+      console.log("switch case part: this message is displaying if you selected Medium (1)")
+      currentHighScores = JSON.parse(localStorage.getItem('highScores-Medium')) || [];
+      break;
+    case 3:
+      console.log("switch case part: this message is displaying if you selected Hard (1)")
+      currentHighScores = JSON.parse(localStorage.getItem('highScores-Hard')) || [];
+      break;
+    case 4:
+      console.log("switch case part: this message is displaying if you selected Very Hard (1)")
+      currentHighScores = JSON.parse(localStorage.getItem('highScores-veryHard')) || [];
+      break;
+  }
+  
+  if (difficultySelected === 0) {
+    messageChoice = false;
+    finalScoreMessage = "";
+    console.log("Choosing message to display part: this is displaying if you selected a custom game (2)");
+    console.log("message choice is " + messageChoice);
+  } else {
+    if (currentHighScores.length < 3) {
+      messageChoice = true;
+      console.log("Choosing message to display part: this is displaying if the current games high scores length are less than 3 (2)");
+      console.log("message choice is " + messageChoice);
+    } else if (finalScore > currentHighScores[2].score) {
+      messageChoice = true;
+      console.log("Choosing message to display part: this is displaying if the current games high scores length is 3 but you have a new high score (2)");
+      console.log("message choice is " + messageChoice);
+    } else {
+      messageChoice = false;
+      finalScoreMessage = "No high score this time.";
+      console.log("Choosing message to display part: this is displaying if you have not got a new high score (2)");
+      console.log("message choice is " + messageChoice);
+    }
+  }
 
-  let playername = document.getElementById('playername');
-  playername.addEventListener('keyup', function () {
-    saveScoreBtn.disabled = !playername.value; //score button disabled if no value in username form entry.
-  });
+  if (messageChoice === true) {
+    console.log("From the display message part: if this message is displaying you got a hew high score");
+    let highScoreMessage = `
+      <div class="save-score-box cloud-box d-flex flex-column">
+        <h1>New high score!</h1>
+        <h1>${finalScore}</h1>
+        <h2>Enter name to save score</h2>
+        <form class="d-flex flex-column align-items-center">
+          <input type="text" name="playername" id="playername" placeholder="playername"/>
+          <button type="submit" class="btn btn-green" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>Save</button>
+        </form>
+        <button class="btn btn-red" onclick="playAgain()">Play again?</button>
+        <button class="btn btn-blue" onclick="mainMenu(true)">Main menu</button>
+      </div>
+    `;
+    rowTwo.innerHTML = highScoreMessage;
+    let playername = document.getElementById('playername');
+    playername.addEventListener('keyup', function () {
+      saveScoreBtn.disabled = !playername.value; //score button disabled if no value in username form entry.
+    });
+  } else {
+    console.log("From the display message part: if this message is displaying you chose a custom game or did not get a high score");
+    let highScoreMessage = `
+      <div class="save-score-box cloud-box d-flex flex-column">
+        <h1>Your score:</h1>
+        <h1>${finalScore}</h1>
+        <h2>${finalScoreMessage}</h2>
+        <button class="btn btn-red" onclick="playAgain()">Play again?</button>
+        <button class="btn btn-blue" onclick="mainMenu(true)">Main menu</button>
+      </div>
+    `;
+    rowTwo.innerHTML = highScoreMessage;
+  }
 }
 
 function saveHighScore(event) {
   console.log("clicked the save button")
+  console.log("the difficulty is " + difficultySelected);
   event.preventDefault();
-  console.log(difficultySelected);
   let playername = document.getElementById('playername');
 
   switch (difficultySelected) {
-    case "1":
+    case 1:
       const highScoresEasy = JSON.parse(localStorage.getItem("highScores-Easy")) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
       const savedScoreEasy = {
         score: gameScore.toFixed(2),
@@ -983,7 +1045,7 @@ function saveHighScore(event) {
       highScoresEasy.splice(3);
       localStorage.setItem('highScores-Easy', JSON.stringify(highScoresEasy));
       break;
-    case "2":
+    case 2:
       const highScoresMedium = JSON.parse(localStorage.getItem("highScores-Medium")) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
       const savedScoreMedium = {
         score: gameScore.toFixed(2),
@@ -994,7 +1056,7 @@ function saveHighScore(event) {
       highScoresMedium.splice(3);
       localStorage.setItem('highScores-Medium', JSON.stringify(highScoresMedium));
       break;
-    case "3":
+    case 3:
       const highScoresHard = JSON.parse(localStorage.getItem("highScores-Hard")) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
       const savedScoreHard = {
         score: gameScore.toFixed(2),
@@ -1005,7 +1067,7 @@ function saveHighScore(event) {
       highScoresHard.splice(3);
       localStorage.setItem('highScores-Hard', JSON.stringify(highScoresHard));
       break;
-    case "4":
+    case 4:
       const highScoresVeryHard = JSON.parse(localStorage.getItem("highScores-veryHard")) || []; //get what is in storage, OR if doing this for the first time we will create an empty array.
       const savedScoreVeryHard = {
         score: gameScore.toFixed(2),
