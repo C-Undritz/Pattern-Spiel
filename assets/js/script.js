@@ -120,17 +120,17 @@ function setDifficultyVariables(difficulty) {
     case 2:
       gridSize = 3;
       colourPalette = 4;
-      viewTimerSelected = 10;
+      viewTimerSelected = 5;
       break;
     case 3:
       gridSize = 3;
-      colourPalette = 4;
+      colourPalette = 5;
       viewTimerSelected = 5;
       break;
     case 4:
-      gridSize = 3;
-      colourPalette = 5;
-      viewTimerSelected = 10;
+      gridSize = 4;
+      colourPalette = 4;
+      viewTimerSelected = 15;
       break;
   }
   playGame(viewTimerSelected, true); //playGame expects two parameters, the 'true' informs that the user has selected pre-set difficulties.
@@ -772,7 +772,7 @@ function gameStatus() {
   let secondsScoreString = (60 - secondsTakenString); //assigns a point value to the seconds taken = 60 seconds minus the time in seconds taken
   console.log("the points earned for the time taken is " + secondsScoreString);
 
-  (score === 9) ? matchScore = 60: matchScore = 0;
+  (score === userPattern.length) ? matchScore = 60: matchScore = 0;
   console.log("the score for getting the pattern right/wrong is " + matchScore);
 
   (matchScore === 60) ? roundScore = ((matchScore + secondsScoreString) - minuteScore): roundScore = 0;
@@ -980,14 +980,13 @@ Saves highscores as Key/Value pairs in the correct object in local storage based
 */
 function saveHighScore(event) {
   console.log("clicked the save button")
-  console.log("the difficulty is " + difficultySelected);
   event.preventDefault(); //prevents default action of form button.
   let playername = document.getElementById('playername'); //gets the value the user have entered to save score against
 
   //sets the object to add score to depending on difficulty selected.
   switch (difficultySelected) {
     case 1:
-      const highScoresEasy = JSON.parse(localStorage.getItem("highScores-Easy"));
+      const highScoresEasy = JSON.parse(localStorage.getItem("highScores-Easy")) || [];
       const savedScoreEasy = {
         score: gameScore.toFixed(2), //saves score to two decimal places.
         name: playername.value //value entered by the user as 'name'.
@@ -998,7 +997,7 @@ function saveHighScore(event) {
       localStorage.setItem('highScores-Easy', JSON.stringify(highScoresEasy)); //saves the new score to local storage.
       break;
     case 2:
-      const highScoresMedium = JSON.parse(localStorage.getItem("highScores-Medium"));
+      const highScoresMedium = JSON.parse(localStorage.getItem("highScores-Medium")) || [];
       const savedScoreMedium = {
         score: gameScore.toFixed(2),
         name: playername.value
@@ -1009,7 +1008,7 @@ function saveHighScore(event) {
       localStorage.setItem('highScores-Medium', JSON.stringify(highScoresMedium));
       break;
     case 3:
-      const highScoresHard = JSON.parse(localStorage.getItem("highScores-Hard"));
+      const highScoresHard = JSON.parse(localStorage.getItem("highScores-Hard")) || [];
       const savedScoreHard = {
         score: gameScore.toFixed(2),
         name: playername.value
@@ -1020,7 +1019,7 @@ function saveHighScore(event) {
       localStorage.setItem('highScores-Hard', JSON.stringify(highScoresHard));
       break;
     case 4:
-      const highScoresVeryHard = JSON.parse(localStorage.getItem("highScores-veryHard"));
+      const highScoresVeryHard = JSON.parse(localStorage.getItem("highScores-veryHard")) || [];
       const savedScoreVeryHard = {
         score: gameScore.toFixed(2),
         name: playername.value
