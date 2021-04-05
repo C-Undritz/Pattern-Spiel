@@ -191,7 +191,10 @@ Testing completed is detailed in the [TESTING.md](TESTING.md) document
 ---
 ># **FEATURES FOR FURTHER DEVELOPMENT**
 >
-
+* Move the storage of high scores to a central database.  This would remove the ability for the players 
+to change scores within local storage but also allow for competition across devices.
+* Add a friends feature so that your scores can be directly compatred with your friends.
+* Add high scores feature for custom game
 ---
 ># **DEVELOPMENT & DEPLOYMENT**
 * A repository was setup in GitHub using the Code Institute Gitpod [full template]( https://github.com/Code-Institute-Org/gitpod-full-template).
