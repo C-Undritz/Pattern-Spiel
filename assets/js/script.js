@@ -60,11 +60,6 @@ function mainMenu(gameStarted) {
   rowThree.setAttribute('class', 'row position-three-menu');
   rowFour.setAttribute('class', 'row position-four-menu');
 
-  let contactButton = `
-    <button class="btn btn-yellow" id="contact-button">
-      <a href="contact.html"><i class="fas fa-envelope-square"></i></a>
-    </button>`;
-
   let gameTitle = `
     <div id="title">
       <h1>
@@ -74,14 +69,28 @@ function mainMenu(gameStarted) {
   `;
 
   let mainMenuButtons = `
-  <button class="btn btn-red" onclick="selectDifficulty()">Start</button>
-  <a role="button" class="btn btn-green" href="instructions.html">How to Play</a>
-  <a role="button" class="btn btn-blue" href="highscores.html">High Scores</a>
+    <button class="btn btn-red" onclick="selectDifficulty()">Start</button>
+    <a role="button" class="btn btn-green" href="instructions.html">How to Play</a>
+    <a role="button" class="btn btn-blue" href="highscores.html">High Scores</a>
   `;
 
-  rowZero.innerHTML = contactButton; //sets the contact button to be shown in the top right.
+  let contactButtons = `
+    <ul class="list-inline contact-links">
+      <li class="list-inline-item">
+        <a role="button" class="btn btn-blue" id="facebook-button" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      </li>
+      <li class="list-inline-item">
+        <a role="button" class="btn btn-red" id="instagram-button" href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      </li>
+      <li class="list-inline-item">
+        <a role="button" class="btn btn-yellow" id="contact-button" href="contact.html"><i class="fas fa-envelope-square"></i></a>
+      </li>
+    </ul>
+  `;
+
   rowOne.innerHTML = gameTitle; //sets the gameTitle into position-one row.
   rowThree.innerHTML = mainMenuButtons; //sets the menu buttons to be initially shown.
+  rowFour.innerHTML = contactButtons; //sets the social media buttons and contact button to be shown center-bottom of the page.
 }
 
 /*
@@ -300,9 +309,10 @@ The 'newGame' parameter expects a true or false value and is needed for the five
 */
 function generateGameArea(newGame) {
   if (newGame) { //the following happens if newGame = true; therefore the start of a new game.
-    document.getElementById('position-one').innerHTML = "";
-    document.getElementById('position-two').innerHTML = "";
-    document.getElementById('position-three').innerHTML = "";
+    document.getElementById('position-one').innerHTML = ""; //removes main menu title.
+    document.getElementById('position-two').innerHTML = ""; //removes main menu selectOptionsText.
+    document.getElementById('position-three').innerHTML = ""; //removes the main menu buttons.
+    document.getElementById('position-four').innerHTML = ""; //removes the social and contact buttons.
     document.getElementById("score-modal").innerHTML = ""; //removes scores from mobile score button.
 
     //creates the score column and appends to the game-score-row. Uses bootstrap classes so that this will only show on displays ≥992px.
