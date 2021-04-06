@@ -1,10 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 4 version
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Ranchers&family=Truculenta:wght@300;400;600&display=swap');
 
 /*------------------- Screen setup ------------------------*/
@@ -20,10 +13,6 @@ body {
   height: 100vh;
 }
 
-/* #high-score-container {
-  margin-top: -200px;
-} */
-
 /*---- These are the settings for <div> elements that are in index.html that the main menu and game components will be set within.  
 There are five positions in total ----*/
 
@@ -33,53 +22,27 @@ There are five positions in total ----*/
   width: 100%;
 } */
 
-
-
 #position-one {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
   text-align: center;
 }
 
 #position-two {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
 }
 
 #position-three {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
 #position-four {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -94,11 +57,6 @@ There are five positions in total ----*/
 .position-one-menu {
   height: 40vh;
   margin-top: 0;
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; */
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
@@ -106,11 +64,6 @@ There are five positions in total ----*/
 .position-two-menu {
   height: 5vh;
   margin-top: 0;
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; */
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -118,16 +71,8 @@ There are five positions in total ----*/
 .position-three-menu {
   height: 48vh;
   margin-top: 0;
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; */
   width: 100%;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  /* -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; */
 }
 
 /*Specific settings required in the menu to position the social media icons*/
@@ -141,11 +86,7 @@ There are five positions in total ----*/
 .position-zero-game {
   height: 0vh;
   margin-top: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -153,9 +94,6 @@ There are five positions in total ----*/
 .position-one-game {
   height: 18vh;
   margin-top: 0;
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; */
   justify-content: flex-end;
   align-items: center;
 }
@@ -165,14 +103,7 @@ There are five positions in total ----*/
   height: 60vh;
   width: 100%;
   margin-top: 0;
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; */
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -180,11 +111,6 @@ There are five positions in total ----*/
 .position-three-game {
   height: 15vh;
   margin-top: 0;
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; */
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -192,12 +118,6 @@ There are five positions in total ----*/
 .position-four-game {
   height: 7vh;
   margin-top: 0;
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; */
-  /* -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; */
 }
 
 /*---- These are the specific settings detailing changes to some positions required during the game screen to show the end of round messages ----*/
@@ -206,9 +126,6 @@ There are five positions in total ----*/
 .position-one-message {
   height: 18vh;
   margin-top: 0;
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; */
   justify-content: flex-end;
   align-items: center;
 }
@@ -218,7 +135,6 @@ There are five positions in total ----*/
   height: 32vh;
   width: 100%;
   margin-top: 0;
-  /*display: flex;*/
   justify-content: flex-start;
 }
 
@@ -234,7 +150,6 @@ There are five positions in total ----*/
 
 #score-column {
   background-color: rgba(255, 255, 255, 0.5);
-  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
   box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
 }
 
@@ -316,15 +231,11 @@ h3 {
 }
 
 .modal-header {
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-bottom: transparent;
 }
 
 .modal-footer {
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   border-top: transparent;
 }
@@ -365,7 +276,6 @@ h3 {
 
 .btn-yellow {
   background-color: #ffff00;
-  /* border: solid 2px #FFDE21; */
   color: grey;
 }
 
@@ -434,7 +344,6 @@ h3 {
 #contact-form-top {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.6);
-  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
   box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
   border-radius: 25px 25px 0px 0px;
 }
@@ -442,7 +351,6 @@ h3 {
 #contact-form-bottom {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.6);
-  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
   box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
   border-radius: 0px 0px 25px 25px;
 }
@@ -748,6 +656,10 @@ li.high-score {
 
   .position-one-game {
     justify-content: center;
+  }
+
+  #view-timer {
+    font-size: 3em;
   }
 
   #palette-red,
