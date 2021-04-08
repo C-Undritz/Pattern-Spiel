@@ -124,7 +124,7 @@ There are five positions in total ----*/
 
 /*Specific settings required for position-one to position the compare results text and button*/
 .position-one-message {
-  height: 18vh;
+  height: 15vh;
   margin-top: 0;
   justify-content: flex-end;
   align-items: center;
@@ -132,7 +132,7 @@ There are five positions in total ----*/
 
 /*Specific settings required for position-three to position the end of round/game messages below the grid*/
 .position-three-message {
-  height: 32vh;
+  height: 25vh;
   width: 100%;
   margin-top: 0;
   justify-content: flex-start;
@@ -377,8 +377,8 @@ h3 {
 }
 
 .squares4 {
-  width: 25%;
-  padding-top: 25%;
+  width: 24.5%;
+  padding-top: 24.5%;
   /*maintains an aspect-ratio of 1 / 1.*/
   border: solid 1px black;
 }
@@ -505,7 +505,7 @@ li.high-score {
   }
 
   .position-one-message {
-    height: 11vh; /*reduction is space for the mobile buttons to show above during the end of round/game screen*/
+    height: 13vh; /*reduction is space for the mobile buttons to show above during the end of round/game screen*/
   }
 
   .messages-box,
@@ -523,7 +523,7 @@ li.high-score {
   }
   
   .position-two-game {
-    height: 50vh;
+    height: 55vh;
   }
 
   .position-three-game {
