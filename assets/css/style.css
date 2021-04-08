@@ -359,6 +359,11 @@ h3 {
   text-align: center;
 }
 
+
+.instructions-box {
+  margin: 30px 40px;
+}
+
 /*------------------- Grid styles (function generateGrid()) ------------------------*/
 
 .grid {
