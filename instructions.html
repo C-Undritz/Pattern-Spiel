@@ -2,20 +2,140 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Memory Game - Pattern Spiel">
   <link rel="icon" type="image/png" href="assets/images/icon.png">
-	<title>Pattern Spiel</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" 
-  integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-  crossorigin="anonymous">
-  <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+  <title>Pattern Spiel</title>
 </head>
 
 <body>
+  <div class="container-fluid" id="high-score-container">
+    <div id="title-hs">
+      <a role="button" class="btn btn-green" href="index.html">Main Menu</a>
+      <h1>
+        <span class="h1-red">P</span><span class="h1-green">a</span><span class="h1-blue">t</span><span
+          class="h1-yellow">t</span><span class="h1-red">e</span><span class="h1-green">r</span><span
+          class="h1-blue">n </span><span class="h1-yellow">S</span><span class="h1-red">p</span><span
+          class="h1-green">i</span><span class="h1-blue">e</span><span class="h1-yellow">l</span><span
+          class="h1-red">!</span>
+      </h1>
+      <h2>
+      Pattern Spiel (Pattern Play) is a quick and fun memory game where the player has to remember the display of colours on a grid and then recreate them.  
+      There are set difficulty levels to try in which the time allowed to view the pattern, the number of colours and the grid size will change to ensure 
+      that the player is challenged.  Not challenging enough? Then try setting up a custom game to really test your memory skills!  Each game is five rounds 
+      and you will be presented with a score at the end to see if you have made the high score table.  Have fun! 
+      </h2>
+    </div>
+  </div>
+  <div class="instructions-box cloud-box">
+    <h2>
+      How to play.
+    </h2>
+    <h2>
+      <ol>
+        <li>Click start and then select your desired difficulty level or a custom game.  Then hit ‘play game’ when you are ready.</li>
+        <li>Observe the pattern and commit it to memory!*</li>
+        <li>As quick as you can select the colours from the palette and fill in the grid matching the pattern.  Be quick – you are being timed!</li>
+        <li>Click ‘submit’ when you are done and discover whether you have matched the pattern.  If not then click the compare button to see where you went 
+        wrong.</li>
+        <li>Your results for each round displaying a win (for a match) or loose, and the time taken is displayed on the left or at the touch of the ‘score’ 
+        button if playing on a tablet or mobile.</li>
+        <li>Once your five rounds are over you will then be presented with your score.  If you have beaten one of the top three scores for the chosen difficulty 
+        level, then you will be able to enter your name to have it displayed proudly in the high scores table!</li>
+        <li>Click ‘Play again’ to then play another game with the same settings or click ‘Main menu’ to exit to the menu screen.</li>
+      </ol>
+      <div>*at any point in the game, the ‘Main menu’ button (at the top of the results column, or at the top of the screen on tablets and mobiles) can be 
+      selected to exit the game to the menu.</div>
+    </h2>
+  </div>
 
-    <script src="assets/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-  </body>
+  <div class="instructions-box cloud-box">
+    <h2>
+      Custom game parameters.
+    </h2>
+    <h2>
+      Instead of the set difficulties the player will be able to mix up the three parameters that make up the challenge of the game to practice or create an extra level of 
+      challenge!  The three parameters are:
+    </h2>
+    <ul>
+      <li>Grid size: How many squares will be presented: in this game there are two grids – 3x3 and 4x4.</li>
+      <li>Number of colours: The maximum amount of colours that will be used to make the pattern: in this game there three options: up to 4 colours, up to 5 colours and up 
+      6 to colours.</li>
+      <li>View timer: How long you will be able to view the computer generated pattern before having to recreate it from memory.  You can choose 5, 10 or 15 seconds.  Or; 
+      no timer at all where you will be presented with a ‘Go’ button to click when you are ready.</li>
+    </ul>
+  </div>
+
+  <div class="instructions-box cloud-box">
+    <h2>
+      Difficulty guide.
+    </h2>
+    <h2>
+      Want to know how you are being challenged? Detailed below is what to expect at each set difficulty.
+    </h2>
+    <table style="width:50%">
+      <tr>
+        <th>Difficulty</th>
+        <th>Grid size</th>
+        <th>Maximum colours</th>
+        <th>View timer</th>
+      </tr>
+      <tr>
+        <td>Easy</td>
+        <td>3x3</td>
+        <td>4 colours</td>
+        <td>15 seconds</td>
+      </tr>
+      <tr>
+        <td>Medium</td>
+        <td>3x3</td>
+        <td>4 colours</td>
+        <td>5 seconds</td>
+      </tr>
+      <tr>
+        <td>Hard</td>
+        <td>3x3</td>
+        <td>5 colours</td>
+        <td>5 seconds</td>
+      </tr>
+      <tr>
+        <td>Very Hard</td>
+        <td>4x4</td>
+        <td>4 colours</td>
+        <td>15 seconds</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="instructions-box cloud-box">
+    <h2>
+      Scoring.
+    </h2>
+    <h2>
+      Players will be presented a round score for each of the five rounds and these will be summed to give a game score presented at the end of the game.
+    </br>
+      Scoring works as follows: for a pattern match the player will you awarded 60 points.  The player will then be given a point score for time taken which 
+      is calculated as 60-time taken.  Therefore if player A took 5 seconds and player B took 7.5 seconds, player A would get 55 points for their time taken 
+      (60-5), whereas player B would get 52.5 points (60-7.5).  This is then added to the match score of 60 to get a round score. In the example given player 
+      A achieves 115 points and player B gets 112.5 points. For every whole minute that is taken, minus 30 is taken from the score. 
+    </br>
+      If no match is achieved the player scores no points for that round.
+    </h2>
+  </div>
+
+  <div class="instructions-box cloud-box">
+    <h2>
+      High scores.
+    </h2>
+    <h2>
+      The top three high scores for each difficulty are displayed in the ‘High scores’ section which can be accessed from the main menu.  If a player manages 
+      to make it onto the high scores table then they will be made aware at the end of their game where a name (or alias) is required to be entered so that the 
+      score can be saved.
+    </h2>
+  </div>
+</body>
 </html>
