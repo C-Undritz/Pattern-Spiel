@@ -13,21 +13,26 @@
 </head>
 
 <body>
-  <div class="container-fluid" id="high-score-container">
-    <div id="title-hs">
-      <h1>
-        <span class="h1-red">P</span><span class="h1-green">a</span><span class="h1-blue">t</span><span
-          class="h1-yellow">t</span><span class="h1-red">e</span><span class="h1-green">r</span><span
-          class="h1-blue">n </span><span class="h1-yellow">S</span><span class="h1-red">p</span><span
-          class="h1-green">i</span><span class="h1-blue">e</span><span class="h1-yellow">l</span><span
-          class="h1-red">!</span>
-      </h1>
-      <h2>
-        Current high scores.
-      </h2>
+  <div class="container-fluid">
+    <div class="row d-flex justify-content-center">
       <a role="button" class="btn btn-green" href="index.html">Main Menu</a>
     </div>
+    <div class="title-text">
+      <h1> <!--Pattern Spiel title text presented as a different colour for each letter-->
+        <span class="text-red">P</span><span class="text-green">a</span><span class="text-blue">t</span><span
+          class="text-yellow">t</span><span class="text-red">e</span><span class="text-green">r</span><span
+          class="text-blue">n </span><span class="text-yellow">S</span><span class="text-red">p</span><span
+          class="text-green">i</span><span class="text-blue">e</span><span class="text-yellow">l</span><span
+          class="text-red">!</span>
+      </h1>
+      <div class="subtitle-text">
+        <h1> <!--Subtitle text presented as a different colour for each word-->
+          <span class="text-red">Current&nbsp</span><span class="text-green">high&nbsp</span><span class="text-blue">scores</span>
+        </h1>
+      </div>
+    </div>
   </div>
+  <!--Highscores presented in four boxes below, to reflect the set difficulties and are responsive across devices-->
   <div class="container-fluid">
     <div class="d-flex flex-row flex-wrap justify-content-center">
       <div class="high-score-box cloud-box">
