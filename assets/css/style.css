@@ -386,9 +386,10 @@ h4 {
 /*------------------- instructions page specific styles ------------------------*/
 
 .instructions-box {
-  margin: 40px 0px;
+  margin: 20px 0px;
   max-width: 1000px;
   width: 80%;
+  padding: 10px;
 }
 
 /*styles for the table shown in the difficulty guide section*/
@@ -624,6 +625,18 @@ lower resolutions but has a maximum width at high resolutions*/
     font-size: 8em;
   }
 
+  h2 {
+    font-size: calc(1.1rem + .9vw);
+  }
+
+  h3 {
+    font-size: calc(1.1rem + .6vw);
+  }
+
+  h4 {
+    font-size: calc(1rem + .3vw);
+  }
+
   .menu-text {
     font-size: 2.5em;
   }
@@ -680,6 +693,10 @@ lower resolutions but has a maximum width at high resolutions*/
 @media screen and (max-width: 330px) {
   #title h1 {
     margin-bottom: 1.25rem
+  }
+
+  .subtitle-text h1 { 
+    font-size: 2.5em;
   }
 
   .menu-text {
