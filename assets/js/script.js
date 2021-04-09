@@ -63,7 +63,7 @@ function mainMenu(gameStarted) {
   let gameTitle = `
     <div id="title">
       <h1>
-      <span class="h1-red">P</span><span class="h1-green">a</span><span class="h1-blue">t</span><span class="h1-yellow">t</span><span class="h1-red">e</span><span class="h1-green">r</span><span class="h1-blue">n </span><span class="h1-yellow">S</span><span class="h1-red">p</span><span class="h1-green">i</span><span class="h1-blue">e</span><span class="h1-yellow">l</span><span class="h1-red">!</span>
+      <span class="text-red">P</span><span class="text-green">a</span><span class="text-blue">t</span><span class="text-yellow">t</span><span class="text-red">e</span><span class="text-green">r</span><span class="text-blue">n </span><span class="text-yellow">S</span><span class="text-red">p</span><span class="text-green">i</span><span class="text-blue">e</span><span class="text-yellow">l</span><span class="text-red">!</span>
       </h1>
     </div>
   `;
@@ -336,7 +336,7 @@ function generateGameArea(newGame) {
     let scoreColumnTitle = `
     <div id="score-column-header">
       <button class="btn btn-green" onclick="mainMenu(true)" id="scoreColumnMenuButton">Main menu</button>
-      <h1>Score</h1>
+      <h1>Results</h1>
     </div>
     `;
     document.getElementById('score-column').innerHTML = scoreColumnTitle;
@@ -345,7 +345,7 @@ function generateGameArea(newGame) {
     let mobileButtons = `
     <div id="mobile-buttons" class="d-flex flex-row d-lg-none">
       <button class="btn btn-green" onclick="mainMenu(true)" id="mobileViewMenuButton">Main menu</button>
-      <button type="button" class="btn btn-red" data-bs-toggle="modal" data-bs-target="#exampleModal">Score</button>
+      <button type="button" class="btn btn-red" data-bs-toggle="modal" data-bs-target="#exampleModal">Results</button>
     </div>
     `;
     rowZero.innerHTML = mobileButtons; //mobile buttons are displays top and center of the game screen.
