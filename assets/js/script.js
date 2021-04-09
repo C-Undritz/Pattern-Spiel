@@ -796,7 +796,7 @@ function gameStatus() {
   let displayResultsModal = document.getElementById("score-modal");
 
   let columnRoundScoreBox = document.createElement("div"); //creates a div element 'score box' for the score for each round.
-  columnRoundScoreBox.setAttribute('class', 'round-score-box cloud-box');
+  columnRoundScoreBox.setAttribute('class', 'round-results-box cloud-box');
 
   let columnNewResult = document.createElement("h3");
   columnNewResult.setAttribute('class', 'result-entry');
