@@ -14,10 +14,10 @@
   <title>Pattern Spiel</title>
 </head>
 
-<body class="single-screen">
+<body class="single-screen"> <!--class dictates that the content in the <body> will be 100vh-->
   <div class="container-fluid" id="container">
     <div class="row d-flex align-items-center justify-content-center" id="game-score-row">
-      <div id="game-column">
+      <div id="game-column"> <!--all content within the game will be shown within the five positions below-->
         <div id="position-zero"></div>
         <div id="position-one"></div>
         <div id="position-two"></div>
@@ -27,11 +27,12 @@
     </div>
   </div>
 
+  <!--the results for the 5 round of the game are shown in this modal for tablet and mobile devices-->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title" id="exampleModalLabel">Score</h1>
+          <h1 class="modal-title" id="exampleModalLabel">Results</h1>
         </div>
         <div class="modal-body" id="score-modal"></div>
         <div class="modal-footer">
@@ -45,3 +46,4 @@
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
   </script>
 </body>
+</html>
