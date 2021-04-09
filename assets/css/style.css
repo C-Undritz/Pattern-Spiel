@@ -9,18 +9,13 @@ body {
   background: url("../images/clouds-background.png") top right;
 }
 
+/*style class to ensure that within the game, all elements are to be kept within the view height of the screen of the device so no scrolling is required whilst playing*/
 .single-screen {
   height: 100vh;
 }
 
 /*---- These are the settings for <div> elements that are in index.html that the main menu and game components will be set within.  
-There are five positions in total ----*/
-
-/* #position-zero {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-} */
+There are five positions in total (however position-zero is not styled here) ----*/
 
 #position-one {
   display: flex;
@@ -48,7 +43,7 @@ There are five positions in total ----*/
 
 /*---- These are the specific settings for the five positions during the main menu and game difficulty selection screens ----*/
 
-/*Specific settings required in the menu to position the contact us button*/
+/*Nothing in position-zero*/
 .position-zero-menu {
   height: 0vh;
 }
@@ -75,7 +70,7 @@ There are five positions in total ----*/
   justify-content: flex-start;
 }
 
-/*Specific settings required in the menu to position the social media icons*/
+/*Specific settings required in the menu to position the social media icons and contact icon*/
 .position-four-menu {
   height: 7vh;
 }
@@ -120,7 +115,7 @@ There are five positions in total ----*/
   margin-top: 0;
 }
 
-/*---- These are the specific settings detailing changes to some positions required during the game screen to show the end of round messages ----*/
+/*---- These are the specific settings detailing changes to some positions required during the game screen to show the end of round/game messages ----*/
 
 /*Specific settings required for position-one to position the compare results text and button*/
 .position-one-message {
@@ -161,15 +156,19 @@ There are five positions in total ----*/
 
 h1 {
   font-family: 'Ranchers', serif;
+  color: #666666;
 }
 
 h2,
-h3 {
+h3,
+h4 {
   font-family: 'Truculenta', serif;
   margin: 0;
+  color: #666666;
 }
 
-#title h1 {
+/*positions and styles the landing page title*/
+#title h1 { 
   font-size: 10em;
   text-shadow: 0 0 50px #ffffff, 0 0 50px #ffffff;
   text-align: center;
@@ -178,12 +177,14 @@ h3 {
   margin-bottom: 2rem;
 }
 
-#title-hs {
+/*positions the titles on the high scores and how to play pages*/
+.title-text { 
   margin-top: 100px;
   text-align: center;
 }
 
-#title-hs h1 {
+/*styles the titles on the high scores and how to play pages*/
+.title-text h1 { 
   font-size: 5em;
   text-shadow: 0 0 50px #ffffff, 0 0 50px #ffffff;
   letter-spacing: -5px;
@@ -191,22 +192,41 @@ h3 {
   margin-bottom: 2rem;
 }
 
-.h1-red {
+/*positions the subtitles on the high scores and how to play pages*/
+.subtitle-text { 
+  margin-top: 25px;
+  text-align: center;
+}
+
+/*styles the subtitles on the high scores and how to play pages*/
+.subtitle-text h1 { 
+  font-size: 3em;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+/*class for styling text and letters red*/
+.text-red { 
   color: #ff0000;
 }
 
-.h1-green {
+/*class for styling text and letters green*/
+.text-green { 
   color: #008000;
 }
 
-.h1-blue {
+/*class for styling text and letters blue*/
+.text-blue { 
   color: #0000ff;
 }
 
-.h1-yellow {
+/*class for styling text and letters yellow*/
+.text-yellow { 
   color: #ffff00;
 }
 
+/*styles the <h2> text above the buttons on the main menu page*/
 .menu-text {
   font-size: 3em;
   text-shadow: 0 0 50px #ffffff, 0 0 50px #ffffff;
@@ -216,10 +236,18 @@ h3 {
   margin-bottom: 20px;
 }
 
+/*styles the paragraph text in the contact and instructions pages*/
+.justified-text {
+  text-align: justify;
+  text-justify: inter-word;
+  margin: 0px 10px;
+}
+
+/*styles view timer countdown text*/
 #view-timer {
   font-size: 5em;
   font-family: 'Ranchers', serif;
-  color: grey;
+  color: #666666;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
 }
 
@@ -230,11 +258,13 @@ h3 {
   background-size: 150%;
 }
 
+/*prevents and overwrites modal styles from bootstrap*/
 .modal-header {
   justify-content: center;
   border-bottom: transparent;
 }
 
+/*prevents and overwrites modal styles from bootstrap*/
 .modal-footer {
   justify-content: center;
   border-top: transparent;
@@ -242,6 +272,7 @@ h3 {
 
 /*------------------- button styles ------------------------*/
 
+/*site wide styles for the buttons*/
 .btn {
   font-weight: 400;
   margin: 5px 2px;
@@ -254,41 +285,48 @@ h3 {
 
 .btn:hover {
   width: 185px;
-  color: white;
   /*stops the bootstrap style of turning the text black upon hover*/
+  color: #ffffff;
   transition: all 0.15s ease-in-out;
 }
 
+/*styles for the red, green, blue and yellow buttons*/
 .btn-red {
   background-color: #ff0000;
-  color: white;
+  color: #ffffff;
 }
 
 .btn-green {
   background-color: #008000;
-  color: white;
+  color: #ffffff;
 }
 
 .btn-blue {
   background-color: #0000ff;
-  color: white;
+  color: #ffffff;
 }
 
 .btn-yellow {
   background-color: #ffff00;
-  color: grey;
+  color: #808080;
 }
 
+/*stops the text of the yellow button going white upon hover*/
 .btn-yellow:hover {
-  width: 185px;
-  color: grey;
-  transition: all 0.25s ease-in-out;
+  color: #808080;
 }
 
+/*positions the 'go' button in game (that displayed instead of view timer if chosen) so that it does not overlap with the grid*/
+#go-button {
+  margin-bottom: 20px;
+}
+
+/*positions the contact and social link buttons on the main menu page so they do not sit too high*/
 .contact-links {
   margin-bottom: -3px;
 }
 
+/*styles the contact and social link buttons on the main menu page*/
 #contact-button,
 #facebook-button,
 #instagram-button {
@@ -301,16 +339,11 @@ h3 {
 #contact-button:hover,
 #facebook-button:hover,
 #instagram-button:hover {
-  border-radius: 50%;
-  height: 40px;
   width: 45px;
   transition: all 0.25s ease-in-out;
 }
 
-#go-button {
-  margin-bottom: 20px;
-}
-
+/*styles and positions the facebook and instagram fontawesome icons within the buttons*/ 
 .fab {
   font-size: 25px;
   margin: 7px 0px 0px 1px;
@@ -318,54 +351,78 @@ h3 {
   transition: all 0.25s ease-in-out;
 }
 
+/*styles and positions the envelope fontawesome icon within the button*/ 
 .fa-envelope-square {
   margin-top: 7px;
   color: grey;
 }
 
-/*------------------- contact form styles ------------------------*/
+/*------------------- contact page specific styles ------------------------*/
 
-#feedback-form {
+#feedback-form { 
   margin: 10% 2%;
 }
 
-#contact-form-text {
-  text-align: justify;
-  text-justify: inter-word;
-  margin: 0px 10px;
-}
-
-.text-input {
+.text-input { 
   width: 80%;
   margin-top: 10px;
   border: 1px grey solid;
 }
 
-#contact-form-top {
+#contact-form-top,
+#contact-form-bottom { 
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
-  border-radius: 25px 25px 0px 0px;
 }
 
 #contact-form-bottom {
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
-  border-radius: 0px 0px 25px 25px;
+  margin-top: 20px;
 }
 
 #contact-mm-btn {
   text-align: center;
+  margin-bottom: 10px;
 }
 
+/*------------------- instructions page specific styles ------------------------*/
 
 .instructions-box {
-  margin: 30px 40px;
+  margin: 40px 0px;
+  max-width: 1000px;
+  width: 80%;
+}
+
+/*styles for the table shown in the difficulty guide section*/
+table, 
+th, 
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/*------------------- high scores page specific styles ------------------------*/
+
+.high-score-box {
+  width: 100%;
+  max-width: 300px;
+  margin: 20px 5px;
+  text-align: center;
+}
+
+li.high-score {
+  margin-right: 30px;
+  list-style-position: inside;
+  font-family: 'Truculenta', serif;
+  font-size: x-large;
 }
 
 /*------------------- Grid styles (function generateGrid()) ------------------------*/
 
+/*the max-width of '.grid' and width of '.square-row' work together to ensure that the grid is responsive at 
+lower resolutions but has a maximum width at high resolutions*/
 .grid {
   max-width: 550px;
 }
@@ -374,6 +431,7 @@ h3 {
   width: 100%;
 }
 
+/*the styling for a 3x3 grid*/
 .squares3 {
   width: 33%;
   padding-top: 33%;
@@ -381,6 +439,7 @@ h3 {
   border: solid 1px black;
 }
 
+/*the styling for a 4x4 grid*/
 .squares4 {
   width: 24.5%;
   padding-top: 24.5%;
@@ -390,12 +449,14 @@ h3 {
 
 /*------------------- palette styles (generatePalette()) ------------------------*/
 
+/*position and styles for the white bckground for the palette*/ 
 #palette-area {
   border-radius: 25px;
   background-color: #ffffff;
   margin: 20px 0px;
 }
 
+/*position and styles for all of the colours presented within the palette*/
 #palette-red,
 #palette-green,
 #palette-blue,
@@ -408,6 +469,7 @@ h3 {
   border-radius: 50%;
 }
 
+/*individual styles for the colours presented within the palette*/
 #palette-red {
   background-color: #ff0000;
 }
@@ -432,26 +494,31 @@ h3 {
   background-color: #ffa500;
 }
 
+/*temporary style applied to a selected colour from the palette*/
 .color-selected {
   border: solid black 5px;
 }
 
+/*style applied when the colour is not selected*/
 .color-deselected {
   border: transparent;
 }
 
-/*------------------ message box styles -------------------------*/
+/*------------------ within game message styles -------------------------*/
 
+/*style applied to most of the game to give a cloud like look to background of the text and any message boxes that appear*/
 .cloud-box {
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
   border-radius: 25px;
 }
 
+/*position style for end of round messages (gameStatus())*/
 .messages-box {
   position: absolute;
 }
 
+/*position and styles for end of round messages (gameStatus()) and high score message at end of game (displayHighScore())*/
 .messages-box,
 .save-score-box {
   width: 30%;
@@ -460,31 +527,20 @@ h3 {
   text-align: center;
 }
 
-.round-score-box {
+/*styles for round results shown in the results column and results modal*/
+.round-results-box {
   margin: 10px 2px;
   border-radius: 25px;
   width: 100%;
   text-align: center;
 }
 
-.high-score-box {
-  width: 100%;
-  max-width: 300px;
-  margin: 20px 5px;
-  text-align: center;
-}
-
+/*style for the player name entry on the end game high score message if a high score has been achieved*/
 #playername {
   width: 92%;
 }
 
-li.high-score {
-  margin-right: 30px;
-  list-style-position: inside;
-  font-family: 'Truculenta', serif;
-  font-size: x-large;
-}
-
+/*position style for the text and button that appears above the grid to compare player pattern with the computers*/
 .compare-box {
   margin-bottom: 10px;
 }
@@ -492,12 +548,8 @@ li.high-score {
 /*---------------------------- MEDIA QUERIES------------------------------*/
 @media screen and (max-width: 1400px) {
   .grid {
-    max-width: 465px;
+    max-width: 465px; /*reduces max width of grid slightly to accomodate other elements of the game at lower resolutions*/
   }
-}
-
-@media screen and (max-width: 1024px) {
-
 }
 
 @media screen and (max-width: 992px) {
@@ -523,8 +575,11 @@ li.high-score {
   #contact-button:hover,
   #facebook-button:hover,
   #instagram-button:hover {
-    height: 40px;
-    width: 40px;
+    width: 40px; /*removes button hover at tablet and mobile resolutions so that no change in buttons when tapped*/
+  }
+
+  .btn:hover {
+    width: 170px; /*removes button hover at tablet and mobile resolutions so that no change in buttons when tapped*/
   }
   
   .position-two-game {
@@ -638,6 +693,10 @@ li.high-score {
     font-size: 1.25rem;
   }
 
+  .btn:hover {
+    width: 137px; /*removes button hover at this mobile resolutions so that no change in buttons when tapped*/
+  }
+
   #contact-button,
   #facebook-button,
   #instagram-button {
@@ -648,8 +707,7 @@ li.high-score {
   #contact-button:hover,
   #facebook-button:hover,
   #instagram-button:hover {
-    height: 33px;
-    width: 33px;
+    width: 33px; /*removes button hover at this mobile resolutions so that no change in buttons when tapped*/
   }
 
   .fab {
