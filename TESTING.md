@@ -260,6 +260,10 @@ For all above conditions (Player-completed pattern tests) test the below:
 ---
 # Results
 ## W3C CSS Validation:
+Tested the css style sheet through validation by direct input:
+
+* Errors: No errors found
+* Warnings: 78 reported and no action taken as these were all related to the vendor extensions added by running the css through Autoprefixer.  So no action was taken to remove these.
 <p>
 <a href="http://jigsaw.w3.org/css-validator/check/referer">
     <img style="border:0;width:88px;height:31px"
@@ -268,15 +272,13 @@ For all above conditions (Player-completed pattern tests) test the below:
     </a>
 </p>
 
-* Errors: 
-* Warnings: 
-
 ## W3C Markup Validation:
-Tested each page by validation of the URL's:
+Tested each page through validation by direct input:
 
-* index.html: 
-* howToPlay.html: 
-* contact.html: 
+* index.html: No errors or warnings to show.
+* instructions.html: No errors or warnings to show.
+* contact.html: No errors or warnings to show.
+* highscores.html: No errors or warnings to show.
 
 ## JS Lint:
 
