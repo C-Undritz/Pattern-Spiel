@@ -1,11 +1,27 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Ranchers&family=Truculenta:wght@300;400;600&display=swap');
 
 /*------------------- Screen setup ------------------------*/
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background: url("../images/clouds-background.png") top right;
 }
 
@@ -18,27 +34,51 @@ body {
 There are five positions in total (however position-zero is not styled here) ----*/
 
 #position-one {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
 }
 
 #position-two {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #position-three {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: relative;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #position-four {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 /*---- These are the specific settings for the five positions during the main menu and game difficulty selection screens ----*/
@@ -52,14 +92,18 @@ There are five positions in total (however position-zero is not styled here) ---
 .position-one-menu {
   height: 40vh;
   margin-top: 0;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 /*Specific settings required in the menu to position the guiding text for each difficulty option*/
 .position-two-menu {
   height: 5vh;
   margin-top: 0;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /*Specific settings required in the menu to position all of the game options selection buttons*/
@@ -67,7 +111,9 @@ There are five positions in total (however position-zero is not styled here) ---
   height: 48vh;
   margin-top: 0;
   width: 100%;
-  justify-content: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 /*Specific settings required in the menu to position the social media icons and contact icon*/
@@ -81,16 +127,24 @@ There are five positions in total (however position-zero is not styled here) ---
 .position-zero-game {
   height: 0vh;
   margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /*Specific settings required in the game to position the view timer or 'go' button*/
 .position-one-game {
   height: 18vh;
   margin-top: 0;
-  justify-content: flex-end;
-  align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /*Specific settings required in the game to position the grid during the pattern display and when being filled in by the player*/
@@ -98,15 +152,21 @@ There are five positions in total (however position-zero is not styled here) ---
   height: 60vh;
   width: 100%;
   margin-top: 0;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /*Specific settings required in the game to position the colour palette*/
 .position-three-game {
   height: 15vh;
   margin-top: 0;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /*Specific settings required in the game to position the submit button*/
@@ -121,8 +181,12 @@ There are five positions in total (however position-zero is not styled here) ---
 .position-one-message {
   height: 15vh;
   margin-top: 0;
-  justify-content: flex-end;
-  align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /*Specific settings required for position-three to position the end of round/game messages below the grid*/
@@ -130,7 +194,9 @@ There are five positions in total (however position-zero is not styled here) ---
   height: 25vh;
   width: 100%;
   margin-top: 0;
-  justify-content: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 /*Specific settings required for position-four to position the end of round/game messages below the grid*/
@@ -145,7 +211,8 @@ There are five positions in total (however position-zero is not styled here) ---
 
 #score-column {
   background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
+          box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
 }
 
 #score-column-header {
@@ -228,7 +295,7 @@ h4 {
   text-shadow: 0 0 50px #ffffff, 0 0 50px #ffffff;
   text-align: center;
   letter-spacing: -2px;
-  color: grey;
+  color: #808080;
   margin-bottom: 20px;
 }
 
@@ -244,7 +311,7 @@ h4 {
   font-size: 5em;
   font-family: 'Ranchers', serif;
   color: #666666;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
 }
 
 /*------------------- Modal styles ------------------------*/
@@ -255,13 +322,17 @@ h4 {
 
 /*prevents and overwrites modal styles from bootstrap*/
 .modal-header {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border-bottom: transparent;
 }
 
 /*prevents and overwrites modal styles from bootstrap*/
 .modal-footer {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border-top: transparent;
 }
 
@@ -281,6 +352,8 @@ h4 {
   width: 185px;
   /*stops the bootstrap style of turning the text black upon hover*/
   color: #ffffff;
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
 }
 
@@ -332,7 +405,7 @@ h4 {
   border-radius: 50%;
   height: 40px;
   width: 40px;
-  color: white;
+  color: #ffffff
 }
 
 .u-btn:hover,
@@ -340,6 +413,8 @@ h4 {
 #facebook-button:hover,
 #instagram-button:hover {
   width: 45px;
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
 }
 
@@ -347,7 +422,9 @@ h4 {
 .fab {
   font-size: 25px;
   margin: 7px 0px 0px 1px;
-  color: #F0F1EB;
+  color: #ffffff;
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
 }
 
@@ -359,7 +436,7 @@ h4 {
 /*styles and positions the envelope fontawesome icon within the button*/ 
 .fa-envelope-square {
   margin-top: 7px;
-  color: grey;
+  color: #808080;
 }
 
 /*------------------- contact page specific styles ------------------------*/
@@ -370,7 +447,7 @@ h4 {
 .text-input { 
   width: 80%;
   margin-top: 10px;
-  border: 1px grey solid;
+  border: 1px #808080 solid;
 }
 
 #contact-form-top,
@@ -398,7 +475,7 @@ h4 {
 table, 
 th, 
 td {
-  border: 1px solid black;
+  border: 1px solid #000000;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
@@ -439,7 +516,7 @@ lower resolutions but has a maximum width at high resolutions*/
   width: 33%;
   padding-top: 33%;
   /*maintains an aspect-ratio of 1 / 1.*/
-  border: solid 1px black;
+  border: solid 1px #000000;
 }
 
 /*the styling for a 4x4 grid squares*/
@@ -447,7 +524,7 @@ lower resolutions but has a maximum width at high resolutions*/
   width: 24.5%;
   padding-top: 24.5%;
   /*maintains an aspect-ratio of 1 / 1.*/
-  border: solid 1px black;
+  border: solid 1px #000000;
 }
 
 /*------------------- palette styles (generatePalette()) ------------------------*/
@@ -498,7 +575,7 @@ lower resolutions but has a maximum width at high resolutions*/
 
 /*temporary style applied to a selected colour from the palette*/
 .color-selected {
-  border: solid black 5px;
+  border: solid #000000 5px;
 }
 
 /*style applied when the colour is not selected*/
@@ -510,7 +587,8 @@ lower resolutions but has a maximum width at high resolutions*/
 /*style applied to most of the game to give a cloud like look to background of the text and any message boxes that appear*/
 .cloud-box {
   background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
+  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
+          box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
   border-radius: 25px;
 }
 
@@ -524,7 +602,9 @@ lower resolutions but has a maximum width at high resolutions*/
 .save-score-box {
   width: 30%;
   margin-top: 20px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
 }
 
@@ -743,7 +823,9 @@ lower resolutions but has a maximum width at high resolutions*/
   }
 
   .position-one-game {
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 
   #view-timer {
@@ -762,7 +844,9 @@ lower resolutions but has a maximum width at high resolutions*/
   }
 
   .position-one-message {
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 
   .messages-box,
