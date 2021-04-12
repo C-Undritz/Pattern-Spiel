@@ -153,7 +153,6 @@ There are five positions in total (however position-zero is not styled here) ---
 }
 
 /*------------------- Fonts & Text styles ------------------------*/
-
 h1 {
   font-family: 'Ranchers', serif;
   color: #666666;
@@ -167,7 +166,7 @@ h4 {
   color: #666666;
 }
 
-/*positions and styles the landing page title*/
+/*positions and styles the menu landing page title*/
 #title h1 { 
   font-size: 10em;
   text-shadow: 0 0 50px #ffffff, 0 0 50px #ffffff;
@@ -206,22 +205,19 @@ h4 {
   margin-bottom: 2rem;
 }
 
-/*class for styling text and letters red*/
+/*class for styling text and letters red, green, blue and yellow*/
 .text-red { 
   color: #ff0000;
 }
 
-/*class for styling text and letters green*/
 .text-green { 
   color: #008000;
 }
 
-/*class for styling text and letters blue*/
 .text-blue { 
   color: #0000ff;
 }
 
-/*class for styling text and letters yellow*/
 .text-yellow { 
   color: #ffff00;
 }
@@ -252,7 +248,6 @@ h4 {
 }
 
 /*------------------- Modal styles ------------------------*/
-
 .modal-content {
   background: url("../images/clouds-background.png") top right;
   background-size: 150%;
@@ -271,7 +266,6 @@ h4 {
 }
 
 /*------------------- button styles ------------------------*/
-
 /*site wide styles for the buttons*/
 .btn {
   font-weight: 400;
@@ -321,7 +315,7 @@ h4 {
   color: #808080;
 }
 
-/*positions the 'go' button in game (that displayed instead of view timer if chosen) so that it does not overlap with the grid*/
+/*positions the 'go' button in game (displayed instead of view timer if chosen) so that it does not overlap with the grid*/
 #go-button {
   margin-bottom: 20px;
 }
@@ -357,6 +351,7 @@ h4 {
   transition: all 0.25s ease-in-out;
 }
 
+/*styles and positions the undo fontawesome icon within the button*/ 
 .fa-undo-alt {
   padding: 7px 0px 0px 1px;
 }
@@ -368,7 +363,6 @@ h4 {
 }
 
 /*------------------- contact page specific styles ------------------------*/
-
 #feedback-form { 
   margin: 10% 2%;
 }
@@ -394,7 +388,6 @@ h4 {
 }
 
 /*------------------- instructions page specific styles ------------------------*/
-
 .instructions-box {
   margin: 20px 0px;
   max-width: 1000px;
@@ -402,7 +395,6 @@ h4 {
   padding: 10px;
 }
 
-/*styles for the table shown in the difficulty guide section*/
 table, 
 th, 
 td {
@@ -412,10 +404,11 @@ td {
   margin-right: auto;
   text-align: center;
   margin-bottom: 20px;
+  font-family: 'Truculenta', serif;
+  color: #666666;
 }
 
 /*------------------- high scores page specific styles ------------------------*/
-
 .high-score-box {
   width: 100%;
   max-width: 300px;
@@ -431,7 +424,6 @@ li.high-score {
 }
 
 /*------------------- Grid styles (function generateGrid()) ------------------------*/
-
 /*the max-width of '.grid' and width of '.square-row' work together to ensure that the grid is responsive at 
 lower resolutions but has a maximum width at high resolutions*/
 .grid {
@@ -442,7 +434,7 @@ lower resolutions but has a maximum width at high resolutions*/
   width: 100%;
 }
 
-/*the styling for a 3x3 grid*/
+/*the styling for a 3x3 grid squares*/
 .squares3 {
   width: 33%;
   padding-top: 33%;
@@ -450,7 +442,7 @@ lower resolutions but has a maximum width at high resolutions*/
   border: solid 1px black;
 }
 
-/*the styling for a 4x4 grid*/
+/*the styling for a 4x4 grid squares*/
 .squares4 {
   width: 24.5%;
   padding-top: 24.5%;
@@ -459,8 +451,7 @@ lower resolutions but has a maximum width at high resolutions*/
 }
 
 /*------------------- palette styles (generatePalette()) ------------------------*/
-
-/*position and styles for the white bckground for the palette*/ 
+/*position and styles for the white background for the palette*/ 
 #palette-area {
   border-radius: 25px;
   background-color: #ffffff;
@@ -516,7 +507,6 @@ lower resolutions but has a maximum width at high resolutions*/
 }
 
 /*------------------ within game message styles -------------------------*/
-
 /*style applied to most of the game to give a cloud like look to background of the text and any message boxes that appear*/
 .cloud-box {
   background-color: rgba(255, 255, 255, 0.6);
@@ -559,7 +549,7 @@ lower resolutions but has a maximum width at high resolutions*/
 /*---------------------------- MEDIA QUERIES------------------------------*/
 @media screen and (max-width: 1400px) {
   .grid {
-    max-width: 465px; /*reduces max width of grid slightly to accomodate other elements of the game at lower resolutions*/
+    max-width: 465px; /*reduces max width of grid slightly to accomodate other elements of the game screen at lower resolutions*/
   }
 }
 
@@ -569,11 +559,11 @@ lower resolutions but has a maximum width at high resolutions*/
   }
 
   .position-one-game {
-    height: 11vh; /*reduction is space for the mobile buttons to show above during the game*/
+    height: 11vh; /*reduction in space for the mobile buttons to show above during the game*/
   }
 
   .position-one-message {
-    height: 13vh; /*reduction is space for the mobile buttons to show above during the end of round/game screen*/
+    height: 13vh; /*reduction in space for the mobile buttons to show above during the end of round/game screen*/
   }
 
   .messages-box,
@@ -750,8 +740,6 @@ lower resolutions but has a maximum width at high resolutions*/
   .fab {
     font-size: 20px;
     margin: 5px 0px 0px 1px;
-    color: #F0F1EB;
-    transition: all 0.25s ease-in-out;
   }
 
   .position-one-game {
