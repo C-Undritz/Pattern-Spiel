@@ -583,14 +583,15 @@ lower resolutions but has a maximum width at high resolutions*/
 }
 
 @media screen and (max-width: 780px) {
+  .btn:hover {
+    width: 170px; /*removes button hover at tablet and mobile resolutions so that no change in buttons when tapped*/
+  }
+
+  .u-btn:hover,
   #contact-button:hover,
   #facebook-button:hover,
   #instagram-button:hover {
     width: 40px; /*removes button hover at tablet and mobile resolutions so that no change in buttons when tapped*/
-  }
-
-  .btn:hover {
-    width: 170px; /*removes button hover at tablet and mobile resolutions so that no change in buttons when tapped*/
   }
   
   .position-two-game {
@@ -720,6 +721,10 @@ lower resolutions but has a maximum width at high resolutions*/
     font-size: 1.25rem;
   }
 
+  .u-btn {
+    width: 32px;
+  }
+
   .btn:hover {
     width: 137px; /*removes button hover at this mobile resolutions so that no change in buttons when tapped*/
   }
@@ -731,6 +736,7 @@ lower resolutions but has a maximum width at high resolutions*/
     width: 33px;
   }
 
+  .u-btn:hover,
   #contact-button:hover,
   #facebook-button:hover,
   #instagram-button:hover {
