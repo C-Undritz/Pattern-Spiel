@@ -595,11 +595,15 @@ lower resolutions but has a maximum width at high resolutions*/
   }
   
   .position-two-game {
-    height: 55vh;
+    height: 50vh;
   }
 
   .position-three-game {
     height: 25vh;
+  }
+
+  .position-three-message {
+    height: 30vh;
   }
 
   #palette-red,
