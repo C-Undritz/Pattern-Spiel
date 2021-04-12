@@ -290,6 +290,11 @@ h4 {
   transition: all 0.15s ease-in-out;
 }
 
+/*required style change for the undo button on the menu screens*/
+.u-btn {
+  width: 40px;
+}
+
 /*styles for the red, green, blue and yellow buttons*/
 .btn-red {
   background-color: #ff0000;
@@ -336,6 +341,7 @@ h4 {
   color: white;
 }
 
+.u-btn:hover,
 #contact-button:hover,
 #facebook-button:hover,
 #instagram-button:hover {
@@ -349,6 +355,10 @@ h4 {
   margin: 7px 0px 0px 1px;
   color: #F0F1EB;
   transition: all 0.25s ease-in-out;
+}
+
+.fa-undo-alt {
+  padding: 7px 0px 0px 1px;
 }
 
 /*styles and positions the envelope fontawesome icon within the button*/ 
