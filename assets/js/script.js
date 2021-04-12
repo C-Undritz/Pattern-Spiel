@@ -103,12 +103,12 @@ function selectDifficulty() {
 
   //each button has an "onclick" attribute that calls the required function with an associated parameter where required.
   let difficultySelectionButtons = `
-  <button class="btn btn-blue" onclick="setDifficultyVariables(1)">Easy</button>
-  <button class="btn btn-yellow" onclick="setDifficultyVariables(2)">Medium</button>
-  <button class="btn btn-red" onclick="setDifficultyVariables(3)">Hard</button>
-  <button class="btn btn-green" onclick="setDifficultyVariables(4)">Very Hard</button>
+  <button class="btn btn-yellow" onclick="setDifficultyVariables(1)">Easy</button>
+  <button class="btn btn-red" onclick="setDifficultyVariables(2)">Medium</button>
+  <button class="btn btn-green" onclick="setDifficultyVariables(3)">Hard</button>
+  <button class="btn btn-blue" onclick="setDifficultyVariables(4)">Very Hard</button>
   <button class="btn btn-yellow" onclick="gridSizeSelection()">Custom game</button>
-  <button class="btn btn-red" onclick="mainMenu(false)">return</button>
+  <button class="btn u-btn btn-red" onclick="mainMenu(false)"><i class="fas fa-undo-alt"></i></button>
   `;
 
   rowTwo.innerHTML = selectDifficultyText; //sets the menu guide text to position-two row.
@@ -158,7 +158,7 @@ function gridSizeSelection() {
   let optionButtons = `
     <button class="btn btn-green" onclick="colourNumberSelection(3)">3 x 3 grid</button>
     <button class="btn btn-blue" onclick="colourNumberSelection(4)">4 x 4 grid</button>
-    <button class="btn btn-yellow" onclick="selectDifficulty()">return</button>
+    <button class="btn u-btn btn-yellow" onclick="selectDifficulty()"><i class="fas fa-undo-alt"></i></button>
     `;
 
   rowTwo.innerHTML = selectOptionsText; //sets the menu guide text to position-two row.
@@ -179,7 +179,7 @@ function colourNumberSelection(gridSelection) {
     <button class="btn btn-red" onclick="viewTimerSelection(4)">Up to 4 colours</button>
     <button class="btn btn-green" onclick="viewTimerSelection(5)">Up to 5 colours</button>
     <button class="btn btn-blue" onclick="viewTimerSelection(6)">Up to 6 colours</button>
-    <button class="btn btn-yellow" onclick="gridSizeSelection()">return</button>
+    <button class="btn u-btn btn-yellow" onclick="gridSizeSelection()"><i class="fas fa-undo-alt"></i></button>
     `;
 
   rowTwo.innerHTML = selectOptionsText; //sets the menu guide text to position-two row.
@@ -201,7 +201,7 @@ function viewTimerSelection(colourSelection) {
     <button class="btn btn-green" onclick="playGame(5, false)">5 Seconds</button>
     <button class="btn btn-blue" onclick="playGame(10, false)">10 seconds</button>
     <button class="btn btn-yellow" onclick="playGame(15, false)">15 seconds</button>
-    <button class="btn btn-red" onclick="colourNumberSelection(gridSize)">return</button>
+    <button class="btn u-btn btn-red" onclick="colourNumberSelection(gridSize)"><i class="fas fa-undo-alt"></i></button>
     `;
 
   rowTwo.innerHTML = selectOptionsText; //sets the menu guide text to position-two row.
@@ -227,8 +227,8 @@ function playGame(viewTimerSelection, gameChoice) {
     //Play Game button calls the next function that generates the game area.
     let optionButtons = `
       <button class="btn btn-green" onclick="generateGameArea(true)">Play Game!</button>
-      <button class="btn btn-blue" onclick="selectDifficulty()">return</button>
-      <button class="btn btn-yellow" onclick="mainMenu(false)">Main menu</button>
+      <button class="btn btn-blue" onclick="mainMenu(false)">Main menu</button>
+      <button class="btn u-btn btn-yellow" onclick="selectDifficulty()"><i class="fas fa-undo-alt"></i></button>
       `;
     rowTwo.innerHTML = selectOptionsText; //sets the menu guide text to position-two row.
     rowThree.innerHTML = optionButtons; //sets the buttons to position-three row.
@@ -237,8 +237,8 @@ function playGame(viewTimerSelection, gameChoice) {
     //Play Game button calls the next function that generates the game area.
     let optionButtons = `
       <button class="btn btn-green" onclick="generateGameArea(true)">Play Game!</button>
-      <button class="btn btn-blue" onclick="viewTimerSelection(colourPalette)">return</button>
-      <button class="btn btn-yellow" onclick="mainMenu(false)">Main menu</button>
+      <button class="btn btn-blue" onclick="mainMenu(false)">Main menu</button>
+      <button class="btn u-btn btn-yellow" onclick="viewTimerSelection(colourPalette)"><i class="fas fa-undo-alt"></i></button>
       `;
     rowTwo.innerHTML = selectOptionsText; //sets the menu guide text to position-two row.
     rowThree.innerHTML = optionButtons; //sets the buttons to position-three row.
@@ -823,7 +823,7 @@ function gameStatus() {
   displayResultsModal.appendChild(modalRoundScoreBox);
 
   //Opens up the end of round message box for player to trigger next round or to notify end of current game.
-  rowThree.innerHTML = "";
+  //rowThree.innerHTML = "";------------------------------------------------------------------------------------------------**********
 
   //----- End of round messages. -----//
   if (gameRound < 6) { //the following will display if the game round is less than 6 so player is therefore between rounds.
@@ -859,7 +859,7 @@ function gameStatus() {
               <h2>Your time: ${minutes}m ${seconds}.${milliseconds}s</h2>
               <h2>You matched ${totalMatched}/5</h2>
               <div class="d-flex flex-row">
-                <button class="btn btn-red" onclick="displayHighscore()">Continue</button>
+                <button class="btn btn-red" onclick="displayHighScore()">Continue</button>
               </div>
           </div>
           `;
@@ -1044,7 +1044,8 @@ function saveHighScore(event) {
 }
 
 /*
-sets up the necessary variables and elements should the player chose 'play again' from the 'end of game' messages.
+sets up the necessary variables and elements should the player chose 'play again' from the 'end of game' messages. This will start a new game with the same settings from 
+the previous game.
 */
 function playAgain() {
   let scoreColumn = document.getElementById("score-column");
