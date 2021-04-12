@@ -58,7 +58,7 @@ The site will offer a single style of a memory pattern matching game that offers
 2.	being simple to use; effectively this is a few pages with the interactive elements presented only when they need to be for ease of navigation.
 
 ## Functional Requirements.
-1.	Responsive design; assumption is that most users will browse through to the site from a mobile or tablet, therefore Bootstrap grid/CSS grid was used to ensure that the website is responsive.
+1.	Responsive design; assumption is that most users will browse through to the site from a mobile or tablet.
 3.	Link to main menu from button positioned ?
 4.	A feedback function/form that will allow the sending of feedback to an existing email using JSMail
 5.	Clear and obvious links to social media platforms
@@ -152,7 +152,6 @@ These colours are reflected in the design for the rest of the site being used fo
 # Fonts
 Fonts chosen:
 * For the title: [Ranchers](https://fonts.google.com/specimen/Ranchers?preview.text=Pattern%20Spielen!&preview.text_type=custom#standard-styles)
-* For the paragraphs and Headings: [Roboto](https://fonts.google.com/specimen/Roboto)
 * For the paragraphs and Headings: [Truculenta](https://fonts.google.com/specimen/Truculenta?preview.text_type=custom)
 
 ---
@@ -160,25 +159,16 @@ Fonts chosen:
 * HTML5
 * CSS3
 * JavaScript 
-* JQuery
 * Bootstrap
-* CSS Grid
 * Gitpod
 * GitHub
 * GoogleFonts
 * Fontawesome
 * Balsamiq
+* Adobe Photoshop
 
-Bootstrap technology used:?
-* Container
-* Grid
-* Buttons
-* Card
-* Carousel
-* Modal
-* Navbar
-* Flex
-* Spacing
+## Javascript Logic flow diagram
+* [Current version (1.5)](assets/readme/PatternSpiel-Logic_v1.5.pdf)
 
 ---
 ># **TESTING**
@@ -254,7 +244,10 @@ two (or more) times using JavaScript" (https://stackoverflow.com/questions/62449
 ---
 # Images and Content
 ## Images:
-* All images used where created by Christopher Undritz for this project.
+* All images used were created by Christopher Undritz for this project.
+
+## Sound:
+* Sound effects used were royalty free and downloaded from: https://mixkit.co/free-sound-effects/
 
 ## Content:
 
