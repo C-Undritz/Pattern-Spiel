@@ -1,19 +1,22 @@
+//assigns variables to HTML <ol> elements in highscores.html where 'Easy', 'Medium'. 'Hard' and 'Very hard' difficulty high scores to be displayed.
 const highScoresEasyList = document.getElementById('highScoresEasy');
 const highScoresMediumList = document.getElementById('highScoresMedium');
 const highScoresHardList = document.getElementById('highScoresHard');
 const highScoresVeryHardList = document.getElementById('highScoresVeryHard');
 
-const highScoresEasy = JSON.parse(localStorage.getItem("highScores-Easy")) || [];
-const highScoresMedium = JSON.parse(localStorage.getItem("highScores-Medium")) || [];
-const highScoresHard = JSON.parse(localStorage.getItem("highScores-Hard")) || [];
+//assigns variables to 'Easy', 'Medium', 'Hard' and 'Very hard' highscores objects from local storage or an empty array if nothing returned.
+const highScoresEasy = JSON.parse(localStorage.getItem("highScores-Easy")) || []; 
+const highScoresMedium = JSON.parse(localStorage.getItem("highScores-Medium")) || []; 
+const highScoresHard = JSON.parse(localStorage.getItem("highScores-Hard")) || []; 
 const highScoresVeryHard = JSON.parse(localStorage.getItem("highScores-veryHard")) || [];
 
-//want to iterate through the high scores and for each score add an <li> to the un-ordered list.
+/*using map() method; interate through the high scores for each difficulty and for each item return an <li> element with player name and score which is 
+then set as the innerHTML of the <ol> for each difficulty*/ 
 highScoresEasyList.innerHTML = highScoresEasy
   .map(score => {
     return `<li class="high-score">${score.name} - ${score.score}</li>`;
   })
-  .join("");
+  .join(""); //joins all elements in the array created with map() method
 
 highScoresMediumList.innerHTML = highScoresMedium
   .map(score => {

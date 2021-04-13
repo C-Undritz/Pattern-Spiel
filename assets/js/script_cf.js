@@ -10,7 +10,8 @@ function redirect() {
 }
 
 /*
-below function is from the CI course material 'sending email using EmailJS'.
+below function is from the CI course material 'sending email using EmailJS'.  Links the values in the form to the EmailJS template and variables
+and defines 'success' and 'failed' response.
 */
 function sendMail(contactForm) {
   emailjs.send("service_00jneif", "template_Pattern-Spiel", {
@@ -20,12 +21,10 @@ function sendMail(contactForm) {
     })
     .then(
       function (response) {
-        console.log("Success", response);
-        alert("Message successfully sent.  We appreciate your feedback!")
+        alert("Message successfully sent.  We appreciate your feedback!");
       },
       function (error) {
-        console.log("Failed", error);
-        alert("Message not sent, please try again. if problem persists please check your network settings")
+        alert("Message not sent, please try again. if problem persists please check your network settings");
       }
     );
   return false; //blocks a new page from loading.
