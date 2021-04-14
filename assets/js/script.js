@@ -209,8 +209,8 @@ function viewTimerSelection(colourSelection) {
 /*
 Defines the last set of buttons that launch the game with the chosen options, allows user to go up level or go to the main menu.
 */
-function playGame(viewTimerSelection, gameChoice) {
-  viewTimerSelected = viewTimerSelection; //the argument passed to the function is the value for the view timer; value then assigned to global variable 'viewTimerSelected'.
+function playGame(viewTimerValue, gameChoice) {
+  viewTimerSelected = viewTimerValue; //the argument passed to the function is the value for the view timer; value then assigned to global variable 'viewTimerSelected'.
 
   gameRound = 1; //sets the game round to round one.
   totalMatched = 0; //sets total patterns matched to 0 upon a new game.
@@ -766,7 +766,7 @@ function gameStatus() {
     displayResult = "Loss";
   }
 
-  //----- determines the 'round score' which is a function of a point value award for a correct match and the time taken to achieve this. -----//
+  //----- determines the 'game score' which is a function of a point value award for a correct match and the time taken to achieve this across all 5 rounds. -----//
   let secondsString = seconds.toString();
   let millisecondsString = milliseconds.toString();
   let secondsTakenString = (secondsString + '.' + millisecondsString); //combines the seconds and milliseconds variables to give a complete value.
