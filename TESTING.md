@@ -1,20 +1,27 @@
-# Pattern Spielen (Pattern Play) - Testing document**
+# Pattern Spiel - Testing document
 
 [Associated Readme document](README.md)
 
 ---
 ># **RESPONSIVE DESIGN TESTING**
 
-Tested responsiveness of the features on each page using the following methods:
-* Google Chrome DevTools at resolutions:
+Some research detailed screen resolutions that are most popular today (see [here](https://kinsta.com/blog/responsive-web-design/#common-responsive-breakpoints) and [here](https://www.browserstack.com/guide/responsive-design-breakpoints)).  This information was used along with the required resolutions for [am-i-responsive](http://ami.responsivedesign.is/) to create determine 15 resolutions as a guide for media breakpoints and to test for responsive design. 
+
+Tested responsiveness of the menu screen and game was completed against these resolutions using Google Chrome DevTools. The resolutions tested were:
+
+    * 1920 x 1080
     * 1600 x 992
+    * 1536 x 864
+    * 1366 x 768
     * 1280 x 802
-    * 768 x 1024 (iPad)
-    * 414 x 736 (iPhone 6/7/8 plus)
+    * 768 x 1024
+    * 414 x 896
     * 411 x 731 (Pixel 2)
     * 411 x 823 (Pixel 2 XL)
     * 375 x 812 (iPhone X)
     * 375 x 667 (iPhone 6/7/8)
+    * 360 x 720
+    * 360 x 640
     * 320 x 568 (iPhone 5)
     * 320 x 480
 
@@ -24,230 +31,42 @@ The test sheet and results can be viewed from this link:
 * Also tested the live site on the following devices:
     * Huawei P smart 2019 smart phone
     * Samsung A12 smart phone
-    * Laptop at 1920 x 1080 resolution (scaled at 100%, 125% and 150%)
+    * Laptop at 1920 x 1080 resolution
     * Apple iPad 7th Generation (iOS v 14.2)
     * Amazon Fire HD 8 tablet
     * Apple iPhone 5 and iPhone 8
 ---
 ># **FUNCTIONALITY TESTING**
-## Logic
-The final game logic showing the flow through the functions is shown below.
-* [Current version (1.4)](assets/readme/PatternSpiel-Logic_v1.4.pdf)
-
-The following testing completed at resolutions using Google Chrome Devtools: 
-* 1920 x 1080 (desktop)
-* 768 x 1024 (iPad)
-* 320 x 568 (iPhone 5)
 
 The test sheet for the tests detailed below and results can be viewed from this link:
 [Functional Test results](assets/readme/PatternSpiel-FunctionalTestsv0.1.pdf)
 
----
-# Landing Page:
-## Display
-
-* Page fills the entire screen and no scroll bars shown; all interactive and display items fit onto the page.
-* Background image displayed full screen.
-* Pattern Spielen is displayed in large colourful letters on one line
-* 'Start' button is displayed centre and slightly larger than the 'How to play' button.
-* 'How to play' button is displayed below the 'Start button and is slight smaller.
-* Contact button is displayed at the bottom right of the screen.
-* Social media icons are displayed centre at the bottom of the page 
-* Content is relevant, consistent, free of spelling and grammatical errors.
-* Music plays and can be muted with a button displayed top right.
-
-### Desktop only:
-
-* button feedback animations occur when player hovers over them.
-* button feedback animations occur when player clicks them.
-
-### Mobile and tablet only:
-
-* Pattern Spielen is displayed on two lines.
-
-## Navigation
-
-- Clicking the 'Start' button will start the gameplay options displayed as buttons
-- Clicking the 'How to Play' button will open the 'How to Play' page.
-- Clicking the 'Contact' button will open the 'Contact' page.
-
----
-# How to Play page:
-## Display
-
-* Page fills the entire screen and no scroll bars shown; all interactive and display items fit onto the page.
-* Background image displayed full screen.
-* Clear heading at the top of the page
-* Instructions content is relevant, consistent, free of spelling and grammatical errors.
-* Social media icons are displayed centre at the bottom of the page 
-
-### Desktop only:
-
-* Main menu button feedback animation occurs when player hovers over it.
-* Main menu button feedback animation occurs when player clicks it.
-
-## Navigation
-
-- Clicking the 'Main menu' button will take the player to the landing page.
-
----
-# Contact us page:
-## Display
-
-* Page fills the entire screen and no scroll bars shown; all interactive and display items fit onto the page.
-* Background image displayed full screen.
-* Contact Us form displays centre.
-* ‘Name’, ‘Email’ and ‘Question’ fields present with user hint in each.
-* Submit button present at the bottom of the form.
-* All fields to be filled in to allow submission of form. Error message will display if field empty upon submission.
-* Email field will insist on '@' symbol use before submission allowed.
-* Upon submission, user feedback displayed confirming message sent.
-* 'Main menu' button displayed below the submit button.
-* Social media icons are displayed centre at the bottom of the page 
-* Content is relevant, consistent, free of spelling and grammatical errors.
-
-### Desktop only:
-
-* Each form field highlights when user mouse hover.
-* Each form field border changes upon user selection.
-* Submit button feedback animation occurs when player hovers over it.
-* Submit button feedback animation occurs when player clicks it.
-* Main menu button feedback animation occurs when player hovers over it.
-* Main menu button feedback animation occurs when player clicks it.
-
-## Navigation
-
-- Clicking the 'Main menu' button will take the player to the landing page.
-
----
-# Game:
-## Options
-
-* After clicking 'Start' on the Landing page, four buttons are displayed: 'easy', 'medium', 'hard', 'custom'
-* After clicking easy; an easy difficulty game is started with the following parameters: ????
-* After clicking medium; a medium difficulty game is started with the following parameters: ????
-* After clicking hard; a hard difficulty game is started with the following parameters: ????
-* After clicking custom, three 'grid size' options are displayed (3x3, 4x4, 5x5)
-* After selecting a grid size option and clicking the button, three colour options are displayed (3 colours, 4 colours, 5 colours)
-* After selecting a colour option and clicking the button, three view timer options are displayed (5 seconds, 10 seconds, 15 seconds)
-* After selecting a view timer option and clicking the button, four player timer options are displayed (No timer, 10 seconds, 20 seconds, 30 seconds)
-* After selecting a player timer option and clicking the button, a 'start' button is then displayed.  Clicking this starts the game by generating a random pattern on a grid as per the selected options.
-* Once the game is started, a 3x3 grid is displayed with 4 colours after selecting these options
-* Once the game is started, a 3x3 grid is displayed with 5 colours after selecting these options
-* Once the game is started, a 3x3 grid is displayed with 6 colours after selecting these options
-* Once the game is started, a 4x4 grid is displayed with 4 colours after selecting these options
-* Once the game is started, a 4x4 grid is displayed with 5 colours after selecting these options
-* Once the game is started, a 4x4 grid is displayed with 6 colours after selecting these options
-* Once the game is started, a 5x5 grid is displayed with 4 colours after selecting these options
-* Once the game is started, a 5x5 grid is displayed with 5 colours after selecting these options
-* Once the game is started, a 5x5 grid is displayed with 6 colours after selecting these options
-* On five separate occasions selecting various options, the view timer option '5 seconds' worked as expected once the game started (please detail the options selected each time)
-* On five separate occasions selecting various options, the view timer option '10 seconds' worked as expected once the game started (please detail the options selected each time)
-* On five separate occasions selecting various options, the view timer option '15 seconds' worked as expected once the game started (please detail the options selected each time)
-* On five separate occasions selecting various options, the player timer option '10 seconds' worked as expected once the game started (please detail the options selected each time)
-* On five separate occasions selecting various options, the player timer option '20 seconds' worked as expected once the game started (please detail the options selected each time)
-* On five separate occasions selecting various options, the player timer option '30 seconds' worked as expected once the game started (please detail the options selected each time)
-* On five separate occasions selecting various options, the player timer option 'No Timer' worked as expected once the game started (please detail the options selected each time)
-
-## Auto-generated pattern
-
-* After selecting difficulty 'easy',  a pattern is displayed in a 3x3 grid showing up to 4 colours and is displaying for  10 seconds.
-* After selecting difficulty 'medium',  a pattern is displayed in a 4x4 grid showing up to 4 colours and is displaying for  10 seconds.
-* After selecting difficulty 'hard',  a pattern is displayed in a 5x5 grid showing up to 4 colours and is displaying for  10 seconds.
-* A pattern is displayed in a 3x3 grid showing up 4 colours for the chosen time and when timer has finished the player is taken to a screen show a blank 3x3 grid with a palette showing 4 colours. Conduct three times for 5, 10, 15 seconds.
-* A pattern is displayed in a 3x3 grid showing up 5 colours for the chosen time and when timer has finished the player is taken to a screen show a blank 3x3 grid with a palette showing 5 colours Conduct three times for 5, 10, 15 seconds.
-* A pattern is displayed in a 3x3 grid showing up 6 colours for the chosen time and when timer has finished the player is taken to a screen show a blank 3x3 grid with a palette showing 6 colours Conduct three times for 5, 10, 15 seconds.
-* A pattern is displayed in a 4x4 grid showing up 4 colours for the chosen time and when timer has finished the player is taken to a screen show a blank 4x4 grid with a palette showing 4 colours Conduct three times for 5, 10, 15 seconds.
-* A pattern is displayed in a 4x4 grid showing up 5 colours for the chosen time and when timer has finished the player is taken to a screen show a blank 4x4 grid with a palette showing 5 colours Conduct three times for 5, 10, 15 seconds.
-* A pattern is displayed in a 4x4 grid showing up 6 colours for the chosen time and when timer has finished the player is taken to a screen show a blank 4x4 grid with a palette showing 6 colours Conduct three times for 5, 10, 15 seconds.
-* A pattern is displayed in a 5x5 grid showing up 4 colours for the chosen time and when timer has finished the player is taken to a screen show a blank 5x5 grid with a palette showing 4 colours Conduct three times for 5, 10, 15 seconds.
-* A pattern is displayed in a 5x5 grid showing up 5 colours for the chosen time and when timer has finished the player is taken to a screen show a blank 5x5 grid with a palette showing 5 colours Conduct three times for 5, 10, 15 seconds.
-* A pattern is displayed in a 5x5 grid showing up 6 colours for the chosen time and when timer has finished the player is taken to a screen show a blank 5x5 grid with a palette showing 6 colours Conduct three times for 5, 10, 15 seconds.
-
-## Player-completed pattern
-
-Once the Auto-generated pattern timer has reduced to 0, the following happens:
-
-1. Screen automatically changes to an empty grid that reflects the options chosen.  
-2. A colour palette is presented that reflects the options chosen.
-3. A timer starts that reflects the options chosen.
-
-Test the above for:
-
-### Difficulty levels:
-
-- Easy
-- Medium
-- Hard.
-
-### Custom game:
-
-| 3x3 grid, 4 colours, 10 second timer | 4x4 grid, 4 colours, 10 second timer | 5x5 grid, 4 colours, 10 second timer |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-|                                      |                                      |                                      |
-| 3x3 grid, 4 colours, 15 second timer | 4x4 grid, 4 colours, 15 second timer | 5x5 grid, 4 colours, 15 second timer |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-|                                      |                                      |                                      |
-| 3x3 grid, 4 colours, 20 second timer | 4x4 grid, 4 colours, 20 second timer | 5x5 grid, 4 colours, 20 second timer |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-|                                      |                                      |                                      |
-| 3x3 grid, 5 colours, 10 second timer | 4x4 grid, 5 colours, 10 second timer | 5x5 grid, 5 colours, 10 second timer |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-|                                      |                                      |                                      |
-| 3x3 grid, 5 colours, 15 second timer | 4x4 grid, 5 colours, 15 second timer | 5x5 grid, 5 colours, 15 second timer |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-|                                      |                                      |                                      |
-| 3x3 grid, 5 colours, 20 second timer | 4x4 grid, 5 colours, 20 second timer | 5x5 grid, 5 colours, 20 second timer |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-|                                      |                                      |                                      |
-| 3x3 grid, 6 colours, 10 second timer | 4x4 grid, 6 colours, 10 second timer | 5x5 grid, 6 colours, 10 second timer |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-|                                      |                                      |                                      |
-| 3x3 grid, 6 colours, 15 second timer | 4x4 grid, 6 colours, 15 second timer | 5x5 grid, 6 colours, 15 second timer |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-|                                      |                                      |                                      |
-| 3x3 grid, 6 colours, 20 second timer | 4x4 grid, 6 colours, 20 second timer | 5x5 grid, 6 colours, 20 second timer |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-|                                      |                                      |                                      |
-
-## Results
-
-For all above conditions (Player-completed pattern tests) test the below:
-
-* That a loss is recorded when:
-   1. timer runs out
-   2. player gets pattern wrong
-* That a win is recorded when:
-   1. the player gets the pattern right in the allotted time
-
-* When a loss is recorded:
-   1. a message appears to inform the player as such
-   2. a button is presented for the player to click to continue game.
-   3. the loss is recorded in the score board
-* When Win is recorded:
-   1. a message appears to inform the player as such
-   2. the player result (time taken) is displayed
-   3. a button is presented for the player to click to continue game.
-   4. the win is recorded in the score board
-
-* On the 10th and final round:
-    1. a win/loss is recorded as expected.
-    2. player is presented with two buttons: 'view score' and 'main menu'.
-    3. upon clicking 'view score' the score table is shown.
-    4. upon clicking 'main menu' the landing page is shown again.
 
 ---
 ># **QUALITY CHECKS**
 # Approach
 ## CSS style sheet:
-* [Autoprefixer](https://autoprefixer.github.io/)
-* [W3C CSS validation](https://jigsaw.w3.org/css-validator/)
+The following quality checks were completed on the css style sheet (style.css):
+* Manual review on comments against code to ensure relevancy.
+* Manual review to ensure all quoted-out code was removed.
+* Manual check of the spacing between code lines.
+* Code run through [Autoprefixer](https://autoprefixer.github.io/) to ensure compatibility across browsers.
+* Code checked on [W3C CSS validation](https://jigsaw.w3.org/css-validator/) using direct input.
+
 ## HTML:
-* [W3C Markup Validation](https://validator.w3.org/)
+The following quality checks were completed on each of the four HTML files:
+* Manual review on comments against code to ensure relevancy.
+* Manual review to ensure all quoted-out code was removed.
+* Manual check of the spacing between code lines.
+* Code checked on [W3C Markup Validation](https://validator.w3.org/) using direct input.
 
 ## JavaScript:
-
-* [JSLint](https://jslint.com/)
+The following quality checks were completed on each of the three Javascript files:
+* Manual review on comments against code to ensure relevancy.
+* Manual review to ensure all quoted-out code was removed.
+* Manual check to ensure that all console.log entries were removed.
+* Manual check of the spacing between code lines.
+* Code checked on [JSHint](https://jshint.com/) using direct input.  Note that '//jshint esversion: 6' was entered at the top of the code window prior to pasting in JS code. This ensures that the feedback received from JSHint takes into account that the JS code uses ECMAScript 6 specific syntax.
 
 
 ## Website performance:
@@ -260,10 +79,8 @@ For all above conditions (Player-completed pattern tests) test the below:
 ---
 # Results
 ## W3C CSS Validation:
-Tested the css style sheet through validation by direct input:
-
-* Errors: No errors found
-* Warnings: 78 reported and no action taken as these were all related to the vendor extensions added by running the css through Autoprefixer.  So no action was taken to remove these.
+* ### Errors: No errors found
+* ### Warnings: 78 reported and no action taken as these were all related to the vendor extensions added by running the css through Autoprefixer.  So no action was taken to remove these.
 <p>
 <a href="http://jigsaw.w3.org/css-validator/check/referer">
     <img style="border:0;width:88px;height:31px"
@@ -273,14 +90,44 @@ Tested the css style sheet through validation by direct input:
 </p>
 
 ## W3C Markup Validation:
-Tested each page through validation by direct input:
+* ### index.html: No errors or warnings to show.
+* ### instructions.html: No errors or warnings to show.
+* ### contact.html: No errors or warnings to show.
+* ### highscores.html: No errors or warnings to show.
 
-* index.html: No errors or warnings to show.
-* instructions.html: No errors or warnings to show.
-* contact.html: No errors or warnings to show.
-* highscores.html: No errors or warnings to show.
+## JS Hint:
+* ### script_hs.js: No feedback received.
+* ### script_cf.js: 
+    * One undefined variable - line 17: 'emailjs'.
+    * One unused variable - line 16: 'sendMail'.
 
-## JS Lint:
+        These are required for the EmailJS service to work and have been implemented as required.  Therefore no action taken to address this feedback.
+    
+* ### script.js: 
+    * #### Three warnings: All stated:
+        * 'Expected an assignment or function and instead saw an expression'. 
+    
+        This was for lines 778, 779 and 881 which are all instances, and the only instances, of the use ternary operators.  These were previously if-else statements but were changed to reduce the code.
+
+        Researching this, an article was found [here](http://linterrors.com/js/expected-an-assignment-or-function-call) that stated that *'this error is raised to highlight a piece of useless and unnecessary code. The code will work as expected but since a lone floating expression has no effect on anything there is no point in it being there at all'*.  It also explained that JSHint can be made to ignore this warning.  Therefore as these operators are needed, this warning was noted but no action taken.
+
+    * #### 11 unused variables.  These are:
+        * selectDifficulty
+        * setDifficultyVariables
+        * gridSizeSelection
+        * colourNumberSelection
+        * viewTimerSelection
+        * addColour
+        * checkCompletion
+        * patternCompareComputer
+        * displayHighScore
+        * saveHighScore
+        * playAgain
+
+        These are all functions and have been highlighted as these are the only functions are called by 'onclick' event attributes that are written in HTML within template literals within other functions in the same JS file.  There are no onclick events coded within the HTML files.
+
+        It is appreciated that the CI course material did state that event listeners should be used where ever possible to prevent code mixing and event listeners have been used in my code where it is appropriate.  However in these 11 instances it was considered that the onclick event attribute offered the more elegant solution.  Therefore no action taken to address these this time.
+
 
 ## Website Performance:
 
@@ -302,13 +149,68 @@ Subsequent website performance checks:
 ># **USER STORIES TESTING**
 #### The below details how the website meets the requirements of each user story. Features of each page that specifically meet these are described and shown in a red box on each screenshot.
 * *Be able to easily play the game on any device*
+    * Responsive design is employed across all pages to deliver a satisfying UX on mobile, tablet, laptop and large desktop PC displays. See screenshot in 'Responsive Design Testing' above.
+
 * *Have my memory skills challenged with a fun game*
-* *Have set skill levels so I can determine the level of challenge*
+    * the game asks the player to remember a random pattern which is shown for a limited time and then recreate it as fast as they can.  A simple and engaging game that uses bright primary colours where the fun comes from completing the pattern to get a match as fast as you can to get on the high score table.  Different set difficulties and a custom game feature will ensure that it continues to challenge.
+
+* *Have set difficulty levels so I can determine the level of challenge*
+    * There are four 'set'difficulty levels wherethe game parameters (grid size, colours and view timer) are configured in a such a way as to make the game more challenging as the difficulty increases.
+    
+    Easy Difficulty:
+    ![Screen grabs showing the game screens for an easy difficulty game](assets/readme/readme_easy_game_screengrabs.png)
+
+    Medium Difficulty:
+    ![Screen grabs showing the game screens for a medium difficulty game](assets/readme/readme_medium_game_screengrabs.png)
+
+    Hard Difficulty:
+    ![Screen grabs showing the game screens for a hard difficulty game](assets/readme/readme_hard_game_screengrabs.png)
+
+    Very Hard Difficulty:
+    ![Screen grabs showing the game screens for a very hard difficulty game](assets/readme/readme_veryhard_game_screengrabs.png)
+
 * *Customise the game options so I can set my own challenge*
+    * The game has the option to define a custom game where the player can choose what size grid (3x3 or 4x4), up to how many colours may appear (4, 5 or 6 colours) and the amount of time they can have to memorise the pattern (5, 10 or 15 seconds, or no timer at all).  End game scores are shown but, due to the variable nature of the custom options, are not saved.
+
+    Custom game - 3x3 grid, 15 second timer and up to 6 colours:
+    ![Screen grabs showing the game screens for a custom difficulty game](assets/readme/readme_custom_3grid_6colour_screengrabs.png)
+
+    Custom game - 4x4 grid, 10 second timer and up to 5 colours:
+    ![Screen grabs showing the game screens for a custom difficulty game](assets/readme/readme_custom_4grid_5colour_screengrabs.png)
+
+    Custom game - 3x3 grid, no timer and up to 4 colours:
+    ![Screen grabs showing the game screens for a custom difficulty game](assets/readme/readme_custom_3grid_notimer_screengrabs.png)
+
 * *Have a record/score to see how much I have improved so as to challenge myself and my peers.*
+    * during the game, the results column (or modal for tablet and smaller devices (accessed from the results button)) shows a win/loss and the time taken for each round. 
+    * A score is then shown at the end of a game and the opportunity to save this should it be high enough to warrant a place in the high score table for that diffculty level.  
+    * The high score tables are accessed from the 'High Scores' button in the main menu.
+
+    Game screens showing game round results in column and modal:
+    ![Game screens showing game round results in column and modal](assets/readme/readme_results_column-modal_screengrabs.png)
+
+    Game screens showing end game high score message:
+    ![Game screens showing end game high score message](assets/readme/readme_results_hs-message_screengrabs.png)
+
+    The high scores page:
+    ![The high scores page](assets/readme/readme_results_hs-page_screengrabs.png)
+
 * *Be able to easily navigate the game and site.*
+    * The game menu buttons are bright, obvious and have text clearly stating their purpose so that a user can get a game started within moments of entering the site.  
+    * There is an ever present 'main menu' within the game screens which will take user out of a game to the main menu.  
+    * Navigation through the game is a mixture of obvious prompt buttons and automation so that, whilst there is a how to play page, a user can quickly start playing without it.
+
 * *I want have clear instructions so I know how to play.*
+    * There is a 'How to play' page that is easily accessed from the button of the same name, below the 'Start' button on the main menu/landing page 
+
+    The How to Play page:
+    ![The How to Play page](assets/readme/readme_how-to-play_screengrabs.png)
+
 * *I want to be able to provide feedback/suggestions/issues to the developer.*
+    * There is a 'Contact Us' page that is easily accessed from the yellow button alongside the social media icons at the bottom of the main menu/landing page.
+
+    The Contact Us page:
+    ![The How to Play page](assets/readme/readme_contact-us_screengrabs.png)
 
 ---
 ># **PROBLEMS AND FIXES**
@@ -348,9 +250,16 @@ for each of these*
 So research provided the new css property 'aspect-ratio' and so the generateGrid function was updated along with the 
 css to create the grid using this.  Along with using 'max-width', this resulted in a more responsive grid.  However testing 
 revealed that the grid now did not work in Firefox (it worked in Edge, Chrome and Opera (did not have the opportunity to
-test Safari at that point)).  Therefore the aspect-ratio work around using css was used from w3schools.com (https://www.w3schools.com/howto/howto_css_aspect_ratio.asp).
+test Safari at that point)) due to this being a relatively new css property with a 64.96% usage at the time of writing ([caniuse.com page](https://caniuse.com/?search=aspect-ratio)).  
+* *Fix: The aspect-ratio work around using css was used from [w3schools.com](https://www.w3schools.com/howto/howto_css_aspect_ratio.asp).
 This meant that I needed to again define a separate css style for a 3x3 and 4x4 grid (using aspect-ratio this was not necessary) and also
-use the 'gridSize' variable in the class name for each square generated for the grid to target these styles.
+use the 'gridSize' variable in the class name for each square generated for the grid to target these styles.*
+
+### generateGrid function not working as expected following aspect-ratio change.
+* Following the change detailed above I had trouble getting the HTML for the grid to build correctly. 
+* *Fix: Eventually posted the issue on stackoverflow [here](https://stackoverflow.com/questions/66833813/building-html-using-loops-in-js) where the helpful community on there pointed out that one of my statements needed to be moved up a level into a loop.  This fixed this issue and the grid generates perfectly.*
+
+
 
 ### Dark mode on Samsung internet.
 * Testing on mobile devices revealed an issue with the display of the games colours when Samsung internet is in dark mode.
