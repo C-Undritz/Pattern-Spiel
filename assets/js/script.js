@@ -749,7 +749,8 @@ function gameStatus() {
       squaresMatched += 1;
     }
   }
-  resultSound(squaresMatched); 
+  resultSound(squaresMatched); //calls the resultSound function with squaresMatched argument so the correct sound plays to reflect the result.
+  finalScore(squaresMatched); //calls the finalScore function with the squaresMatched argument so the round score can be deteremined.
 
   //----- determines a win/loss messages by checking if the value of 'squaresMatched' is the same as the array length (9 or 16 depending on grid size chosen). -----//
   //'messageResult' is displayed in the end of round message
@@ -765,19 +766,6 @@ function gameStatus() {
     messageResult = "Opps! Not quite.";
     displayResult = "Loss";
   }
-
-  //----- determines the 'game score' which is a function of a point value award for a correct match and the time taken to achieve this across all 5 rounds. -----//
-  let secondsString = seconds.toString();
-  let millisecondsString = milliseconds.toString();
-  let secondsTakenString = (secondsString + '.' + millisecondsString); //combines the seconds and milliseconds variables to give a complete value.
-  let minuteScore = (minutes * 30); //assigns 30 points per minute used (these will be subtracted from the round score).
-  let secondsScoreString = (60 - secondsTakenString); //assigns a point value to the seconds taken = 60 seconds minus the time in seconds taken.
-  let roundScore; //variable for the score of the current round.
-  let matchScore; //variable for the score awarded for getting a pattern match.
-
-  (squaresMatched === userPattern.length) ? matchScore = 60: matchScore = 0; //awards 60 points if the pattern was matched and 0 points if not.
-  (matchScore === 60) ? roundScore = ((matchScore + secondsScoreString) - minuteScore): roundScore = 0; //awards a score for the round if there was a match and 0 points if not.
-  gameScore += roundScore; //the game score is all of the round scores added together.
 
   //----- Adds 'displayResult' and time taken in the round to the score column. -----//
   let displayResultsColumn = document.getElementById("score-column");
@@ -879,6 +867,29 @@ function resultSound(squaresMatched) {
   looseSound.src = "assets/sounds/lose.wav"; //sets the sound to play for a lose.
 
   (squaresMatched === (computerPattern.length)) ? winSound.play(): looseSound.play(); //plays sounds when the player makes a match or not.
+}
+
+/*
+Determines the 'game score' which is a function of a point value award for a correct match and the time taken to achieve this across all 5 rounds.
+*/
+function finalScore(squaresMatched) {
+  let secondsString = seconds.toString();
+  let millisecondsString = milliseconds.toString();
+  let secondsTakenString = (secondsString + '.' + millisecondsString); //combines the seconds and milliseconds variables to give a complete value.
+  let minuteScore = (minutes * 30); //assigns 30 points per minute used (these will be subtracted from the round score).
+  let secondsScoreString = (60 - secondsTakenString); //assigns a point value to the seconds taken = 60 seconds minus the time in seconds taken.
+  let roundScore; //variable for the score of the current round.
+  let matchScore; //variable for the score awarded for getting a pattern match.
+  
+  (squaresMatched === userPattern.length) ? matchScore = 60: matchScore = 0; //awards 60 points if the pattern was matched and 0 points if not.
+  (matchScore === 60) ? roundScore = ((matchScore + secondsScoreString) - minuteScore): roundScore = 0; //awards a score for the round if there was a match and 0 points if not.
+  gameScore += roundScore; //the game score is all of the round scores added together.
+
+  console.log("the score for minutes is " + minuteScore);
+  console.log("the score for time taken is " + secondsScoreString);
+  console.log("the current match score is " + matchScore);
+  console.log("the current round score is " + roundScore);
+  console.log("the game score is " + gameScore);
 }
 
 /*
