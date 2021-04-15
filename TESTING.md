@@ -25,16 +25,23 @@ Tested responsiveness of the menu screen and game was completed against these re
     * 320 x 568 (iPhone 5)
     * 320 x 480
 
+![Am I Responsive image showing the main menu across four devices of different screen sizes](assets/readme/am-i-responsive_main_menu.png)
+![Am I Responsive image showing in game a completed grid using four colours across four devices of different screen sizes](assets/readme/am-i-responsive_4colour.png)
+![Am I Responsive image showing in game a blank grid with a six colours palette across four devices of different screen sizes](assets/readme/am-i-responsive_6colour.png)
+![Am I Responsive image showing an end of round message across four devices of different screen sizes](assets/readme/am-i-responsive_roundwin.png)
+
 The test sheet and results can be viewed from this link:
 [Responsive Test results](assets/readme/PatternSpiel-ResponsiveTestsv0.1.pdf)
 
 * Also tested the live site on the following devices:
     * Huawei P smart 2019 smart phone
-    * Samsung A12 smart phone
+    * Samsung A12 smart phone 
+    * Samsung A21s smart phone
     * Laptop at 1920 x 1080 resolution
-    * Apple iPad 7th Generation (iOS v 14.2)
     * Amazon Fire HD 8 tablet
-    * Apple iPhone 5 and iPhone 8
+    * Apple iPhone 5
+    * Apple iPad 7th Generation (iOS v 14.2) 
+    * Apple iPhone 5 and iPhone 8 - iphone 5 done
 ---
 ># **FUNCTIONALITY TESTING**
 
@@ -131,6 +138,15 @@ The following quality checks were completed on each of the three Javascript file
 
 ## Website Performance:
 
+Site was tested on the following browsers:
+* Chrome
+* Opera
+* Edge
+* Firefox
+* Safari
+
+N.B: Internet Explorer was not tested as the site uses ES6 so it's not fully compatible with Internet Explorer builds. 
+
 Chrome Lighthouse score prior to code check and validation, and testing (responsive and functional):
 
 The following activities were then completed:
@@ -147,7 +163,8 @@ Subsequent website performance checks:
 
 ---
 ># **USER STORIES TESTING**
-#### The below details how the website meets the requirements of each user story. Features of each page that specifically meet these are described and shown in a red box on each screenshot.
+### The below details how the website meets the requirements of each user story. 
+
 * *Be able to easily play the game on any device*
     * Responsive design is employed across all pages to deliver a satisfying UX on mobile, tablet, laptop and large desktop PC displays. See screenshot in 'Responsive Design Testing' above.
 
@@ -259,8 +276,6 @@ use the 'gridSize' variable in the class name for each square generated for the 
 * Following the change detailed above I had trouble getting the HTML for the grid to build correctly. 
 * *Fix: Eventually posted the issue on stackoverflow [here](https://stackoverflow.com/questions/66833813/building-html-using-loops-in-js) where the helpful community on there pointed out that one of my statements needed to be moved up a level into a loop.  This fixed this issue and the grid generates perfectly.*
 
-
-
 ### Dark mode on Samsung internet.
 * Testing on mobile devices revealed an issue with the display of the games colours when Samsung internet is in dark mode.
 The screen grabs below shows the main menu in Samsung internet in light mode and then in dark mode.
@@ -268,3 +283,6 @@ The screen grabs below shows the main menu in Samsung internet in light mode and
 * The game looks fine in other browser dark modes.  It is documented [here](https://interaction.net.au/articles/samsung-internet-and-night-mode/) the issues with
 the dark mode on Samsung internet.  I was unable to implement the fixes recommended and so this is reported but not addressed.  At the time of writing
 according to caniuse.com, samsung internet has a global usage of 2.64% and many of these will unlikely be in dark mode.
+
+### Colourful game title.
+* Within the Javascript within the mainMenu function on line 67, there is one long line of HTML which is the game title on the menu screen.  The game title on the menu screen is styled so that each letter is coloured in one of the four primary colours.  To achieve this each letter was set between html 'span' tags with the class attribute for the colour the letter needed to be.  This resulted in one long line of html (see script.js, mainMenu function, line 67).  I tried to set each span tag on a separate line to make it neater however this increased the space between each letter and so it needed to be kept one line.  Also tried a loop using similar methods to that shown in [this](https://www.youtube.com/watch?v=sGJ5lTu-clY) video, but could not get that to work.  It is something that I will continue with (outside of the project code of course) as I think it could be made to work.  For now the unwealdy and unattractive 'span' line is what is in place. 
