@@ -122,22 +122,22 @@ sets the variables required for the pre-set difficulties.
 function setDifficultyVariables(difficulty) {
   difficultySelected = difficulty; //assigns the argument value for conditional requests later on in regards to display of messages and saving of scores.
   switch (difficulty) {
-    case 1:
+    case 1: //easy difficulty.
       gridSize = 3;
       colourPalette = 4;
       viewTimerSelected = 15;
       break;
-    case 2:
+    case 2: //median difficulty.
       gridSize = 3;
       colourPalette = 4;
       viewTimerSelected = 5;
       break;
-    case 3:
+    case 3: //hard difficulty.
       gridSize = 3;
       colourPalette = 5;
       viewTimerSelected = 5;
       break;
-    case 4:
+    case 4: //very hard difficulty.
       gridSize = 4;
       colourPalette = 4;
       viewTimerSelected = 15;
