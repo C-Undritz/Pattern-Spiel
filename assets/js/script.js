@@ -655,7 +655,7 @@ function addColour(identifier) {
     colourAddSound.currentTime = 0; //resets sound playtime to 0.
     colourAddSound.play(); //plays sounds when player clicks on a grid after selecting a colour.
   } else {
-    alert("you need to select a colour"); //show alert if user has not selected a colour.
+    alert("You need to select a colour"); //show alert if user has not selected a colour.
   }
 }
 
@@ -668,7 +668,7 @@ function checkCompletion() {
   userPatternArray(); //runs this function to get the current array so that the length can be checked.
 
   if (userPattern.length < (gridSize * gridSize)) {
-    alert("please fill in all squares");
+    alert("Please fill in all squares");
   } else {
     patternComparePlayer();
     gameStatus();
@@ -706,7 +706,7 @@ The following two functions run at the end of a round to allow the player to swi
 function patternComparePlayer() {
   let switchButton = `
     <div class="compare-box">
-      <h2>Compare results</h2>
+      <h2>View computer pattern</h2>
       <button class="btn btn-yellow" id="switch-button" onclick="patternCompareComputer()">Switch</button>
     </div>
   `;
@@ -721,7 +721,7 @@ function patternComparePlayer() {
 function patternCompareComputer() {
   let switchButton = `
     <div class="compare-box">
-      <h2>Compare results</h2>
+      <h2>View your pattern</h2>
       <button class="btn btn-yellow" id="switch-button" onclick="patternComparePlayer()">Switch</button>
     </div>
   `;
@@ -833,7 +833,7 @@ function gameStatus() {
           <h2>${messageResult}</h2>
           <h2>Your time: ${minutes}m ${seconds}.${milliseconds}s</h2>
           <h2>You matched ${totalMatched}/5</h2>
-          <div class="d-flex flex-row">
+          <div class="d-flex flex-row justify-content-center">
             <button class="btn btn-red" onclick="displayHighScore()">Continue</button>
           </div>
         </div>
@@ -1028,6 +1028,7 @@ function saveHighScore(event) {
       break;
   }
   saveScoreBtn.disabled = true; //disables the save game button so score cannot be saved twice.
+  alert("High score saved"); //displays message to user to confirm save.
 }
 
 /*
