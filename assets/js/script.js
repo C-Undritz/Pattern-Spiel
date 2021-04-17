@@ -943,8 +943,8 @@ function displayHighScore() {
       <div class="save-score-box cloud-box d-flex flex-column">
         <h1>New high score!</h1>
         <h1>${finalScore}</h1>
-        <h2>Enter name to save score</h2>
-        <form class="d-flex flex-column align-items-center">
+        <h2 id="highScoreText">Enter name to save score</h2>
+        <form id="highScoreForm" class="d-flex flex-column align-items-center">
           <input type="text" name="playername" id="playername" placeholder="playername"/>
           <button type="submit" class="btn btn-green" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>Save</button>
         </form>
@@ -1027,8 +1027,10 @@ function saveHighScore(event) {
       localStorage.setItem('highScores-veryHard', JSON.stringify(highScoresVeryHard));
       break;
   }
-  saveScoreBtn.disabled = true; //disables the save game button so score cannot be saved twice.
-  alert("High score saved"); //displays message to user to confirm save.
+  let highScoreForm = document.getElementById('highScoreForm');
+  highScoreForm.innerHTML = ""; //removes the player name form element and save button so score cannot be saved twice.
+  let highScoreText = document.getElementById('highScoreText');
+  highScoreText.innerHTML = "Score saved." //replaces text message so that user know score is saved.
 }
 
 /*
