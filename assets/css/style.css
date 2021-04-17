@@ -25,11 +25,6 @@ body {
   background: url("../images/clouds-background.png") top right;
 }
 
-/*style class to ensure that within the game, all elements are to be kept within the view height of the screen of the device so no scrolling is required whilst playing*/
-.single-screen {
-  height: 100vh;
-}
-
 /*---- These are the settings for <div> elements that are in index.html that the main menu and game components will be set within.  
 There are five positions in total (however position-zero is not styled here) ----*/
 
@@ -286,7 +281,7 @@ h4 {
 }
 
 .text-yellow { 
-  color: #ffff00;
+  color: #FFF424;
 }
 
 /*styles the <h2> text above the buttons on the main menu page*/
@@ -379,7 +374,7 @@ h4 {
 }
 
 .btn-yellow {
-  background-color: #ffff00;
+  background-color: #FFF424;
   color: #808080;
 }
 
@@ -504,7 +499,7 @@ li.high-score {
 /*the max-width of '.grid' and width of '.square-row' work together to ensure that the grid is responsive at 
 lower resolutions but has a maximum width at high resolutions*/
 .grid {
-  max-width: 550px;
+  max-width: 545px;
 }
 
 .square-row {
@@ -562,7 +557,7 @@ lower resolutions but has a maximum width at high resolutions*/
 }
 
 #palette-yellow {
-  background-color: #ffff00;
+  background-color: #FFF424;
 }
 
 #palette-purple {
@@ -586,9 +581,9 @@ lower resolutions but has a maximum width at high resolutions*/
 /*------------------ within game message styles -------------------------*/
 /*style applied to most of the game to give a cloud like look to background of the text and any message boxes that appear*/
 .cloud-box {
-  background-color: rgba(255, 255, 255, 0.6);
-  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
-          box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.8);
+          box-shadow: 0 0 50px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.8);
   border-radius: 25px;
 }
 
@@ -705,7 +700,7 @@ lower resolutions but has a maximum width at high resolutions*/
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 545px) {
   #title h1 {
     font-size: 8em;
   }
@@ -729,6 +724,10 @@ lower resolutions but has a maximum width at high resolutions*/
   .messages-box,
   .save-score-box {
     width: 80%;
+  }
+
+  .grid {
+    max-width: 375px; /*reduces max width of grid slightly to accomodate other elements of the game screen at lower resolutions*/
   }
 }
 
