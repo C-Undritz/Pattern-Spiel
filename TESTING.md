@@ -15,6 +15,7 @@ Tested responsiveness of the menu screen and game was completed against these re
     * 1366 x 768
     * 1280 x 802
     * 768 x 1024
+    * 540 x 720 (Surface Duo)
     * 414 x 896
     * 411 x 731 (Pixel 2)
     * 411 x 823 (Pixel 2 XL)
@@ -275,6 +276,16 @@ use the 'gridSize' variable in the class name for each square generated for the 
 ### generateGrid function not working as expected following aspect-ratio change.
 * Following the change detailed above I had trouble getting the HTML for the grid to build correctly. 
 * *Fix: Eventually posted the issue on stackoverflow [here](https://stackoverflow.com/questions/66833813/building-html-using-loops-in-js) where the helpful community on there pointed out that one of my statements needed to be moved up a level into a loop.  This fixed this issue and the grid generates perfectly.*
+
+### Multiple saves of a single score.
+* The save score interface was adapted from a YouTube tutorial as detailed in the README.  In this, to prevent a score being saved twice, the save score button was disabled once the player had entered their name.  However, if the player then deleted/added/changed even one character of their name, the save button was re-enabled and so the same score could be saved again.  Additionally if the player entered their name and hit 'enter' instead of clicking on the save button, the score was saved, but the save button not disabled.
+* *Fix: to prevent this from occuring, it was decided that the form element and button would be removed from the message following player name entry and clicking save.  They are then replaced with the message stating 'Score saved'.  This also had the benefit of when the player enters their name and hits 'enter' the form element and button are still removed and replaced with the message.*
+
+---
+># **REMAINING ISSUES**
+>
+### Screen resolution and scaling.
+* The game works across a number of screen sizes as the testing completed shows.  However on desktop and laptop screens it was noted that elements of the games layout overlapped if the scale was high.  An early requirement of the game was for all elements to be presented on one screen so at all points, everything the player needs is visible.  This has been achieved at the resolutions tested even though there are quite a few elements to the games interface that change and swap as a game progresses.  However it was found that if a user was zoomed in (had a scale of over 100%) then elements of the games interface started to overlap.  This does happen on other web games however it does seem that my game is sensitive to it. No fix has been put in place for this deployment, but it is something that can be looked into for the future. 
 
 ### Dark mode on Samsung internet.
 * Testing on mobile devices revealed an issue with the display of the games colours when Samsung internet is in dark mode.
