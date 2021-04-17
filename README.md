@@ -65,12 +65,13 @@ The product is a style of a memory pattern matching game that offers varying lev
 2.	being simple to use; effectively this is a few pages with the interactive elements presented only when they need to be for ease of navigation.
 
 ## Functional Requirements.
-1.	Responsive design; assumption is that most users will browse through to the site from a mobile or tablet.
-2.  Automation as much a possible for ease of play; the game should drive itself, or if the player has to click something, options are obvious and focused at that time.
-2.	A link to the main menu from button shown at all times so that the user is not stuck in a game and either has to complete it or user browser functions to exit.
-3.	A feedback function/form that will allow the sending of feedback to an existing email using JSMail
-4.	Clear and obvious links to social media platforms
-6.	Feedback animations and sounds to provide user with clear interaction cues.
+1.	All game screens fit onto one page; no scrolling required
+2.  Responsive design; assumption is that most users will browse through to the site from a mobile or tablet.
+3.  Automation as much a possible for ease of play; the game should drive itself, or if the player has to click something, options are obvious and focused at that time.
+4.	A link to the main menu from button shown at all times so that the user is not stuck in a game and either has to complete it or user browser functions to exit.
+5.	A feedback function/form that will allow the sending of feedback to an existing email using JSMail
+6.	Clear and obvious links to social media platforms
+7.	Feedback animations and sounds to provide user with clear interaction cues.
 
 ---
 ># **STRUCTURE**
@@ -133,7 +134,7 @@ The colours selected for the game are the bright primary colours
 - red (255,0,0, #ff0000)
 - green (0,128,0 #008000)
 - blue (0,0,255 #0000ff)
-- yellow (255,255,0 #ffff00)
+- yellow (255,244,36 ##FFF424)
 - purple (128,0,128 #800080)
 - orange (255,165,0 #ffa500)
 
@@ -264,6 +265,8 @@ Please see [here](https://docs.github.com/en/free-pro-team@latest/github/creatin
 ---
 ># **MODIFYING THE GAME**
 ## Game Difficulty.
+Difficulty is subjective and the set difficulty settings have changed throughout the course of development.  Fortuanately the set difficulty settings are very easy to change and below describes how.
+
 The difficulty offered by the set difficulties is described in the how to play page and each is function of the grid size, colour number and view timer.  These are set at certain levels for the set difficulties within the JavaScript with number values that can be changed easily to adjust the challenge offered at each of the difficulty levels.
 
 Shown below: This can be done within the 'script.js' file by changing the value assigned to the variables in case statements within the function 'setDifficultyVariables'.
