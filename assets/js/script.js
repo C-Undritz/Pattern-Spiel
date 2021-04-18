@@ -972,7 +972,6 @@ Saves highscores as Key/Value pairs in the correct object in local storage based
 function saveHighScore(event) {
   event.preventDefault(); //prevents default action of form button.
   let playername = document.getElementById('playername'); //gets the value the user have entered to save score against
-  let saveScoreBtn = document.getElementById('saveScoreBtn');
 
   //sets the object to add score to depending on difficulty selected.
   switch (difficultySelected) {
@@ -1024,7 +1023,7 @@ function saveHighScore(event) {
   let highScoreForm = document.getElementById('highScoreForm');
   highScoreForm.innerHTML = ""; //removes the player name form element and save button so score cannot be saved twice.
   let highScoreText = document.getElementById('highScoreText');
-  highScoreText.innerHTML = "Score saved." //replaces text message so that user know score is saved.
+  highScoreText.innerHTML = "Score saved."; //replaces text message so that user know score is saved.
 }
 
 /*
