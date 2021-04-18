@@ -884,12 +884,6 @@ function finalScore(squaresMatched) {
   (squaresMatched === userPattern.length) ? matchScore = 60: matchScore = 0; //awards 60 points if the pattern was matched and 0 points if not.
   (matchScore === 60) ? roundScore = ((matchScore + secondsScoreString) - minuteScore): roundScore = 0; //awards a score for the round if there was a match and 0 points if not.
   gameScore += roundScore; //the game score is all of the round scores added together.
-
-  console.log("the score for minutes is " + minuteScore);
-  console.log("the score for time taken is " + secondsScoreString);
-  console.log("the current match score is " + matchScore);
-  console.log("the current round score is " + roundScore);
-  console.log("the game score is " + gameScore);
 }
 
 /*
