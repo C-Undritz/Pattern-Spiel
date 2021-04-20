@@ -536,7 +536,12 @@ function pickColour() {
   let orange = document.getElementById("palette-orange");
 
   colourPickSound = document.createElement("audio");
-  colourPickSound.src = "assets/sounds/pickColour.wav"; //sets the colour pick sound.
+  colourPickSound.src = "assets/sounds/pickcolour.wav"; //sets the colour pick sound.
+
+  //Adding sound effects code credit: MDN Web Docs 'Audio for Web games": 
+  //(https://developer.mozilla.org/en-US/docs/Games/Techniques/Audio_for_Web_Games).
+  //Code credit for having the sound effects cease playing early:
+  //(https://stackoverflow.com/questions/3566967/how-to-stop-audio-played-by-audio-tag-of-html5).
 
   red.addEventListener('click', function () { //event listener set up for this colour elememnt on the palette.
     colourPickSound.pause(); //pauses sound if it is already playing.
@@ -647,7 +652,7 @@ function addColour(identifier) {
   let selectedSquare = document.getElementById('square' + identifier);
 
   colourAddSound = document.createElement("audio");
-  colourAddSound.src = "assets/sounds/addColour.wav"; //sets the colour add sound.
+  colourAddSound.src = "assets/sounds/addcolour.wav"; //sets the colour add sound.
 
   if (userColourSelected) {
     selectedSquare.style.backgroundColor = userColourSelected; // assigns the colour selected from the palette to the grid square.
@@ -860,6 +865,8 @@ function gameStatus() {
 /*
 Plays the sounds for a pattern match (win) or not a match (lose)
 */
+//Adding sound effects code credit: MDN Web Docs 'Audio for Web games": 
+//(https://developer.mozilla.org/en-US/docs/Games/Techniques/Audio_for_Web_Games).
 function resultSound(squaresMatched) {
   winSound = document.createElement("audio");
   winSound.src = "assets/sounds/win.wav"; //sets the sound to play for a win.
@@ -969,6 +976,9 @@ function displayHighScore() {
 /*
 Saves highscores as Key/Value pairs in the correct object in local storage based in difficulty selected.
 */
+//The below JavaScript code was learnt and adapted from 'James Q Quick' channel YouTube videos:
+//Build a Quiz App (7) - Create and Style the End Page](https://www.youtube.com/watch?v=o3MF_JmQxYg)
+//Build a Quiz App (8) - Save High Scores in Local Storage](https://www.youtube.com/watch?v=DFhmNLKwwGw)
 function saveHighScore(event) {
   event.preventDefault(); //prevents default action of form button.
   let playername = document.getElementById('playername'); //gets the value the user have entered to save score against
