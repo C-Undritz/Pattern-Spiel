@@ -4,12 +4,12 @@
 
 ---
 # Table of Contents
-* [**RESPONSIVE DESIGN TESTING**](#--responsive-design-testing--)
-* [**FUNCTIONALITY TESTING**](#--functionality-testing--)
-* [**QUALITY CHECKS**](#--quality-checks--)
-* [**USER STORIES TESTING**](#--user-stories-testing--)
-* [**PROBLEMS AND FIXES**](#--problems-and-fixes--)
-* [**REMAINING ISSUES**](#--remaining-issues--)
+* [RESPONSIVE DESIGN TESTING](#responsive-design-testing)
+* [FUNCTIONALITY TESTING](#functionality-testing)
+* [QUALITY CHECKS](#quality-checks)
+* [USER STORIES TESTING](#user-stories-testing)
+* [PROBLEMS AND FIXES](#problems-and-fixes)
+* [REMAINING ISSUES](#remaining-issues)
 
 ---
 ># **RESPONSIVE DESIGN TESTING**
@@ -58,7 +58,7 @@ Also successfully tested the live site on the following devices:
 * Laptop at 1920 x 1080 resolution
 * Amazon Fire HD 8 tablet
 * Apple iPhone 5
-* Apple iPad 7th Generation (iOS v 14.2) 
+* Apple iPad 7th Generation (iOS v14.2) 
 * Apple iPhone 5 and iPhone 8 - iphone 5 done
 
 Only note on playing the game on mobiles; often the top menu/address bars meant that not all of the menu and game screens could be seen initially.  However swiping up to get rid of, or reduce the size of, the menu/address bars allowed all of the menu and game screen to be seen.

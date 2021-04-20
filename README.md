@@ -11,17 +11,19 @@
 
 ---
 # Table of Contents
-* [**OVERVIEW**](#--overview--)
-* [**STRATEGY**](#--strategy--)
-* [**SCOPE**](#--scope--)
-* [**SKELETON**](#--skeleton--)
-* [**SURFACE**](#--surface--)
-* [**TECHNOLOGIES USED**](#--technologies-used--)
-* [**TESTING**](#--testing--)
-* [**NOTED DESIGN CHANGES**](#--noted-design-changes--)
-* [**DEVELOPMENT & DEPLOYMENT**](#--development---deployment--)
-* [**MODIFYING THE GAME**](#--modifying-the-game--)
-* [**CREDITS & THANKS**](#--credits---thanks--)
+* [OVERVIEW](#overview)
+* [STRATEGY](#strategy)
+* [SCOPE](#scope)
+* [STRUCTURE](#structure)
+* [SKELETON](#skeleton)
+* [SURFACE](#surface)
+* [TECHNOLOGIES USED](#technologies-used)
+* [TESTING](#testing)
+* [NOTED DESIGN CHANGES](#noted-design-changes)
+* [FURTHER DEVELOPMENT](#further-development)
+* [DEVELOPMENT AND DEPLOYMENT](#development-and-deployment)
+* [MODIFYING THE GAME](#modifying-the-game)
+* [CREDITS AND THANKS](#credits-and-thanks)
 
 ---
 ># **OVERVIEW**
@@ -237,7 +239,7 @@ Testing completed is detailed in the [TESTING.md](TESTING.md) document
 * There are 24 combinations for the custom game which is a lot but it would not be hard to set up a database and so high scores for these games could be saved within a database to create further player competition.
 
 ---
-># **DEVELOPMENT & DEPLOYMENT**
+># **DEVELOPMENT AND DEPLOYMENT**
 * A repository was setup in GitHub using the Code Institute Gitpod [full template]( https://github.com/Code-Institute-Org/gitpod-full-template).
 * Development was completed using Gitpod and code was regularly pushed back to the GitHub repository.
 
@@ -258,7 +260,7 @@ Note that it can sometimes take up to 20 minutes for the site to publish so be p
 To work on the project code locally a clone can be taken by following the steps below or downloading the files as a zip file.  To see the options open the desired repository and select the drop down menu button ‘Code’ (found under the repo name and above the list of files).
 
 ## Clone:
-To do this you will need [GitBash for Windows](https://gitforwindows.org/) installed (for other OS versions see [here](https://git-scm.com/downloads).
+To do this you will need [GitBash for Windows](https://gitforwindows.org/) installed (for other OS versions see [here](https://git-scm.com/downloads)).
 1. Open GitBash
 2. Change the current working directory is required.  On windows, by default, the files will be downloaded to the users file directory on the C: drive
 3. In the ‘Code’ dropdown menu in GitHub, select either HTTPS or SSH and copy the link.
@@ -287,7 +289,7 @@ Shown below: This can be done within the 'script.js' file by changing the value 
 * viewTimerSelected: can be either 0 (no timer) or 5, 10 or 15 to represent the number of seconds.
 
 ---
-># **CREDITS & THANKS**
+># **CREDITS AND THANKS**
 # Code
 * The function ViewTimer() timer code was learnt and adapted from 'Code with Ania Kubów' YouTube 
 channel video: "Build your own COUNTDOWN TIMER in 15 lines of JavaScript code" 
@@ -326,6 +328,7 @@ channel video: "Build your own COUNTDOWN TIMER in 15 lines of JavaScript code"
 # Acknowledgments
 * Thanks to Code Institute for the excellent course content (referenced many times) and student/tutor support that has allowed me to complete this!
 * Despite following the YouTube tutorial for the viewTimer() function, the clearInterval method was not initiating the player generatePlayerGrid() function as required.  Thanks to Mr_Bim_alumni who pointed out that the setInterval method should be declared as a variable so that the timer could be ceased with the clearInterval method.
+* Thanks to the CI Slack community for constant support, help, levity, and valuable feedback. 
 * Thanks to my mentor Adegbenga Adeye for his feedback and support throughout this challenging second milestone project.
 
 
