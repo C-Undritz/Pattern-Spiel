@@ -1,3 +1,6 @@
+//The below JavaScript code was learnt and adapted from 'James Q Quick' channel YouTube video:
+//'Build a Quiz App (9):Load and Display High Scores from Local Storage'(https://www.youtube.com/watch?v=jfOv18lCMmw)
+
 //assigns variables to HTML <ol> elements in highscores.html where 'Easy', 'Medium'. 'Hard' and 'Very hard' difficulty high scores to be displayed.
 const highScoresEasyList = document.getElementById('highScoresEasy');
 const highScoresMediumList = document.getElementById('highScoresMedium');
