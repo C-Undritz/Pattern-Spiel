@@ -43,13 +43,13 @@ Responsiveness testing of the menu screen and game was completed against these r
 ![Am I Responsive image showing an end of round message across four devices of different screen sizes](assets/readme/am-i-responsive_roundwin.png)
 
 The responsive design test sheets and results can be viewed using the below links:
-* [Menu Screens](assets/readme/testing_pattern-spiel_functional-menu.pdf)
+* [Menu Screens](assets/readme/testing_pattern-spiel_responsive_menu-screens.pdf)
 * [Gameplay - View Pattern](assets/readme/testing_pattern-spiel_responsive_view-pattern.pdf)
 * [Gameplay - Grid and Palette](assets/readme/testing_pattern-spiel_responsive_grid-palette.pdf)
 * [Gameplay - Round End](assets/readme/testing_pattern-spiel_responsive_round-end.pdf)
-* [Gameplay - Game End](assets/readme/testing_pattern-spiel_responsive_game-end)
+* [Gameplay - Game End](assets/readme/testing_pattern-spiel_responsive_game-end.pdf)
 * [Gameplay - Score Message](assets/readme/testing_pattern-spiel_responsive_score-message.pdf)
-* [Other Screens](assets/readme/testing_pattern-spiel_responsive_oher-pages.pdf)
+* [Other Screens](assets/readme/testing_pattern-spiel_responsive_other-pages.pdf)
 
 Also successfully tested the live site on the following devices:
 * Huawei P smart 2019 smart phone
